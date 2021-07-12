@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Inter:wght@400;500&display=swap");
+/*==============================
+	Common styles
+==============================*/
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  background-color: #16151a;
+  -webkit-font-smoothing: antialiased;
+}
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: 0.5s ease;
+  transition-property: color, background-color, border-color, box-shadow;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+a {
+  transition: 0.5s ease;
+  transition-property: color, background-color, border-color, box-shadow;
+}
+a:hover,
+a:active,
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+input,
+textarea,
+select {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  transition: 0.5s ease;
+  transition-property: color, border-color, box-shadow;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+select::-ms-expand {
+  display: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+::-moz-selection {
+  background: #fff;
+  color: #222227;
+  text-shadow: none;
+}
+::selection {
+  background: #fff;
+  color: #222227;
+  text-shadow: none;
+}
+::-webkit-input-placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+::-moz-placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+:-moz-placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+:focus {
+  outline: -webkit-focus-ring-color auto 0px;
+}
+body::-webkit-scrollbar {
+  width: 16px;
+}
+body::-webkit-scrollbar-track {
+  background: #222227;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  outline: 1px solid #222227;
+}
+.tab-content {
+  width: 100%;
+}
+.tab-content > .tab-pane {
+  display: none;
+}
+.tab-content > .active {
+  display: block;
+}
+.fade {
+  transition: opacity 0.4s linear;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .fade {
+    transition: none;
+  }
+}
+.fade:not(.show) {
+  opacity: 0;
+}
+.collapse:not(.show) {
+  display: none;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition: none;
+  }
+}
+:focus-visible {
+  outline: 0px dotted;
+}
+.row--grid {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.row--grid .col-6,
+.row--grid .col-12 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media (min-width: 768px) {
+  .row--grid {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .row--grid .col-6,
+  .row--grid .col-12 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.row--sidebar {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.row--sidebar .col-6,
+.row--sidebar .col-12 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.owl-carousel .owl-item {
+  -webkit-transform: none;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1330px;
+  }
+}
