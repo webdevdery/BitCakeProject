@@ -111,7 +111,7 @@ const exploreCards = [
     likes: 702,
   },
   {
-    type:'image',
+    type:'video',
     image: "assets/img/cover/cover3.jpg",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",

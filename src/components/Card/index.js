@@ -19,7 +19,7 @@ function Card(props) {
         <img src={image} alt="" />
         {type==='video' && 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.53,7.15a1,1,0,0,0-1,0L17,8.89A3,3,0,0,0,14,6H5A3,3,0,0,0,2,9v6a3,3,0,0,0,3,3h9a3,3,0,0,0,3-2.89l3.56,1.78A1,1,0,0,0,21,17a1,1,0,0,0,.53-.15A1,1,0,0,0,22,16V8A1,1,0,0,0,21.53,7.15ZM15,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V9A1,1,0,0,1,5,8h9a1,1,0,0,1,1,1Zm5-.62-3-1.5V11.12l3-1.5Z"/></svg>}
-        {time>=480 && time<=750? <span className="card__time">15 minutes left</span> : 
+        {!(time==undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
         <span className="card__time card__time--clock">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ function Card(props) {
           <span className="card__clock card__clock--1"></span>
         </span>}
                    
-        {time < 750 && time<=3600 &&  <span className="card__time">an hour left</span>}
+        {!(time==undefined)&&(time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </Link>
       <h3 className="card__title">
         <Link to="/item">{title}</Link>
