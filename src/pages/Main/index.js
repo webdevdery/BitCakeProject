@@ -35,7 +35,7 @@ const cards = [
     likes: 37,
   },
   {
-    type:'image',
+    type:'media',
     image: "assets/img/cover/cover3.jpg",
     time: 900,
     title: "Flowers in Concrete (Modal)",
@@ -55,7 +55,7 @@ const cards = [
     likes: 37,
   },
   {
-    type:'image',
+    type:'media',
     image: "assets/img/cover/cover3.jpg",
     time: 300,
     title: "Flowers in Concrete (Modal)",
@@ -118,9 +118,27 @@ function Main() {
               >
                 {cards.map((card,index)=>(
                   <Card data={card} key={`card-${index}`}/>
-                ))}
-              </div>
-              </div>                
+                ))}                
+              </div>          
+              <button
+                className="main__nav main__nav--prev"
+                data-nav="#live"
+                type="button"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z" />
+                </svg>
+              </button>
+              <button
+                className="main__nav main__nav--next"
+                data-nav="#live"
+                type="button"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z" />
+                </svg>
+              </button>
+            </div>
           </div>
           {/* <!-- end carousel --> */}
         </section>
