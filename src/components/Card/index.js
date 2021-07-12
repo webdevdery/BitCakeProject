@@ -35,7 +35,7 @@ function Card(props) {
       <h3 className="card__title">
         <Link to="/item">{title}</Link>
       </h3>
-      <div className="card__author card__author--verified">
+    <div className={`card__author ${verified?'card__author--verified':''}`}>
         <img src={avatar} alt="" />
         <Link to="/author">{nickName}</Link>
       </div>

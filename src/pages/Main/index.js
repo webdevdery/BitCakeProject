@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../../components/Card";
-import SellerList from "../../components/SellerList"
+import SellerList from "../../components/SellerList";
+import Collection from "../../components/Collection";
 import "./style.css";
 
 const cards = [
@@ -151,6 +152,15 @@ const exploreCards = [
     likes: 37,
   },
 ];
+const collections = [
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+];
 function Main() {
   return (
     <main className="main">
@@ -279,7 +289,7 @@ function Main() {
                 id="explore"
               >
                 {exploreCards.map((card,index)=>(
-                  <Card data={card} key={`card-${index}`}/>
+                  <Card data={card} key={`explore-${index}`}/>
                 ))}
               </div>
 
@@ -324,136 +334,10 @@ function Main() {
                 className="main__carousel main__carousel--collections owl-carousel"
                 id="collections"
               >
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link
-                      to="/author"
-                      className="collection__avatar collection__avatar--verified"
-                    >
-                      <img src="assets/img/avatars/avatar3.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">Hashmasks</Link>
-                    </h3>
-                    <span className="collection__number">ERC-721</span>
-                  </div>
+                 {collections.map((collection,index)=>(
+                  <Collection data={collection} key={`collection-${index}`}/>
+                ))}    
                 </div>
-
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small2.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link
-                      to="/author"
-                      className="collection__avatar collection__avatar--verified"
-                    >
-                      <img src="assets/img/avatars/avatar9.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">NFTheft</Link>
-                    </h3>
-                    <span className="collection__number">ERC-721</span>
-                  </div>
-                </div>
-
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small3.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link
-                      to="/author"
-                      className="collection__avatar collection__avatar--verified"
-                    >
-                      <img src="assets/img/avatars/avatar12.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">Inventory</Link>
-                    </h3>
-                    <span className="collection__number">ERC-1155</span>
-                  </div>
-                </div>
-
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small4.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link to="/author" className="collection__avatar">
-                      <img src="assets/img/avatars/avatar15.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">ProphecyNFT</Link>
-                    </h3>
-                    <span className="collection__number">ERC-721</span>
-                  </div>
-                </div>
-
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small5.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link
-                      to="/author"
-                      className="collection__avatar collection__avatar--verified"
-                    >
-                      <img src="assets/img/avatars/avatar4.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">Hashavatars</Link>
-                    </h3>
-                    <span className="collection__number">ERC-1155</span>
-                  </div>
-                </div>
-
-                <div className="collection">
-                  <Link
-                    to="/collection"
-                    className="collection__cover"
-                    data-bg="assets/img/bg/bg-small6.png"
-                  ></Link>
-                  <div className="collection__meta">
-                    <Link to="/author" className="collection__avatar">
-                      <img src="assets/img/avatars/avatar11.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">Clap Token</Link>
-                    </h3>
-                    <span className="collection__number">ERC-1155</span>
-                  </div>
-                </div>
-
-                <div className="collection">
-                  <Link to="/collection" className="collection__cover"></Link>
-                  <div className="collection__meta">
-                    <Link
-                      to="/author"
-                      className="collection__avatar collection__avatar--verified"
-                    >
-                      <img src="assets/img/avatars/avatar15.jpg" alt="" />
-                    </Link>
-                    <h3 className="collection__name">
-                      <Link to="/collection">InventoryNFT</Link>
-                    </h3>
-                    <span className="collection__number">ERC-721</span>
-                  </div>
-                </div>
-              </div>
 
               <button
                 className="main__nav main__nav--prev"
