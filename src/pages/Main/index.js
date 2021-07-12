@@ -39,7 +39,7 @@ const cards = [
     likes: 37,
   },
   {
-    type:'media',
+    type:'video',
     image: "assets/img/cover/cover3.jpg",
     time: 900,
     title: "Flowers in Concrete (Modal)",
@@ -61,7 +61,7 @@ const cards = [
     likes: 37,
   },
   {
-    type:'media',
+    type:'video',
     image: "assets/img/cover/cover3.jpg",
     time: 300,
     title: "Flowers in Concrete (Modal)",
@@ -89,6 +89,68 @@ const sellerLists=[
   {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
   {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
 ]
+const exploreCards = [
+  {
+    type:'image',
+    image: "assets/img/cover/cover1.jpg",
+    title: "Walking on Air",
+    avatar: "assets/img/avatars/avatar5.jpg",
+    nickName: "@nickname",
+    currentPrice: 4.89,
+    verified:true,
+    likes: 189,
+  },
+  {
+    type:'image',
+    image: "assets/img/cover/cover2.jpg",
+    title: "Les Immortels, the Treachery of Artificial Shadows",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    nickName: "@neo",
+    currentPrice: 2.61,
+    verified:false,
+    likes: 702,
+  },
+  {
+    type:'image',
+    image: "assets/img/cover/cover3.jpg",
+    title: "Flowers in Concrete (Modal)",
+    avatar: "assets/img/avatars/avatar15.jpg",
+    nickName: "@min1max",
+    currentPrice: 3.19,
+    verified:true,
+    likes: 37,
+  },
+  {
+    type:'media',
+    image: "assets/img/cover/cover3.jpg",
+    title: "Flowers in Concrete (Modal)",
+    avatar: "assets/img/avatars/avatar15.jpg",
+    nickName: "@min1max",
+    currentPrice: 3.19,
+    verified:true,
+    likes: 37,
+  },
+  {
+    type:'image',
+    image: "assets/img/cover/cover3.jpg",
+    title: "Flowers in Concrete (Modal)",
+    avatar: "assets/img/avatars/avatar15.jpg",
+    nickName: "@min1max",
+    currentPrice: 3.19,
+    verified:true,
+    likes: 37,
+  },
+  {
+    type:'media',
+    image: "assets/img/cover/cover3.jpg",
+    title: "Flowers in Concrete (Modal)",
+    avatar: "assets/img/avatars/avatar15.jpg",
+    nickName: "@min1max",
+    currentPrice: 3.19,
+    verified:false,
+    likes: 37,
+  },
+];
 function Main() {
   return (
     <main className="main">
@@ -189,7 +251,7 @@ function Main() {
           <div className="col-12">
             <ul className="sellers-list">
               {sellerLists.map((data,index)=>(
-                <SellerList key={`seller-${index+1}`} data={data} index={index}/>
+                <SellerList key={`seller-${index}`} data={data} index={index}/>
                 ))}
             </ul>
           </div>
@@ -216,220 +278,9 @@ function Main() {
                 className="main__carousel main__carousel--explore owl-carousel"
                 id="explore"
               >
-                <div className="card">
-                  <Link to="/item" className="card__cover">
-                    <img src="assets/img/cover/cover1.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/item">Walking on Air</Link>
-                  </h3>
-                  <div className="card__author">
-                    <img src="assets/img/avatars/avatar13.jpg" alt="" />
-                    <Link to="/author">@nickname</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>4.89 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>189</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/item" className="card__cover">
-                    <img src="assets/img/cover/cover2.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/item">
-                      Les Immortels, the Treachery of Artificial Shadows
-                    </Link>
-                  </h3>
-                  <div className="card__author card__author--verified">
-                    <img src="assets/img/avatars/avatar10.jpg" alt="" />
-                    <Link to="/author">@neo</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>2.61 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>702</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/#modal-asset" className="card__cover open-modal">
-                    <img src="assets/img/cover/cover3.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/#modal-asset" className="open-modal">
-                      Flowers in Concrete (Modal)
-                    </Link>
-                  </h3>
-                  <div className="card__author">
-                    <img src="assets/img/avatars/avatar.jpg" alt="" />
-                    <Link to="/author">@min1max</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>3.19 BNB</span>
-                    </div>
-
-                    <button
-                      className="card__likes card__likes--active"
-                      type="button"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>37</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/item" className="card__cover">
-                    <img src="assets/img/cover/cover4.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/item">Industrial Revolution</Link>
-                  </h3>
-                  <div className="card__author card__author--verified">
-                    <img src="assets/img/avatars/avatar8.jpg" alt="" />
-                    <Link to="/author">@midinh</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>1.11 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>23</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/item" className="card__cover">
-                    <img src="assets/img/cover/cover5.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/item">I Love You</Link>
-                  </h3>
-                  <div className="card__author card__author--verified">
-                    <img src="assets/img/avatars/avatar9.jpg" alt="" />
-                    <Link to="/author">@nicky87</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>0.99 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>358</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/item" className="card__cover card__cover--video">
-                    <img src="assets/img/cover/cover6.jpg" alt="" />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M21.53,7.15a1,1,0,0,0-1,0L17,8.89A3,3,0,0,0,14,6H5A3,3,0,0,0,2,9v6a3,3,0,0,0,3,3h9a3,3,0,0,0,3-2.89l3.56,1.78A1,1,0,0,0,21,17a1,1,0,0,0,.53-.15A1,1,0,0,0,22,16V8A1,1,0,0,0,21.53,7.15ZM15,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V9A1,1,0,0,1,5,8h9a1,1,0,0,1,1,1Zm5-.62-3-1.5V11.12l3-1.5Z" />
-                    </svg>
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/item">Walking on Air</Link>
-                  </h3>
-                  <div className="card__author">
-                    <img src="assets/img/avatars/avatar14.jpg" alt="" />
-                    <Link to="/author">@redalert</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>1.63 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>90</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="card">
-                  <Link to="/#modal-asset" className="card__cover open-modal">
-                    <img src="assets/img/cover/cover7.jpg" alt="" />
-                  </Link>
-                  <h3 className="card__title">
-                    <Link to="/#modal-asset" className="open-modal">
-                      Tranquility (Modal)
-                    </Link>
-                  </h3>
-                  <div className="card__author">
-                    <img src="assets/img/avatars/avatar4.jpg" alt="" />
-                    <Link to="/author">@aaarthur</Link>
-                  </div>
-                  <div className="card__info">
-                    <div className="card__price">
-                      <span>Reserve price</span>
-                      <span>2.55 BNB</span>
-                    </div>
-
-                    <button className="card__likes" type="button">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
-                      </svg>
-                      <span>64</span>
-                    </button>
-                  </div>
-                </div>
+                {exploreCards.map((card,index)=>(
+                  <Card data={card} key={`card-${index}`}/>
+                ))}
               </div>
 
               <button
