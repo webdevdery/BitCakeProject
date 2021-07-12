@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "../../components/Card";
+import SellerList from "../../components/SellerList"
 import "./style.css";
 
 const cards = [
@@ -12,6 +13,7 @@ const cards = [
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
     currentPrice: 4.89,
+    verified:true,
     likes: 189,
   },
   {
@@ -22,6 +24,7 @@ const cards = [
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
     currentPrice: 2.61,
+    verified:false,
     likes: 702,
   },
   {
@@ -32,6 +35,7 @@ const cards = [
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
+    verified:true,
     likes: 37,
   },
   {
@@ -42,6 +46,7 @@ const cards = [
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
+    verified:true,
     likes: 37,
   },
   {
@@ -52,6 +57,7 @@ const cards = [
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
+    verified:true,
     likes: 37,
   },
   {
@@ -62,9 +68,27 @@ const cards = [
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
+    verified:false,
     likes: 37,
   },
 ];
+const sellerLists=[
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:false},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
+]
 function Main() {
   return (
     <main className="main">
@@ -164,140 +188,9 @@ function Main() {
           {/* <!-- sellers list --> */}
           <div className="col-12">
             <ul className="sellers-list">
-              <li>
-                <span className="sellers-list__number">1</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar.jpg" alt="" />
-                  <Link to="/author">@miriuuu</Link>
-                  <span>214.22 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">2</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar2.jpg" alt="" />
-                  <Link to="/author">@sc00ty</Link>
-                  <span>205.8 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">3</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar3.jpg" alt="" />
-                  <Link to="/author">@redalert</Link>
-                  <span>137.65 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">4</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar4.jpg" alt="" />
-                  <Link to="/author">@1one</Link>
-                  <span>129.301 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">5</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar5.jpg" alt="" />
-                  <Link to="/author">@kateblank</Link>
-                  <span>112.3 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">6</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar6.jpg" alt="" />
-                  <Link to="/author">@johndoe</Link>
-                  <span>108.88 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">7</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar7.jpg" alt="" />
-                  <Link to="/author">@nickname</Link>
-                  <span>88.58 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">8</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar8.jpg" alt="" />
-                  <Link to="/author">@lllily</Link>
-                  <span>73.207 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">9</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar9.jpg" alt="" />
-                  <Link to="/author">@fantraingle</Link>
-                  <span>71.076 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">10</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar10.jpg" alt="" />
-                  <Link to="/author">@oxyoxyoxy</Link>
-                  <span>57.041 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">11</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar11.jpg" alt="" />
-                  <Link to="/author">@vandam</Link>
-                  <span>50.261 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">12</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar12.jpg" alt="" />
-                  <Link to="/author">@dididi</Link>
-                  <span>44.79 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">13</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar13.jpg" alt="" />
-                  <Link to="/author">@lyzzy</Link>
-                  <span>43.24 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">14</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar14.jpg" alt="" />
-                  <Link to="/author">@oceanu</Link>
-                  <span>41.221 BNB</span>
-                </div>
-              </li>
-
-              <li>
-                <span className="sellers-list__number">15</span>
-                <div className="sellers-list__author sellers-list__author--verified">
-                  <img src="assets/img/avatars/avatar15.jpg" alt="" />
-                  <Link to="/author">@justart</Link>
-                  <span>40.195 BNB</span>
-                </div>
-              </li>
+              {sellerLists.map((data,index)=>(
+                <SellerList key={`seller-${index+1}`} data={data} index={index}/>
+                ))}
             </ul>
           </div>
           {/* <!-- end sellers list --> */}
