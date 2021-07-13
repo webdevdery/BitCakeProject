@@ -9,6 +9,8 @@ import Asset from '../pages/Asset';
 import Token from '../pages/Token';
 import Blog from '../pages/Blog';
 import Faq from "../pages/Faq";
+import Contact from "../pages/Contact";
+import Authors from "../pages/Authors";
 function Routes() {
   return (
     <div>
@@ -22,6 +24,8 @@ function Routes() {
           <Route path="/token" component={Token}/>
           <Route path="/blog" component={Blog}/>
           <Route path="/faq" component={Faq}/>
+          <Route path="/contacts" component={Contact}/>
+          <Route path="/authors" component={Authors}/>
         </Switch>
         <Footer />
       </BrowserRouter>

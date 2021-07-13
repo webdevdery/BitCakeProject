@@ -1,17 +1,17 @@
 import React from "react";
+import BreadCrumb from "../../components/BreadCrumb";
 import "./style.css";
+const breadCrumb = [
+	{title:"Home",page:'/'},
+	{title:"Faq",page:"/faq"},
+];
 function Faq() {
   return (
     	<main className="main">
 		<div className="container">
 			<div className="row row--grid">
 				{/* breadcrumb */}
-				<div className="col-12">
-					<ul className="breadcrumb">
-						<li className="breadcrumb__item"><a href="index.html">Home</a></li>
-						<li className="breadcrumb__item breadcrumb__item--active">FAQ</li>
-					</ul>
-				</div>
+        <BreadCrumb data={breadCrumb}/>
 				{/* end breadcrumb */}
 
 				{/* title */}
