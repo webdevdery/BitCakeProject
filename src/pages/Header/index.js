@@ -153,7 +153,7 @@ function Header() {
                       <a href="/blog">Blog style 2</a>
                     </li>
                     <li>
-                      <a href="/article">Article</a>
+                      <a href="/">Article</a>
                     </li>
                   </ul>
                 </li>
