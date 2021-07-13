@@ -22,7 +22,7 @@ function SignIn(props) {
 							{/* authorization form */}
 							<form action="#" className="sign__form">
 								<a href="index" className="sign__logo">
-									<img src="img/logo.svg" alt=""/>
+									<img src="assets/img/logo.svg" alt=""/>
 								</a>
 
 								<div className="sign__group">

@@ -21,7 +21,7 @@ function SignUp(props) {
             <div className="sign__content">
               <form action="#" className="sign__form">
                 <a href="index.html" className="sign__logo">
-                  <img src="img/logo.svg" alt=""/>
+                  <img src="assets/img/logo.svg" alt=""/>
                 </a>
 
                 <div className="sign__group">
