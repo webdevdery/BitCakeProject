@@ -17,6 +17,7 @@ import Create from "../pages/Create";
 import SignIn from "../pages/Sign/SignIn";
 import SignUp from "../pages/Sign/SignUp";
 import Forgot from "../pages/Sign/ForgotPassword";
+import Error from "../pages/404";
 function Routes() {
   return (
     <div>
@@ -38,6 +39,7 @@ function Routes() {
           <Route path="/signin" component={SignIn}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/forgot" component={Forgot}/>
+          <Route path="/404" component={Error}/>
         </Switch>
         <Footer />
       </BrowserRouter>
