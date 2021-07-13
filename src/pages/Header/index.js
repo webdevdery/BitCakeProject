@@ -51,13 +51,13 @@ function Header() {
                 aria-labelledby="dropdownMenuHome"
               >
                 <li>
-                  <a href="/index">Home style 1</a>
+                  <a href="/">Home style 1</a>
                 </li>
                 <li>
-                  <a href="/index2">Home style 2</a>
+                  <a href="/">Home style 2</a>
                 </li>
                 <li>
-                  <a href="/index3">Home style 3</a>
+                  <a href="/">Home style 3</a>
                 </li>
               </ul>
             </li>
@@ -85,16 +85,16 @@ function Header() {
                   <a href="/explore">Explore style 1</a>
                 </li>
                 <li>
-                  <a href="/explore2">Explore style 2</a>
+                  <a href="/explore">Explore style 2</a>
                 </li>
                 <li>
-                  <a href="/explore3">Explore style 3</a>
+                  <a href="/explore">Explore style 3</a>
                 </li>
                 <li>
                   <a href="/item">Item style 1</a>
                 </li>
                 <li>
-                  <a href="/item2">Item style 2</a>
+                  <a href="/item">Item style 2</a>
                 </li>
               </ul>
             </li>
@@ -150,7 +150,7 @@ function Header() {
                       <a href="/blog">Blog style 1</a>
                     </li>
                     <li>
-                      <a href="/blog2">Blog style 2</a>
+                      <a href="/blog">Blog style 2</a>
                     </li>
                     <li>
                       <a href="/article">Article</a>
@@ -246,7 +246,7 @@ function Header() {
               </svg>
             </button>
           </div>
-
+          {window.location.href=="http://localhost:3000/" ?
           <div className="header__action header__action--profile">
             <a
               className="header__profile-btn header__profile-btn--verified"
@@ -312,7 +312,13 @@ function Header() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> :
+          <div class="header__action header__action--signin">
+              <a class="header__action-btn header__action-btn--signin" href="/signin">
+                <span>Sign in</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"/></svg>
+              </a>
+            </div>}
         </div>
 
         <button className="header__btn" type="button">
