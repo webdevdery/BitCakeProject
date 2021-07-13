@@ -1,6 +1,6 @@
 import React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
-import Filter from "../../components/Filter";
+import Filter from "../../components/ExploreFilter";
 import Card from "../../components/Card";
 import Paginator from "../../components/Paginator";
 const breadcrumb = [
