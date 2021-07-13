@@ -2,12 +2,28 @@ import React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
 import AssetItem from "../../components/AssetItem";
 import AssetAuthor from "../../components/AssetAuthor";
+import Tabs from "./Tabs";
 import "./style.css";
 const breadcrumb = [
 	{title:"Home",page:'/'},
 	{title:"Explorer",page:"/explorer"},
 ];
 const author = {creatorAvatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', collectionAvatar:"assets/img/avatars/avatar9.jpg", collectionTitle:'The Meta Key'}
+const historyData = [
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+];
+const bidsData = [
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+];
+const detail =[{avatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', createdYear:2021}];
 
 function Item() {
   return (
@@ -43,86 +59,7 @@ function Item() {
               <AssetAuthor data={author}/>
 
               {/* <!-- tabs --> */}
-              <ul className="nav nav-tabs asset__tabs" role="tablist">
-                <li className="nav-item">
-                  <a className="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">History</a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Bids</a>
-                </li>
-
-
-                <li className="nav-item">
-                  <a className="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Details</a>
-                </li>
-              </ul>
-
-              <div className="tab-content">
-                <div className="tab-pane fade show active" id="tab-1" role="tabpanel">
-                  <div className="asset__actions asset__actions--scroll" id="asset__actions--scroll">
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar10.jpg" alt=""/>
-                      <p>Bid placed for <b>11.00 ETH</b> 4 hours ago <br/>by <a href="author.html">@erikkk</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar4.jpg" alt=""/>
-                      <p>Bid placed for <b>10.00 ETH</b> 5 hours ago <br/>by <a href="author.html">@johndoe</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar6.jpg" alt=""/>
-                      <p>Bid placed for <b>2.508 ETH</b> 5 hours ago <br/>by <a href="author.html">@n1ckname</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar4.jpg" alt=""/>
-                      <p>Bid placed for <b>2.2799 ETH</b> 6 hours ago <br/>by <a href="author.html">@johndoe</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar5.jpg" alt=""/>
-                      <p>Put on sale for <b>0.55 ETH</b> 1 days ago <br/>by <a href="author.html">@midinh</a></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="tab-pane fade" id="tab-2" role="tabpanel">
-                  <div className="asset__actions">
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar10.jpg" alt=""/>
-                      <p>Bid placed for <b>11.00 ETH</b> 4 hours ago <br/>by <a href="author.html">@erikkk</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar4.jpg" alt=""/>
-                      <p>Bid placed for <b>10.00 ETH</b> 5 hours ago <br/>by <a href="author.html">@johndoe</a></p>
-                    </div>
-
-                    <div className="asset__action asset__action--verified">
-                      <img src="assets/img/avatars/avatar6.jpg" alt=""/>
-                      <p>Bid placed for <b>2.508 ETH</b> 5 hours ago <br/>by <a href="author.html">@n1ckname</a></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="tab-pane fade" id="tab-3" role="tabpanel">
-                  <ul className="asset__authors asset__authors--tab">
-                    <li>
-                      <span>Owner</span>
-                      <div className="asset__author asset__author--verified">
-                        <img src="assets/img/avatars/avatar5.jpg" alt=""/>
-                        <a href="author.html">@midinh</a>
-                      </div>
-                    </li>
-                    <li>
-                      <span>Year created</span>
-                      <p>2021</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <Tabs historyData={historyData} bidsData={bidsData} detail={detail}/>
               {/* <!-- end tabs --> */}
 
               <div className="asset__wrap">
@@ -133,7 +70,7 @@ function Item() {
 
                 <div className="asset__price">
                   <span>Minimum bid</span>
-                  <span>0.2 ETH</span>
+                  <span>0.2 BNB</span>
                 </div>
               </div>
 
@@ -173,7 +110,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>4.89 ETH</span>
+                      <span>4.89 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
@@ -195,7 +132,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>2.61 ETH</span>
+                      <span>2.61 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
@@ -217,7 +154,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>3.19 ETH</span>
+                      <span>3.19 BNB</span>
                     </div>
                     
                     <button className="card__likes card__likes--active" type="button">
@@ -239,7 +176,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>1.11 ETH</span>
+                      <span>1.11 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
@@ -261,7 +198,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>0.99 ETH</span>
+                      <span>0.99 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
@@ -284,7 +221,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>1.63 ETH</span>
+                      <span>1.63 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
@@ -306,7 +243,7 @@ function Item() {
                   <div className="card__info">
                     <div className="card__price">
                       <span>Reserve price</span>
-                      <span>2.55 ETH</span>
+                      <span>2.55 BNB</span>
                     </div>
                     
                     <button className="card__likes" type="button">
