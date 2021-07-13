@@ -8,6 +8,7 @@ import Activity from '../pages/Activity';
 import Asset from '../pages/Asset';
 import Token from '../pages/Token';
 import Blog from '../pages/Blog';
+import Faq from "../pages/Faq";
 function Routes() {
   return (
     <div>
@@ -20,6 +21,7 @@ function Routes() {
           <Route path="/item" component={Asset}/>
           <Route path="/token" component={Token}/>
           <Route path="/blog" component={Blog}/>
+          <Route path="/faq" component={Faq}/>
         </Switch>
         <Footer />
       </BrowserRouter>
