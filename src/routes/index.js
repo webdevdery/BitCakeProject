@@ -14,6 +14,7 @@ import Authors from "../pages/Authors";
 import Author from "../pages/Author";
 import Collection from "../pages/Collection";
 import Create from "../pages/Create";
+import SignIn from "../pages/SignIn";
 function Routes() {
   return (
     <div>
@@ -32,6 +33,7 @@ function Routes() {
           <Route path="/author" component={Author}/>
           <Route path="/collection" component={Collection}/>
           <Route path="/create" component={Create}/>
+          <Route path="/signin" component={SignIn}/>
         </Switch>
         <Footer />
       </BrowserRouter>
