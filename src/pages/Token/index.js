@@ -16,7 +16,7 @@ function Token(props) {
 				{/* title */}
 				<div className="col-12 col-xl-11">
 					<div className="main__title main__title--page">
-						<h1>Unitok – NFT Marketplace HTML Template</h1>
+						<h1>Unitok – BNB Marketplace HTML Template</h1>
 
 						<p>Many desktop publishing packages and <a href="#">web page</a> editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 
@@ -46,7 +46,7 @@ function Token(props) {
 				<div className="col-12 col-lg-4">
 					<div className="step">
 						<span className="step__number">03</span>
-						<h3 className="step__title">Add your NFTs</h3>
+						<h3 className="step__title">Add your BNBs</h3>
 						<p className="step__text">It to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
 					</div>
 				</div>
@@ -100,7 +100,7 @@ function Token(props) {
 						<span className="feature__icon feature__icon--red">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.5,10.56l9,5.2a1,1,0,0,0,1,0l9-5.2a1,1,0,0,0,0-1.73l-9-5.2a1,1,0,0,0-1,0l-9,5.2a1,1,0,0,0,0,1.73ZM12,5.65l7,4-7,4.05L5,9.69Zm8.5,7.79L12,18.35,3.5,13.44a1,1,0,0,0-1.37.36,1,1,0,0,0,.37,1.37l9,5.2a1,1,0,0,0,1,0l9-5.2a1,1,0,0,0,.37-1.37A1,1,0,0,0,20.5,13.44Z"/></svg>
 						</span>
-						<h3 className="feature__title">Collect NFTs</h3>
+						<h3 className="feature__title">Collect BNBs</h3>
 						<p className="feature__text">If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
 					</div>
 				</div>
@@ -120,7 +120,7 @@ function Token(props) {
 						<span className="feature__icon feature__icon--green">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.47,7.37s0,0,0-.08l-.06-.15a.71.71,0,0,0-.07-.09.94.94,0,0,0-.09-.12l-.09-.07L20,6.78l-7.5-4.63a1,1,0,0,0-1.06,0L4,6.78l-.09.08-.09.07a.94.94,0,0,0-.09.12.71.71,0,0,0-.07.09l-.06.15s0,0,0,.08a1.15,1.15,0,0,0,0,.26v8.74a1,1,0,0,0,.47.85l7.5,4.63h0a.47.47,0,0,0,.15.06s.05,0,.08,0a.86.86,0,0,0,.52,0s.05,0,.08,0a.47.47,0,0,0,.15-.06h0L20,17.22a1,1,0,0,0,.47-.85V7.63A1.15,1.15,0,0,0,20.47,7.37ZM11,19.21l-5.5-3.4V9.43L11,12.82Zm1-8.12L6.4,7.63,12,4.18l5.6,3.45Zm6.5,4.72L13,19.21V12.82l5.5-3.39Z"/></svg>
 						</span>
-						<h3 className="feature__title">Get airdrop <br/>as NFT holder</h3>
+						<h3 className="feature__title">Get airdrop <br/>as BNB holder</h3>
 						<p className="feature__text">Various versions have evolved over the years, sometimes by accident, sometimes on purpose</p>
 					</div>
 				</div>
