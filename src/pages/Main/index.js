@@ -170,7 +170,7 @@ function Main() {
           <div className="row">
             <div className="col-12">
               <div className="home__content">
-                <h1 className="home__title">The largest NFT marketplace</h1>
+                <h1 className="home__title">The largest BNB marketplace</h1>
                 <p className="home__text">
                   Digital marketplace for crypto collectibles and non-fungible
                   tokens. <br />
@@ -368,7 +368,7 @@ function Main() {
           {/* <!-- title --> */}
           <div className="col-12">
             <div className="main__title main__title--border-top">
-              <h2>Get started creating & selling your NFTs</h2>
+              <h2>Get started creating & selling your BNBs</h2>
             </div>
           </div>
           {/* <!-- end title --> */}
@@ -382,7 +382,7 @@ function Main() {
               </span>
               <h3 className="feature__title">Set up your wallet</h3>
               <p className="feature__text">
-                Once you’ve set up your wallet of choice, connect it to NFT
+                Once you’ve set up your wallet of choice, connect it to BNB
                 marketplace by clicking this link. <br />
                 <Link to="/signin">Connect my wallet</Link>.
               </p>
@@ -412,10 +412,10 @@ function Main() {
                   <path d="M22.71,6.29a1,1,0,0,0-1.42,0L20,7.59V2a1,1,0,0,0-2,0V7.59l-1.29-1.3a1,1,0,0,0-1.42,1.42l3,3a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l3-3A1,1,0,0,0,22.71,6.29ZM19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h8a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21Z" />
                 </svg>
               </span>
-              <h3 className="feature__title">Add your NFTs</h3>
+              <h3 className="feature__title">Add your BNBs</h3>
               <p className="feature__text">
                 Upload your work, add a title and description, and customize
-                your NFTs with properties, stats, and unlockable content.
+                your BNBs with properties, stats, and unlockable content.
               </p>
             </div>
           </div>
@@ -431,7 +431,7 @@ function Main() {
               <p className="feature__text">
                 Choose between auctions, fixed-price listings, and
                 declining-price listings. You choose how you want to sell your
-                NFTs, and we help you sell them!
+                BNBs, and we help you sell them!
               </p>
             </div>
           </div>

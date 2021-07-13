@@ -11,7 +11,7 @@ function Routes() {
 					<div className="footer__logo">
 						<img src="assets/img/logo.svg" alt=""/>
 					</div> 
-					<p className="footer__tagline">Digital marketplace for crypto collectibles <br/>and non-fungible tokens (NFTs). <br/>Buy, sell, and discover exclusive digital assets.</p>
+					<p className="footer__tagline">Digital marketplace for crypto collectibles <br/>and non-fungible tokens (BNBs). <br/>Buy, sell, and discover exclusive digital assets.</p>
 
 					<div className="footer__lang">
 						<Link className="footer__lang-btn" to="/" role="button" id="dropdownLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
