@@ -1,6 +1,6 @@
 import React from "react";
-import BreadCrumb from "../../components/BreadCrumb";
-import "./style.css";
+import BreadCrumb from "../../../components/BreadCrumb";
+import "../style.css";
 const breadCrumb = [
 	{title:"Home",page:'/'},
 	{title:"Signin",page:"/"},
@@ -50,7 +50,7 @@ function SignIn(props) {
 
 								<span className="sign__text">Don't have an account? <a href="signup">Sign up!</a></span>
 
-								<span className="sign__text"><a href="forgot">Forgot password?</a></span>
+								<span className="sign__text"><a href="/forgot">Forgot password?</a></span>
 							</form>
 							{/* end authorization form */}
 						</div>
