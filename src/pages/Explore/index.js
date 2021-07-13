@@ -3,7 +3,7 @@ import BreadCrumb from "../../components/BreadCrumb";
 import Filter from "../../components/ExploreFilter";
 import Card from "../../components/Card";
 import Paginator from "../../components/Paginator";
-const breadcrumb = [
+const breadCrumb = [
 	{title:"Home",page:'/'},
 	{title:"Explorer",page:"/explorer"},
 ];
@@ -102,7 +102,7 @@ function Explore() {
 		<main className="main">
 				<div className="container">
 					<div className="row row--grid">
-						<BreadCrumb data={breadcrumb}/>
+						<BreadCrumb data={breadCrumb}/>
 						<div className="col-12">
 							<div className="main__title main__title--page">
 								<h1>Explore exclusive digital assets</h1>

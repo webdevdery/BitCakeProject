@@ -1,8 +1,6 @@
 import React from "react";
 function Tabs(props) {
   const {historyData, bidsData, detail} = props;
-
-          // {avatar, bnbPrice, timeAgo, nickName, verified}
   return (
     <>
     <ul className="nav nav-tabs asset__tabs" role="tablist">
