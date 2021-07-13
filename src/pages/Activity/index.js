@@ -63,7 +63,7 @@ function Routes() {
             <div className="row row--grid collapse" id="collapsemore">
               {activityData.map((activity,index)=>(
               index >= 8 &&
-                <div className="col-12 col-lg-6">
+                <div className="col-12 col-lg-6"  key={`activity${index}`}>
                   <Activity data={activity}/>
                 </div>
               ))}  

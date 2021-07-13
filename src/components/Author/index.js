@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 function Author(props) {
   const {bgImage,avatar, authorName,nickName, text, followers} = props.data;
-
   return (
     <div class="author">
       <a href="/author" class="author__cover author__cover--bg" data-bg={bgImage}>
