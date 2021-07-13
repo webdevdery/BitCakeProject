@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthorMeta from "./AuthorMeta";
+import AuthorMeta from "../../components/AuthorMeta";
 import Card from "../../components/Card";
 import Paginator from "../../components/Paginator";
 import Filter from "../../components/Filter";
