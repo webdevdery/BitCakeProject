@@ -30,7 +30,7 @@ function Card(props) {
           <span className="card__clock card__clock--1"></span>
         </span>}
                    
-        {!(time==undefined)&&(time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
+        {time==undefined&&(time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </Link>
       <h3 className="card__title">
         <Link to="/item">{title}</Link>
