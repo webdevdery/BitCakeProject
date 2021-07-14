@@ -100,7 +100,7 @@ Primary use:	Unitok HTML Template
   font-weight: 500;
 }
 .home__title span {
-  color: #6164ff;
+  color: #c51458;
 }
 .home__text {
   position: relative;
@@ -141,6 +141,9 @@ Primary use:	Unitok HTML Template
   margin-top: 20px;
   margin-right: 20px;
 }
+.grey {
+  background-color: grey;
+}
 .home__btn svg {
   fill: #fff;
   width: 28px;
@@ -151,7 +154,7 @@ Primary use:	Unitok HTML Template
   margin-right: 0;
 }
 .home__btn:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .home__btn--clr {
   background-color: #c51458;
@@ -159,7 +162,7 @@ Primary use:	Unitok HTML Template
 }
 .home__btn--clr:hover {
   background-color: #222227;
-  color: #6164ff;
+  color: #c51458;
 }
 @media (min-width: 768px) {
   .home__content {
@@ -220,7 +223,7 @@ Primary use:	Unitok HTML Template
 }
 .hero .owl-dot.active span {
   width: 20px;
-  background-color: #6164ff;
+  background-color: #c51458;
 }
 .hero .owl-stage-outer {
   border-radius: 16px;
@@ -266,7 +269,7 @@ Primary use:	Unitok HTML Template
   font-weight: 500;
 }
 .hero__title span {
-  color: #6164ff;
+  color: #c51458;
 }
 .hero__text {
   position: relative;
@@ -317,15 +320,15 @@ Primary use:	Unitok HTML Template
   margin-right: 0;
 }
 .hero__btn:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .hero__btn--clr {
-  background-color: #6164ff;
+  background-color: #c51458;
   color: #fff;
 }
 .hero__btn--clr:hover {
   background-color: #222227;
-  color: #6164ff;
+  color: #c51458;
 }
 @media (min-width: 576px) {
   .hero__slide {
@@ -448,7 +451,7 @@ Primary use:	Unitok HTML Template
   transition: background-color 0.5s ease;
 }
 .card__cover--carousel .owl-dot.active span {
-  background-color: #6164ff;
+  background-color: #c51458;
 }
 .card__cover--video svg {
   position: absolute;
@@ -478,10 +481,10 @@ Primary use:	Unitok HTML Template
   color: #fff;
 }
 .card__title a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__title:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__author {
   display: flex;
@@ -521,7 +524,7 @@ Primary use:	Unitok HTML Template
   font-size: 16px;
 }
 .card__author a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__info {
   display: flex;
@@ -597,7 +600,7 @@ Primary use:	Unitok HTML Template
   position: absolute;
   bottom: 0;
   left: 0;
-  border: 2px solid #6164ff;
+  border: 2px solid #c51458;
   color: #fff;
   font-size: 12px;
   background-color: #222227;
@@ -613,7 +616,7 @@ Primary use:	Unitok HTML Template
   width: 16px;
   height: auto;
   margin-right: 6px;
-  fill: #6164ff;
+  fill: #c51458;
   margin-left: -3px;
 }
 .card__time--clock {
@@ -691,7 +694,7 @@ Primary use:	Unitok HTML Template
   background-color: rgba(97, 100, 255, 0.15);
 }
 .feature__icon svg {
-  fill: #6164ff;
+  fill: #c51458;
   width: auto;
   height: 26px;
 }
@@ -739,11 +742,11 @@ Primary use:	Unitok HTML Template
   margin-top: 15px;
 }
 .feature__text a {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: underline;
 }
 .feature__text a:hover {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: none;
 }
 .feature--last {
@@ -793,7 +796,7 @@ Primary use:	Unitok HTML Template
   line-height: 100%;
   font-weight: 500;
   font-size: 22px;
-  color: #6164ff;
+  color: #c51458;
   background-color: rgba(97, 100, 255, 0.15);
 }
 .step__title {
@@ -815,11 +818,11 @@ Primary use:	Unitok HTML Template
   margin-top: 15px;
 }
 .step__text a {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: underline;
 }
 .step__text a:hover {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: none;
 }
 @media (min-width: 768px) {
@@ -856,7 +859,7 @@ Primary use:	Unitok HTML Template
   width: 100%;
 }
 .knowledge__title svg {
-  fill: #6164ff;
+  fill: #c51458;
   width: 24px;
   height: auto;
   margin-right: 10px;
@@ -907,7 +910,7 @@ Primary use:	Unitok HTML Template
   padding-right: 4px;
 }
 .knowledge__list a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 @media (min-width: 768px) {
   .knowledge {
@@ -978,7 +981,7 @@ Primary use:	Unitok HTML Template
   right: 0;
   height: 2px;
   display: block;
-  background-color: #6164ff;
+  background-color: #c51458;
   transition: 0.5s ease;
   transform: translateY(2px);
   opacity: 0;
@@ -1048,7 +1051,7 @@ Primary use:	Unitok HTML Template
   width: auto;
   color: #fff;
   font-size: 13px;
-  background-color: #6164ff;
+  background-color: #c51458;
   border-radius: 10px;
   padding: 0 15px;
 }
@@ -1139,12 +1142,12 @@ Primary use:	Unitok HTML Template
   font-weight: 600;
 }
 .article__content p a {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: underline;
 }
 .article__content p a:hover,
 .article__content p a:focus {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: none;
 }
 .article__content p:last-child {
@@ -1169,7 +1172,7 @@ Primary use:	Unitok HTML Template
   bottom: 2px;
   left: 0;
   width: 3px;
-  background-color: #6164ff;
+  background-color: #c51458;
   border-radius: 3px;
 }
 .article__content blockquote:last-child {
@@ -1194,7 +1197,7 @@ Primary use:	Unitok HTML Template
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #6164ff;
+  background-color: #c51458;
   left: 0;
   top: 50%;
   margin-top: -2px;
@@ -1297,7 +1300,7 @@ Primary use:	Unitok HTML Template
   border-radius: 10px;
   color: #fff;
   font-size: 14px;
-  background-color: #6164ff;
+  background-color: #c51458;
   font-family: "Inter", sans-serif;
 }
 .share__link svg {
@@ -1322,7 +1325,7 @@ Primary use:	Unitok HTML Template
   background-color: #222227;
 }
 .share__link:hover {
-  background-color: #6164ff;
+  background-color: #c51458;
   color: #fff;
 }
 @media (min-width: 576px) {
@@ -1370,7 +1373,7 @@ Primary use:	Unitok HTML Template
   height: 20px;
   padding: 0 5px;
   border-radius: 6px;
-  background-color: #6164ff;
+  background-color: #c51458;
   font-size: 12px;
   color: #fff;
   font-weight: 400;
@@ -1419,10 +1422,10 @@ Primary use:	Unitok HTML Template
   font-weight: 600;
 }
 .comments__text a {
-  color: #6164ff;
+  color: #c51458;
 }
 .comments__text a:hover {
-  color: #6164ff;
+  color: #c51458;
   text-decoration: underline;
 }
 .comments__text span {
@@ -1480,7 +1483,7 @@ Primary use:	Unitok HTML Template
   color: #fff;
 }
 .comments__actions button:hover svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .comments__actions button:last-child {
   margin-right: 0;
@@ -1642,7 +1645,7 @@ Primary use:	Unitok HTML Template
   width: 100%;
   height: 50px;
   border-radius: 12px;
-  background-color: #6164ff;
+  background-color: #c51458;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1704,7 +1707,7 @@ Primary use:	Unitok HTML Template
 }
 .modal__close:hover svg {
   opacity: 1;
-  fill: #6164ff;
+  fill: #c51458;
 }
 @media (min-width: 768px) {
   .modal {
@@ -1833,7 +1836,7 @@ Primary use:	Unitok HTML Template
 .select2-container
   .select2-selection--single:hover
   .select2-selection__rendered {
-  color: #6164ff;
+  color: #c51458;
 }
 .select2-container--default
   .select2-selection--single
@@ -1854,24 +1857,24 @@ Primary use:	Unitok HTML Template
 }
 .select2-container--default
   .select2-results__option--highlighted.select2-results__option--selectable {
-  background-color: #6164ff;
+  background-color: #c51458;
   color: #fff;
   white-space: nowrap;
 }
 .select2-container--default .select2-results__option--selected {
   color: #fff;
-  background-color: #6164ff;
+  background-color: #c51458;
   cursor: default;
 }
 .select2-container--default .select2-results__option[aria-selected="true"] {
   background-color: transparent;
-  color: #6164ff;
+  color: #c51458;
   cursor: default;
 }
 .select2-container--default
   .select2-results__option--highlighted[aria-selected] {
   background-color: transparent;
-  color: #6164ff;
+  color: #c51458;
 }
 .select2-results__option {
   padding: 0 0;
@@ -1916,7 +1919,7 @@ Primary use:	Unitok HTML Template
   overflow: hidden;
 }
 .scrollbar-thumb-y {
-  background: #6164ff !important;
+  background: #c51458 !important;
   width: 4px !important;
   border-radius: 4px !important;
 }
@@ -1931,7 +1934,7 @@ Primary use:	Unitok HTML Template
   overflow: hidden;
 }
 .scrollbar-thumb-x {
-  background: #6164ff !important;
+  background: #c51458 !important;
   height: 4px !important;
   border-radius: 4px !important;
 }

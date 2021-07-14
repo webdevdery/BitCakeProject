@@ -181,7 +181,7 @@ function Main() {
                   <Link to="/explore" className="home__btn home__btn--clr">
                     Explore
                   </Link>
-                  <Link to="/signin" className="home__btn">
+                  <Link to="/signin" className="home__btn grey">
                     Create
                   </Link>
                 </div>

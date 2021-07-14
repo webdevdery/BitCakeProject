@@ -20,6 +20,15 @@
   color: #bdbdbd;
   margin-bottom: 0;
 }
+.footer a:hover {
+  color: #c51458;
+}
+.footer a {
+  color: #fff;
+}
+.footer__nav a:hover{
+  color: #c51458
+}
 .footer__links {
   display: flex;
   flex-direction: column;
@@ -40,11 +49,11 @@
 .footer__links a svg {
   width: 20px;
   height: auto;
-  fill: #6164ff;
+  fill: #c51458;
   margin-right: 10px;
 }
 .footer__links a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .footer__social {
   display: flex;
@@ -75,7 +84,7 @@
   margin-right: 0;
 }
 .footer__social a:hover svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .footer__content {
   margin-top: 60px;
@@ -93,7 +102,7 @@
   color: #bdbdbd;
 }
 .footer__copyright a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .footer__title {
   display: block;
@@ -122,7 +131,7 @@
   margin-bottom: 0;
 }
 .footer__nav a:hover {
-  color: #fff;
+  color: #c51458;
 }
 .footer__lang {
   position: relative;

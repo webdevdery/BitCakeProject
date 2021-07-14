@@ -114,10 +114,10 @@
   width: 10px;
 }
 .header__btn:hover span {
-  background-color: #6164ff;
+  background-color: #c51458;
 }
 .header__btn--active span {
-  background-color: #6164ff;
+  background-color: #c51458;
 }
 .header__btn--active span:nth-child(2) {
   width: 22px;
@@ -174,7 +174,7 @@
   transition: 0.5s ease;
 }
 .header__search button:hover svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .header__search button.close {
   right: 15px;
@@ -243,20 +243,20 @@
   margin-left: 0;
 }
 .header__nav-link--active {
-  color: #6164ff;
+  color: #c51458;
   cursor: default;
   font-weight: 500;
 }
 .header__nav-link--active:hover {
-  color: #6164ff !important;
+  color: #c51458 !important;
 }
 .header__nav-link:hover,
 .header__nav-link[aria-expanded="true"] {
-  color: #fff;
+  color: #c51458;
 }
 .header__nav-link:hover svg,
 .header__nav-link[aria-expanded="true"] svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .header__nav-menu {
   display: block;
@@ -312,11 +312,11 @@
 }
 .header__nav-menu a:hover,
 .header__nav-menu a[aria-expanded="true"] {
-  color: #fff;
+  color: #c51458;
 }
 .header__nav-menu a:hover svg,
 .header__nav-menu a[aria-expanded="true"] svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .header__nav-menu.show {
   z-index: 1000;
@@ -341,7 +341,7 @@
   display: none;
   width: 18px;
   height: 18px;
-  border: 2px solid #fff;
+  border: 2px solid #c51458;
   bottom: 5px;
   left: 30px;
   border-radius: 50%;
@@ -386,11 +386,11 @@
   margin-top: 2px;
 }
 .header__profile-btn:hover {
-  border-color: #6164ff;
+  border-color: #c51458;
 }
 .header__profile-btn:hover svg,
 .header__profile-btn[aria-expanded="true"] svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .header__profile-menu {
   display: block;
@@ -435,17 +435,17 @@
   font-family: "Inter", sans-serif;
 }
 .header__profile-menu a svg {
-  fill: #fff;
+  fill: #c51458;
   width: 20px;
   height: auto;
   transition: fill 0.5s ease;
   margin-right: 10px;
 }
 .header__profile-menu a:hover {
-  color: #fff;
+  color: #c51458;
 }
 .header__profile-menu a:hover svg {
-  fill: #6164ff;
+  fill: #c51458;
 }
 .header__profile-menu.show {
   z-index: 1000;
@@ -474,7 +474,7 @@
   }
   .header__action--signin:hover a svg,
   .header__action--signin:hover button svg {
-    fill: #6164ff;
+    fill: #c51458;
   }
   .header__action-btn span {
     display: block;
@@ -502,7 +502,7 @@
     background-color: #222227;
   }
   .header__action-btn--signin:hover span {
-    color: #6164ff;
+    color: #c51458;
   }
   .header__content {
     padding: 0 30px;
@@ -561,7 +561,7 @@
     display: none;
   }
   .header__action-btn svg {
-    fill: #6164ff;
+    fill: #c51458;
   }
   .header__action-btn--signin {
     height: 40px;
