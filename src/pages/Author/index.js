@@ -114,7 +114,8 @@ const activityData=[
   {cover:"assets/img/cover/cover1.jpg", title:"Walking on Air", method:"start",nickName:"@johndoe", timeAgo:23}
 ];
 function AuthorPage() {
-  const author = {avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur', code:"XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh", text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829};
+  const author = {avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur', code:"XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh", 
+  text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829};
   return (
       <main className="main">
         <div className="main__author" data-bg="assets/img/bg/bg.png"></div>

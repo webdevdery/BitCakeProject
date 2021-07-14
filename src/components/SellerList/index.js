@@ -9,7 +9,7 @@ function SellerList(props) {
       <span className="sellers-list__number">{rank+1}</span>
       <div className={`sellers-list__author ${verified? 'sellers-list__author--verified':''}`}>
         <img src={image} alt="" />
-        <Link to="/author">{nickName}</Link>
+        <a href="/creator">{nickName}</a>
         <span>{currentPrice} BNB</span>
       </div>
     </li>

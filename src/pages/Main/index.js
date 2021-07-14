@@ -7,159 +7,276 @@ import "./style.css";
 
 const cards = [
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover1.jpg",
     time: 900,
     title: "Walking on Air",
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
     currentPrice: 4.89,
-    verified:true,
+    verified: true,
     likes: 189,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover2.jpg",
     time: 3600,
     title: "Les Immortels, the Treachery of Artificial Shadows",
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
     currentPrice: 2.61,
-    verified:false,
+    verified: false,
     likes: 702,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover3.jpg",
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'video',
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
     time: 900,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover3.jpg",
     time: 3600,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'video',
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:false,
+    verified: false,
     likes: 37,
   },
 ];
-const sellerLists=[
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:false},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-  {image:'assets/img/avatars/avatar.jpg',nickName:'@miriuuu',currentPrice:214.22,verified:true},
-]
+const sellerLists = [
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: false,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+  {
+    image: "assets/img/avatars/avatar.jpg",
+    nickName: "@miriuuu",
+    currentPrice: 214.22,
+    verified: true,
+  },
+];
 const exploreCards = [
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover1.jpg",
     title: "Walking on Air",
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
     currentPrice: 4.89,
-    verified:true,
+    verified: true,
     likes: 189,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover2.jpg",
     title: "Les Immortels, the Treachery of Artificial Shadows",
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
     currentPrice: 2.61,
-    verified:false,
+    verified: false,
     likes: 702,
   },
   {
-    type:'video',
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'media',
+    type: "media",
     image: "assets/img/cover/cover3.jpg",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover3.jpg",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'media',
+    type: "media",
     image: "assets/img/cover/cover3.jpg",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:false,
+    verified: false,
     likes: 37,
   },
 ];
 const collections = [
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: true,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: true,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: false,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: true,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: false,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: true,
+  },
+  {
+    bgimage: "assets/img/bg/bg-small.png",
+    avatar: "assets/img/avatars/avatar3.jpg",
+    name: "Hashmasks",
+    number: "ERC-721",
+    verified: true,
+  },
 ];
 function Main() {
   return (
@@ -170,11 +287,13 @@ function Main() {
           <div className="row">
             <div className="col-12">
               <div className="home__content">
-                <h1 className="home__title">The largest BNB marketplace</h1>
+                <h1 className="home__title">
+                  Discover digital assets minted and secured <br />
+                  on the Binance Smart Chain
+                </h1>
                 <p className="home__text">
-                  Digital marketplace for crypto collectibles and non-fungible
-                  tokens. <br />
-                  Buy, sell, and discover exclusive digital assets.
+                  Buy, sell, and trade digital collectibles on the sweetest NFT
+                  marketplace in the universe. <br />
                 </p>
 
                 <div className="home__btns">
@@ -212,10 +331,10 @@ function Main() {
                 className="main__carousel main__carousel--live owl-carousel"
                 id="live"
               >
-                {cards.map((card,index)=>(
-                  <Card data={card} key={`card-${index}`}/>
-                ))}                
-              </div>          
+                {cards.map((card, index) => (
+                  <Card data={card} key={`card-${index}`} />
+                ))}
+              </div>
               <button
                 className="main__nav main__nav--prev"
                 data-nav="#live"
@@ -247,12 +366,12 @@ function Main() {
             <div className="main__title">
               <h2>Top sellers</h2>
 
-              <Link to="/authors" className="main__link">
+              <a href="/creators" className="main__link">
                 View all{" "}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z" />
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
           {/* <!-- end title --> */}
@@ -260,9 +379,9 @@ function Main() {
           {/* <!-- sellers list --> */}
           <div className="col-12">
             <ul className="sellers-list">
-              {sellerLists.map((data,index)=>(
-                <SellerList key={`seller-${index}`} data={data} index={index}/>
-                ))}
+              {sellerLists.map((data, index) => (
+                <SellerList key={`seller-${index}`} data={data} index={index} />
+              ))}
             </ul>
           </div>
           {/* <!-- end sellers list --> */}
@@ -288,8 +407,8 @@ function Main() {
                 className="main__carousel main__carousel--explore owl-carousel"
                 id="explore"
               >
-                {exploreCards.map((card,index)=>(
-                  <Card data={card} key={`explore-${index}`}/>
+                {exploreCards.map((card, index) => (
+                  <Card data={card} key={`explore-${index}`} />
                 ))}
               </div>
 
@@ -334,10 +453,10 @@ function Main() {
                 className="main__carousel main__carousel--collections owl-carousel"
                 id="collections"
               >
-                 {collections.map((collection,index)=>(
-                  <Collection data={collection} key={`collection-${index}`}/>
-                ))}    
-                </div>
+                {collections.map((collection, index) => (
+                  <Collection data={collection} key={`collection-${index}`} />
+                ))}
+              </div>
 
               <button
                 className="main__nav main__nav--prev"
@@ -368,7 +487,7 @@ function Main() {
           {/* <!-- title --> */}
           <div className="col-12">
             <div className="main__title main__title--border-top">
-              <h2>Get started creating & selling your BNBs</h2>
+              <h2>Get started creating & selling your Digital Collectibles.</h2>
             </div>
           </div>
           {/* <!-- end title --> */}
@@ -382,9 +501,10 @@ function Main() {
               </span>
               <h3 className="feature__title">Set up your wallet</h3>
               <p className="feature__text">
-                Once you’ve set up your wallet of choice, connect it to BNB
-                marketplace by clicking this link. <br />
-                <Link to="/signin">Connect my wallet</Link>.
+                Once you’ve set up your crypto wallet of choice, connect it to
+                the BitCake marketplace
+                <br />
+                <a href="/signin">Connect my wallet</a>.
               </p>
             </div>
           </div>
@@ -412,10 +532,10 @@ function Main() {
                   <path d="M22.71,6.29a1,1,0,0,0-1.42,0L20,7.59V2a1,1,0,0,0-2,0V7.59l-1.29-1.3a1,1,0,0,0-1.42,1.42l3,3a1,1,0,0,0,.33.21.94.94,0,0,0,.76,0,1,1,0,0,0,.33-.21l3-3A1,1,0,0,0,22.71,6.29ZM19,13a1,1,0,0,0-1,1v.38L16.52,12.9a2.79,2.79,0,0,0-3.93,0l-.7.7L9.41,11.12a2.85,2.85,0,0,0-3.93,0L4,12.6V7A1,1,0,0,1,5,6h8a1,1,0,0,0,0-2H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V14A1,1,0,0,0,19,13ZM5,20a1,1,0,0,1-1-1V15.43l2.9-2.9a.79.79,0,0,1,1.09,0l3.17,3.17,0,0L15.46,20Zm13-1a.89.89,0,0,1-.18.53L13.31,15l.7-.7a.77.77,0,0,1,1.1,0L18,17.21Z" />
                 </svg>
               </span>
-              <h3 className="feature__title">Add your BNBs</h3>
+              <h3 className="feature__title">Add Your Collectible</h3>
               <p className="feature__text">
                 Upload your work, add a title and description, and customize
-                your BNBs with properties, stats, and unlockable content.
+                your NFTs with properties, stats, and unlockable content.
               </p>
             </div>
           </div>
@@ -431,7 +551,7 @@ function Main() {
               <p className="feature__text">
                 Choose between auctions, fixed-price listings, and
                 declining-price listings. You choose how you want to sell your
-                BNBs, and we help you sell them!
+                NFTs, and we help you sell them!
               </p>
             </div>
           </div>

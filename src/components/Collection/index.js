@@ -12,7 +12,7 @@ function Routes(props) {
             ></Link>
             <div className="collection__meta">
             <Link
-                to="/author"
+                to="/creator"
                 className={`collection__avatar ${verified?'collection__avatar--verified':''}`}
             >
                 <img src={avatar} alt="" />

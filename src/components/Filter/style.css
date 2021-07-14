@@ -63,7 +63,7 @@
 .filter__title button {
   font-size: 12px;
   font-weight: 400;
-  color: #6164ff;
+  color: #c51458;
 }
 .filter__title button:hover {
   color: #eb5757;
@@ -111,7 +111,7 @@
   font-family: "Inter", sans-serif;
 }
 .filter__select:focus {
-  border-color: #6164ff;
+  border-color: #c51458;
 }
 .filter__input {
   background-color: #222227;
@@ -126,7 +126,7 @@
   font-family: "Inter", sans-serif;
 }
 .filter__input:focus {
-  border-color: #6164ff;
+  border-color: #c51458;
 }
 .filter__checkboxes {
   position: relative;
@@ -161,11 +161,11 @@
 }
 .filter__checkboxes input:not(:checked) + label a,
 .filter__checkboxes input:checked + label a {
-  color: #6164ff;
+  color: #c51458;
 }
 .filter__checkboxes input:not(:checked) + label a:hover,
 .filter__checkboxes input:checked + label a:hover {
-  color: #6164ff;
+  color:  #c51458;
   text-decoration: underline;
 }
 .filter__checkboxes input:not(:checked) + label {
@@ -196,7 +196,7 @@
   width: 24px;
   height: 24px;
   transition: 0.5s ease;
-  background-color: #6164ff;
+  background-color: #c51458;
   border-radius: 10px;
   border: 6px solid #222227;
 }
@@ -220,7 +220,7 @@
   width: 100%;
   height: 50px;
   border-radius: 12px;
-  background-color: #6164ff;
+  background-color: #c51458;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -234,7 +234,7 @@
   font-weight: 500;
 }
 .filter__btn:hover {
-  color: #6164ff;
+  color: #c51458;
   background-color: #222227;
 }
 @media (min-width: 1200px) {

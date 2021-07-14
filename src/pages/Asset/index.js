@@ -152,7 +152,7 @@ function Item() {
           {/* <!-- title --> */}
           <div className="col-12">
             <div className="main__title main__title--border-top">
-              <h2><a href="/explore">Other author assets</a></h2>
+              <h2><a href="/explore">Other creator assets</a></h2>
             </div>
           </div>
           {/* <!-- end title --> */}

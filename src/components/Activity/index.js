@@ -10,7 +10,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text">listed by <a href="/author">{nickName}</a> <br/>for <b>0.049 BNB</b></p>
+        <p className="activity__text">listed by <a href="/creator">{nickName}</a> <br/>for <b>0.049 BNB</b></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>
     </div>}
@@ -21,7 +21,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text">transferred from <a href="/author">{fromName}</a> <br/>to <a href="/author">{toName}</a></p>
+        <p className="activity__text">transferred from <a href="/creator">{fromName}</a> <br/>to <a href="/creator">{toName}</a></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>
     </div>} 
@@ -32,7 +32,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text"><a href="/author">{nickName}</a> offered <b>{bnbPrice} WBNB</b></p>
+        <p className="activity__text"><a href="/creator">{nickName}</a> offered <b>{bnbPrice} WBNB</b></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>                 
     </div>}
@@ -43,7 +43,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text">started following <a href="/author">{nickName}</a></p>
+        <p className="activity__text">started following <a href="/creator">{nickName}</a></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>
     </div>} 
@@ -54,7 +54,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text">purchased by <a href="/author">{toName}</a> <b>0x23d2dc92b...82c6</b> for <b>{bnbPrice} BNB</b> from <a href="/author">{fromName}</a></p>
+        <p className="activity__text">purchased by <a href="/creator">{toName}</a> <b>0x23d2dc92b...82c6</b> for <b>{bnbPrice} BNB</b> from <a href="/creator">{fromName}</a></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>
     </div>}
@@ -65,7 +65,7 @@ function Activity(props) {
       </a>
       <div className="activity__content">
         <h3 className="activity__title"><a href="/item">{title}</a></h3>
-        <p className="activity__text">liked by <a href="/author">{nickName}</a></p>
+        <p className="activity__text">liked by <a href="/creator">{nickName}</a></p>
         <span className="activity__time">{timeAgo} minutes ago</span>
       </div>
     </div>}

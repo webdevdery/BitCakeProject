@@ -12,6 +12,9 @@
   border: 1px solid #222227;
   background-color: #16151a;
 }
+.card a:hover {
+  color:  #c51458;
+}
 .card__cover {
   width: 100%;
   border-radius: 16px;
@@ -58,7 +61,7 @@
   transition: background-color 0.5s ease;
 }
 .card__cover--carousel .owl-dot.active span {
-  background-color: #6164ff;
+  background-color: #c51458;
 }
 .card__cover--video svg {
   position: absolute;
@@ -88,10 +91,10 @@
   color: #fff;
 }
 .card__title a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__title:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__author {
   display: flex;
@@ -131,7 +134,7 @@
   font-size: 16px;
 }
 .card__author a:hover {
-  color: #6164ff;
+  color: #c51458;
 }
 .card__info {
   display: flex;
@@ -207,7 +210,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  border: 2px solid #6164ff;
+  border: 2px solid #c51458;
   color: #fff;
   font-size: 12px;
   background-color: #222227;
@@ -223,7 +226,7 @@
   width: 16px;
   height: auto;
   margin-right: 6px;
-  fill: #6164ff;
+  fill: #c51458;
   margin-left: -3px;
 }
 .card__time--clock {

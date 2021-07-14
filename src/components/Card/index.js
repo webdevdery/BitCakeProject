@@ -30,7 +30,7 @@ function Card(props) {
           <span className="card__clock card__clock--1"></span>
         </span>}
                     
-        {time == undefined&&(time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
+        {time == undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </a>:
       <div className="card__cover card__cover--carousel owl-carousel">
         {image.map((path,index)=>(
@@ -42,7 +42,7 @@ function Card(props) {
       </h3>
     <div className={`card__author ${verified?'card__author--verified':''}`}>
         <img src={avatar} alt="" />
-        <a href="/author">{nickName}</a>
+        <a href="/creator">{nickName}</a>
       </div>
       <div className="card__info">
         <div className="card__price">

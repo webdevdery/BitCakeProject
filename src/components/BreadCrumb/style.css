@@ -24,7 +24,10 @@
   background: url("../../assets/img/breadcrumb.svg") no-repeat center/16px auto;
 }
 .breadcrumb__item:hover {
-  color: #bdbdbd;
+  color:  #c51458!important;
+}
+.breadcrumb__item a:hover {
+  color:  #c51458!important;
 }
 .breadcrumb__item:last-child {
   margin-right: 0;

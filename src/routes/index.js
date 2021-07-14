@@ -33,8 +33,8 @@ function Routes() {
           <Route path="/blog" component={Blog}/>
           <Route path="/faq" component={Faq}/>
           <Route path="/contacts" component={Contact}/>
-          <Route path="/authors" component={Authors}/>
-          <Route path="/author" component={Author}/>
+          <Route path="/creators" component={Authors}/>
+          <Route path="/creator" component={Author}/>
           <Route path="/collection" component={Collection}/>
           <Route path="/create" component={Create}/>
           <Route path="/signin" component={SignIn}/>

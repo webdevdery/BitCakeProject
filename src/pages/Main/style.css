@@ -32,7 +32,7 @@
   color: #fff;
 }
 .main__title h1 a:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .main__title h2 {
   display: flex;
@@ -50,7 +50,7 @@
 .main__title h2 svg {
   width: 26px;
   height: auto;
-  fill: #6164ff;
+  fill:  #c51458;
   margin-right: 10px;
 }
 .main__title h2 b {
@@ -60,7 +60,7 @@
   color: #fff;
 }
 .main__title h2 a:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .main__title h3 {
   display: flex;
@@ -88,7 +88,7 @@
   font-weight: 600;
 }
 .main__title p a {
-  color: #6164ff;
+  color:  #c51458;
   text-decoration: underline;
 }
 .main__title p a:hover {
@@ -183,7 +183,7 @@
   color: #fff;
 }
 .main__link:hover svg {
-  fill: #6164ff;
+  fill:  #c51458;
 }
 .main__carousel-wrap {
   position: relative;
@@ -213,7 +213,7 @@
 }
 .main__carousel .owl-dot.active span {
   width: 20px;
-  background-color: #6164ff;
+  background-color:  #c51458;
 }
 .main__nav {
   display: none;
@@ -281,7 +281,7 @@
   transition: 0.5s ease;
 }
 .main__filter-search button:hover svg {
-  fill: #6164ff;
+  fill:  #c51458;
 }
 .main__load {
   width: 160px;
@@ -305,7 +305,7 @@
     transform, margin-top, height;
 }
 .main__load:hover {
-  color: #6164ff;
+  color:  #c51458;
   background-color: #222227;
 }
 .main__load[aria-expanded="true"] {
@@ -347,7 +347,7 @@
 }
 .main__tabs a.active {
   color: #fff;
-  background-color: #6164ff;
+  background-color:  #c51458;
 }
 .main__video-bg {
   margin-top: 60px;
@@ -357,7 +357,7 @@
   width: 160px;
   height: 50px;
   border-radius: 12px;
-  background-color: #6164ff;
+  background-color:  #c51458;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -372,7 +372,7 @@
   margin-top: 30px;
 }
 .main__video:hover {
-  color: #6164ff;
+  color:  #c51458;
   background-color: #222227;
 }
 .main__author {

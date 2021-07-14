@@ -61,7 +61,7 @@ function Routes() {
             <div className="footer__nav">
               <a href="/explore">Explore</a>
               <a href="/activity">Activity</a>
-              <a href="/authors">Authors</a>
+              <a href="/creators">Creators</a>
               <a href="assets/terms/BitCakeTermsOfService.pdf">
                 Terms of Service
               </a>
@@ -153,14 +153,7 @@ function Routes() {
               </div>
 
               <small className="footer__copyright">
-                © Unitok, 2021. Created by{" "}
-                <a
-                  href="https://themeforest.net/user/dmitryvolkov/portfolio"
-                  target="_blank"
-                >
-                  Dmitry Volkov
-                </a>
-                .
+                © 2021 BitCake Corp. All Rights Reserved.{" "}
               </small>
             </div>
           </div>

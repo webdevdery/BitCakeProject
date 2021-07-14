@@ -17,7 +17,7 @@ function AuthorFilter() {
         </select>
 
         <select class="main__select" name="authors">
-          <option value="0">All Authors</option>
+          <option value="0">All Creators</option>
           <option value="1">Verified only</option>
         </select>
       </div>

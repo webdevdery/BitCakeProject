@@ -97,19 +97,19 @@
   color: #fff;
 }
 .author__name a:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .author__nickname {
   display: block;
   width: 100%;
   font-size: 16px;
-  color: #6164ff;
+  color:  #c51458;
   font-family: "Inter", sans-serif;
   font-weight: 500;
   margin-bottom: 10px;
 }
 .author__nickname a {
-  color: #6164ff;
+  color:  #c51458;
 }
 .author__nickname a:hover {
   color: #fff;
@@ -172,15 +172,15 @@
 }
 .author__follow:hover {
   color: #fff;
-  background-color: #6164ff;
+  background-color:  #c51458;
 }
 .author__follow--true {
-  background-color: #6164ff;
+  background-color:  #c51458;
   color: #fff;
 }
 .author__follow--true:hover {
   background-color: #222227;
-  color: #6164ff;
+  color:  #c51458;
 }
 .author__social {
   display: flex;
@@ -211,7 +211,7 @@
   margin-right: 0;
 }
 .author__social a:hover svg {
-  fill: #6164ff;
+  fill:  #c51458;
 }
 .author__code {
   display: flex;
@@ -287,7 +287,7 @@
   transition-property: opacity, transform;
 }
 .author__code button svg {
-  fill: #6164ff;
+  fill:  #c51458;
   width: 18px;
   height: auto;
   opacity: 0.75;
@@ -318,11 +318,11 @@
 .author__link svg {
   width: 20px;
   height: auto;
-  fill: #6164ff;
+  fill:  #c51458;
   margin-right: 5px;
 }
 .author__link:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 @media (min-width: 576px) {
   .author__text {

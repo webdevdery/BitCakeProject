@@ -8,7 +8,7 @@ function Item(props) {
         <span>Creator</span>
         <div className="asset__author asset__author--verified">
           <img src={creatorAvatar} alt=""/>
-          <a href="/author">{authorName}</a>
+          <a href="/creator">{authorName}</a>
         </div>
       </li>
       <li>

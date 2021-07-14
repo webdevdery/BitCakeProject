@@ -101,7 +101,7 @@
   font-weight: 500;
 }
 .asset__action p a:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .asset__action p b {
   font-weight: 500;
@@ -200,7 +200,7 @@
   margin-right: 0;
 }
 .asset__btn:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .asset__btn--clr {
   background-color: #c51458;
@@ -208,7 +208,7 @@
 }
 .asset__btn--clr:hover {
   background-color: #222227;
-  color: #6164ff;
+  color:  #c51458;
 }
 .asset__btn--full {
   width: 100%;
@@ -309,7 +309,7 @@
   width: 20px;
   height: auto;
   margin-right: 5px;
-  fill: #6164ff;
+  fill:  #c51458;
 }
 .asset__clock {
   font-size: 18px;

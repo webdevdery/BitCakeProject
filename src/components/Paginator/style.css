@@ -26,7 +26,7 @@
   margin-right: 0;
 }
 .paginator__list li.active a {
-  color: #6164ff;
+  color:  #c51458;
   cursor: default;
   font-weight: 500;
 }
@@ -51,10 +51,10 @@
   transition: fill 0.5s ease;
 }
 .paginator__list a:hover {
-  color: #6164ff;
+  color:  #c51458;
 }
 .paginator__list a:hover svg {
-  fill: #6164ff;
+  fill:  #c51458;
 }
 @media (min-width: 768px) {
   .paginator {

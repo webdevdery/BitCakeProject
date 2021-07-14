@@ -5,7 +5,7 @@ import Author from "../../components/Author";
 import "./style.css";
 const breadCrumb = [
 	{title:"Home",page:'/'},
-	{title:"Authors",page:"/authors"},
+	{title:"Creators",page:"/creators"},
 ];
 const authors = [
   {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
@@ -29,7 +29,7 @@ function Authors() {
 				{/* title */}
 				<div class="col-12">
 					<div class="main__title main__title--page">
-						<h1>Authors</h1>
+						<h1>Creators</h1>
 					</div>
 				</div>
 				{/* end title */}
