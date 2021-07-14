@@ -63,7 +63,7 @@ function Routes() {
               <Link to="/explore">Explore</Link>
               <Link to="/activity">Activity</Link>
               <Link to="/authors">Authors</Link>
-              <Link to="/privacy">Privacy Policy</Link>
+              <a href="">Privacy Policy</a>
             </div>
           </div>
 

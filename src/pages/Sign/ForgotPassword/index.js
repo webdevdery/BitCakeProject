@@ -41,7 +41,13 @@ function Forgot(props) {
                         defaultChecked
                       />
                       <label htmlFor="remember">
-                        I agree to the <a href="/privacy">Privacy Policy</a>
+                        I agree to the{" "}
+                        <a
+                          href="assets/terms/BitCakeTermsOfService.pdf"
+                          target="_blank"
+                        >
+                          Terms of Service
+                        </a>
                       </label>
                     </div>
 

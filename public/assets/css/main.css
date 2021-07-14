@@ -125,7 +125,7 @@ Primary use:	Unitok HTML Template
   min-width: 140px;
   height: 50px;
   border-radius: 12px;
-  background-color: #222227;
+  background-color: #c51458;
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -154,7 +154,7 @@ Primary use:	Unitok HTML Template
   color: #6164ff;
 }
 .home__btn--clr {
-  background-color: #6164ff;
+  background-color: #c51458;
   color: #fff;
 }
 .home__btn--clr:hover {

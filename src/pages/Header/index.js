@@ -68,7 +68,7 @@ function Header() {
                 aria-expanded="false"
               >
                 Contact Us
-              </a>                  
+              </a>
             </li>
             <li className="header__nav-item">
               <a
@@ -136,7 +136,12 @@ function Header() {
                   <a href="/404">404 Page</a>
                 </li>
                 <li>
-                  <a href="/privacy">Terms of Service</a>
+                  <a
+                    href="assets/terms/BitCakeTermsOfService.pdf"
+                    target="_blank"
+                  >
+                    Terms of Service
+                  </a>
                 </li>
               </ul>
             </li>
