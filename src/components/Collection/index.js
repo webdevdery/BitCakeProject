@@ -5,20 +5,20 @@ function Routes(props) {
    const {bgimage,avatar,name,number,verified}=props.data;
   return (
         <div className="collection">
-            <Link
-            to="/collection"
+            <a
+            href="/collection"
             className="collection__cover"
             data-bg={bgimage}
-            ></Link>
+            ></a>
             <div className="collection__meta">
-            <Link
-                to="/creator"
+            <a
+                href="/creator"
                 className={`collection__avatar ${verified?'collection__avatar--verified':''}`}
             >
                 <img src={avatar} alt="" />
-            </Link>
+            </a>
             <h3 className="collection__name">
-                <Link to="/collection">{name}</Link>
+                <a href="/collection">{name}</a>
             </h3>
             <span className="collection__number">{number}</span>
             </div>

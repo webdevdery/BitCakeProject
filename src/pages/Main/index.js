@@ -297,12 +297,12 @@ function Main() {
                 </p>
 
                 <div className="home__btns">
-                  <Link to="/explore" className="home__btn home__btn--clr">
+                  <a href="/explore" className="home__btn home__btn--clr">
                     Explore
-                  </Link>
-                  <Link to="/signin" className="home__btn grey">
+                  </a>
+                  <a href="/signin" className="home__btn grey">
                     Create
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -318,7 +318,7 @@ function Main() {
           <div className="col-12">
             <div className="main__title">
               <h2>
-                <Link to="/explore">Live auctions</Link>
+                <a href="/explore">Live auctions</a>
               </h2>
             </div>
           </div>
@@ -394,7 +394,7 @@ function Main() {
           <div className="col-12">
             <div className="main__title">
               <h2>
-                <Link to="/explore">Explore</Link>
+                <a href="/explore">Explore</a>
               </h2>
             </div>
           </div>

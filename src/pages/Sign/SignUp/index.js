@@ -71,7 +71,7 @@ function SignUp(props) {
                   </button>
 
                   <span className="sign__text">
-                    Already have an account? <a href="signin.html">Sign in!</a>
+                    Already have an account? <a href="/signin">Sign in!</a>
                   </span>
                 </form>
               </div>

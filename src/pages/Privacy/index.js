@@ -6,7 +6,7 @@ function Privacy(){
           <div className="row row--grid">
             <div className="col-12">
               <ul className="breadcrumb">
-                <li className="breadcrumb__item"><a href="index.html">Home</a></li>
+                <li className="breadcrumb__item"><a href="/">Home</a></li>
                 <li className="breadcrumb__item breadcrumb__item--active">Privacy policy</li>
               </ul>
             </div>
