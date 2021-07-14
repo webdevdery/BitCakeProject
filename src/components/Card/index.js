@@ -15,7 +15,7 @@ function Card(props) {
     } = props.data;
   return (
     <div className="card">
-      {typeof(image)==='string'? <Link to="/item" className={`card__cover ${type==="video"?'card__cover--video':''}`}>
+      {typeof(image)==='string'? <a href="/item" className={`card__cover ${type==="video"?'card__cover--video':''}`}>
         <img src={image} alt="" />
         {type==='video' && 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.53,7.15a1,1,0,0,0-1,0L17,8.89A3,3,0,0,0,14,6H5A3,3,0,0,0,2,9v6a3,3,0,0,0,3,3h9a3,3,0,0,0,3-2.89l3.56,1.78A1,1,0,0,0,21,17a1,1,0,0,0,.53-.15A1,1,0,0,0,22,16V8A1,1,0,0,0,21.53,7.15ZM15,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V9A1,1,0,0,1,5,8h9a1,1,0,0,1,1,1Zm5-.62-3-1.5V11.12l3-1.5Z"/></svg>}
@@ -31,18 +31,18 @@ function Card(props) {
         </span>}
                     
         {time == undefined&&(time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
-      </Link>:
+      </a>:
       <div className="card__cover card__cover--carousel owl-carousel">
         {image.map((path,index)=>(
           <img src={path} alt="" key={`image-${index}`}/>
         ))}
       </div>}
       <h3 className="card__title">
-        <Link to="/item">{title}</Link>
+        <a href="/item">{title}</a>
       </h3>
     <div className={`card__author ${verified?'card__author--verified':''}`}>
         <img src={avatar} alt="" />
-        <Link to="/author">{nickName}</Link>
+        <a href="/author">{nickName}</a>
       </div>
       <div className="card__info">
         <div className="card__price">
