@@ -44,7 +44,7 @@ function Header() {
             <li className="header__nav-item">
               <a
                 className="header__nav-link"
-                href="/"
+                href="/explore"
                 role="button"
                 id="dropdownMenu"
                 aria-haspopup="true"
