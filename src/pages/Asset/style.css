@@ -143,7 +143,7 @@
   right: 0;
   height: 2px;
   display: block;
-  background-color: #6164ff;
+  background-color: #c51458;
   transition: 0.5s ease;
   transform: translateY(2px);
   opacity: 0;
@@ -203,7 +203,7 @@
   color: #6164ff;
 }
 .asset__btn--clr {
-  background-color: #6164ff;
+  background-color: #c51458;
   color: #fff;
 }
 .asset__btn--clr:hover {
