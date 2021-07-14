@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 function Header() {
   return (
@@ -36,30 +35,11 @@ function Header() {
                 href="/"
                 role="button"
                 id="dropdownMenuHome"
-                data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Home{" "}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
-                </svg>
+                Home
               </a>
-
-              <ul
-                className="dropdown-menu header__nav-menu"
-                aria-labelledby="dropdownMenuHome"
-              >
-                <li>
-                  <a href="/">Home style 1</a>
-                </li>
-                <li>
-                  <a href="/">Home style 2</a>
-                </li>
-                <li>
-                  <a href="/">Home style 3</a>
-                </li>
-              </ul>
             </li>
             <li className="header__nav-item">
               <a
@@ -67,36 +47,11 @@ function Header() {
                 href="/"
                 role="button"
                 id="dropdownMenu"
-                data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Explore{" "}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
-                </svg>
+                Explore
               </a>
-
-              <ul
-                className="dropdown-menu header__nav-menu"
-                aria-labelledby="dropdownMenu"
-              >
-                <li>
-                  <a href="/explore">Explore style 1</a>
-                </li>
-                <li>
-                  <a href="/explore">Explore style 2</a>
-                </li>
-                <li>
-                  <a href="/explore">Explore style 3</a>
-                </li>
-                <li>
-                  <a href="/item">Item style 1</a>
-                </li>
-                <li>
-                  <a href="/item">Item style 2</a>
-                </li>
-              </ul>
             </li>
             <li className="header__nav-item">
               <a href="/activity" className="header__nav-link">
@@ -106,64 +61,14 @@ function Header() {
             <li className="header__nav-item">
               <a
                 className="header__nav-link"
-                href="/"
+                href="/contacts"
                 role="button"
                 id="dropdownMenu0"
-                data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Community{" "}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
-                </svg>
-              </a>
-
-              <ul
-                className="dropdown-menu header__nav-menu"
-                aria-labelledby="dropdownMenu0"
-              >
-                <li>
-                  <a href="/token">Unitok</a>
-                </li>
-                <li className="dropdown-submenu">
-                  <a
-                    className="dropdown-item"
-                    href="/"
-                    role="button"
-                    id="dropdownMenuSub"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Blog{" "}
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z" />
-                    </svg>
-                  </a>
-
-                  <ul
-                    className="dropdown-menu header__nav-menu"
-                    aria-labelledby="dropdownMenuSub"
-                  >
-                    <li>
-                      <a href="/blog">Blog style 1</a>
-                    </li>
-                    <li>
-                      <a href="/blog">Blog style 2</a>
-                    </li>
-                    <li>
-                      <a href="/">Article</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="/faq">Help center</a>
-                </li>
-                <li>
-                  <a href="/contacts">Contacts</a>
-                </li>
-              </ul>
+                Contact Us
+              </a>                  
             </li>
             <li className="header__nav-item">
               <a
@@ -231,7 +136,7 @@ function Header() {
                   <a href="/404">404 Page</a>
                 </li>
                 <li>
-                  <a href="/privacy">Privacy policy</a>
+                  <a href="/privacy">Terms of Service</a>
                 </li>
               </ul>
             </li>
