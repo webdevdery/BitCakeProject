@@ -47,7 +47,7 @@ function Card(props) {
       <div className="card__info">
         <div className="card__price">
           <span>Current price</span>
-          <span>{currentPrice} ETH</span>
+          <span>{currentPrice} BNB</span>
         </div>
 
         <button className="card__likes" type="button">

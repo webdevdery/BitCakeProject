@@ -59,19 +59,20 @@ Primary use:	Unitok HTML Template
 ==============================*/
 .home {
   position: relative;
-  border-bottom: 1px solid #222227;
+  background: url("../img/home/bg.png") no-repeat top center/cover;
+  /* border-bottom: 1px solid #222227; */
 }
-.home::after {
+/* .home::after {
   content: "";
-  background: url("../img/home/bg.jpg") no-repeat top center/cover;
-  opacity: 0.3;
+  background: url("../img/home/bg.png") no-repeat top center/cover;
+  opacity: 1;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: absolute;
   z-index: -1;   
-}
+} */
   
 .home--hero {
   background: transparent;

@@ -364,7 +364,7 @@ function Main() {
           {/* <!-- title --> */}
           <div className="col-12">
             <div className="main__title">
-              <h2>Top sellers</h2>
+              <h2>Top creators</h2>
 
               <a href="/creators" className="main__link">
                 View all{" "}

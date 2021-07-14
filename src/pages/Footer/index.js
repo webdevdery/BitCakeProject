@@ -8,7 +8,7 @@ function Routes() {
         <div className="row">
           <div className="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4 order-4 order-md-1 order-lg-4 order-xl-1">
             <div className="footer__logo">
-              <img src="assets/img/bitcake_logo.png" alt="" />
+              <img src="assets/img/logo.svg" alt="" />
             </div>
             <p className="footer__tagline">
               BitCake is a next generation marketplace where artists and
@@ -57,13 +57,16 @@ function Routes() {
           </div>
 
           <div className="col-6 col-md-4 col-lg-3 col-xl-2 order-1 order-md-2 order-lg-1 order-xl-2 offset-md-2 offset-lg-0">
-            <h6 className="footer__title">NTF Marketplace</h6>
+            <h6 className="footer__title">Marketplace</h6>
             <div className="footer__nav">
               <a href="/explore">Explore</a>
               <a href="/activity">Activity</a>
               <a href="/creators">Creators</a>
-              <a href="assets/terms/BitCakeTermsOfService.pdf">
+              <a href="assets/terms/BitCakeTermsOfService.pdf" target="_blank">
                 Terms of Service
+              </a>
+              <a href="assets/terms/BitCakePrivacyPolicy.pdf" target="_blank">
+                Privacy Policy
               </a>
             </div>
           </div>
@@ -77,27 +80,32 @@ function Routes() {
               <div className="col-6">
                 <div className="footer__nav">
                   <a href="/">Art</a>
-                  <a href="/">Photography</a>
-                  <a href="/">Games</a>
                   <a href="/">Music</a>
+                  <a href="/">Film</a>
+                  <a href="/">Sports</a>
                 </div>
               </div>
 
               <div className="col-6">
                 <div className="footer__nav">
-                  <a href="/">Domains</a>
-                  <a href="/">DeFi</a>
-                  <a href="/">Metaverses</a>
-                  <a href="/">Memes</a>
+                  <a href="/">Education</a>
+                  <a href="/">Photography</a>
+                  <a href="/">Games</a>
+                  <a href="/">Other</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="col-6 col-md-4 col-lg-3 col-xl-2 order-2 order-lg-3 order-md-4 order-xl-4">
-            <h6 className="footer__title">
-              <a href="/contacts">Contact Us</a>
-            </h6>
+            <h6 className="footer__title">Resources</h6>
+            <div className="footer__nav">
+              <a href="assets/terms/BitCakeWhitePaper.pdf" target="_blank">BitCake White Paper</a>
+              <a href="https://cakeshoplabs.com/" target="_blank">Design an NFT</a>
+              <a href=" https://t.me/bitcakeclub" target="_blank">Telegram Community</a>
+              <a href="assets/terms/BitCakeStrategicPartners.pdf" target="_blank">Become a Partner</a>
+              <a href="/contacts" target="_blank">Contact Us</a>
+            </div>
           </div>
         </div>
 

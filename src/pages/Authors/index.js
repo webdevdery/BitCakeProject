@@ -8,14 +8,14 @@ const breadCrumb = [
 	{title:"Creators",page:"/creators"},
 ];
 const authors = [
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
-  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
+  {bgImage:"assets/img/bg/bg-small.png",avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur',text:'NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.', followers:3829},
 ];
 function Authors() {
   return (

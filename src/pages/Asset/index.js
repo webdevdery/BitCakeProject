@@ -114,8 +114,11 @@ function Item() {
           <div className="col-12 col-xl-4">
             <div className="asset__info">
               <div className="asset__desc">
-                <h2>Descriptions</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                <h2>Description</h2>
+                <p>
+                  This is a description of an NFT collectible. it can be sports card, music 
+                  single, full length documentary, a blockbuster movie or a cool modern art piece.
+                </p>
               </div>
 
               <AssetAuthor data={author}/>
@@ -152,7 +155,7 @@ function Item() {
           {/* <!-- title --> */}
           <div className="col-12">
             <div className="main__title main__title--border-top">
-              <h2><a href="/explore">Other creator assets</a></h2>
+              <h2><a href="/explore">You May Also Like</a></h2>
             </div>
           </div>
           {/* <!-- end title --> */}

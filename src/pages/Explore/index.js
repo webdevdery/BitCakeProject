@@ -97,6 +97,17 @@ const cards = [
     likes: 37,
   },	
 ];
+const tabs=[
+  {href:"#tab-1",control:"tab-2", title:"All"},
+  {href:"#tab-2",control:"tab-2", title:"Art"},
+  {href:"#tab-3",control:"tab-3", title:"Music"},
+  {href:"#tab-4",control:"tab-4", title:"Film"},
+  {href:"#tab-5",control:"tab-5", title:"Sports"},
+  {href:"#tab-6",control:"tab-6", title:"Education"},
+  {href:"#tab-7",control:"tab-7", title:"Photography"},
+  {href:"#tab-8",control:"tab-8", title:"Games"},
+  {href:"#tab-9",control:"tab-9", title:"Other"},
+];
 function Explore() {
   return (
 		<main className="main">
@@ -108,7 +119,14 @@ function Explore() {
 								<h1>Explore exclusive digital assets</h1>
 							</div>
 						</div>
-						<Filter/>
+            <div className="col-12">
+              <ul className="nav nav-tabs main__tabs" id="main__tabs" role="tablist">
+                {tabs.map((tab,index)=>(
+                <li className="nav-item" key={`tab-${index}`}>
+                  <a className={`nav-link ${index===0?'active':''}`} data-toggle="tab" href={tab.href} role="tab" aria-controls={tab.control} aria-selected="true">{tab.title}</a>
+                </li>))}
+              </ul>
+            </div>
 					</div>
 
 					<div className="row row--grid">						

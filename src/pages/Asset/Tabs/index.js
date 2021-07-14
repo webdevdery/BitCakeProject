@@ -59,7 +59,7 @@ function Tabs(props) {
               >
                 <img src={data.avatar} alt="" />
                 <p>
-                  Bid placed for <b>{data.bnbPrice} ETH</b> 4 hours ago <br />
+                  Bid placed for <b>{data.bnbPrice} BNB</b> 4 hours ago <br />
                   by <a href="/creator">{data.nickName}</a>
                 </p>
               </div>
@@ -78,7 +78,7 @@ function Tabs(props) {
               >
                 <img src={data.avatar} alt="" />
                 <p>
-                  Bid placed for <b>{data.bnbPrice} ETH</b> 4 hours ago <br />
+                  Bid placed for <b>{data.bnbPrice} BNB</b> 4 hours ago <br />
                   by <a href="author">{data.nickName}</a>
                 </p>
               </div>
