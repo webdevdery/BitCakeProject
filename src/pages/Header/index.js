@@ -129,12 +129,12 @@ function Header() {
                 <li>
                   <a href="/signup">Sign up</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="/forgot">Forgot password</a>
                 </li>
                 <li>
                   <a href="/404">404 Page</a>
-                </li>
+                </li> */}
                 <li>
                   <a
                     href="assets/terms/BitCakeTermsOfService.pdf"
