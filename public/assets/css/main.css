@@ -58,9 +58,21 @@ Primary use:	Unitok HTML Template
 	Home
 ==============================*/
 .home {
-  background: url("../img/home/home.png") no-repeat bottom center/cover;
+  position: relative;
   border-bottom: 1px solid #222227;
 }
+.home::after {
+  content: "";
+  background: url("../img/home/bg.jpg") no-repeat top center/cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+  
 .home--hero {
   background: transparent;
   border-bottom: none;

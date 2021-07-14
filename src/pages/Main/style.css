@@ -483,7 +483,7 @@
     transition: fill 0.5s ease;
   }
   .main__nav:hover svg {
-    fill: #6164ff;
+    fill: #c51458;
   }
   .main__nav--prev {
     right: 25px;
