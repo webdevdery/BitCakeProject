@@ -10,7 +10,6 @@
   align-items: flex-start;
   padding: 20px;
   border: 1px solid #222227;
-  background-color: #16151a;
 }
 .card a:hover {
   color:  #c51458;
@@ -28,9 +27,15 @@
 }
 .card__cover img {
   width: 100%;
+
 }
 .card__cover--carousel {
   display: block;
+}
+.card__cover--video{
+  width: 100%;
+  height: 12em;
+  background-color: black;
 }
 .card__cover--carousel img {
   border-radius: 16px;
@@ -234,6 +239,16 @@
 }
 .card__time--clock svg {
   fill: #f7630c;
+}
+.video {
+  width: 100%;
+  height: 0;
+  padding-bottom:120%; 
+}
+.video-content {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 @media (min-width: 768px) {
   .card {

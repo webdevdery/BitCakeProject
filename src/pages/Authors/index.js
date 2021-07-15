@@ -19,16 +19,16 @@ const authors = [
 ];
 function Authors() {
   return (
-  <main class="main">
-		<div class="container">
-			<div class="row row--grid">
+  <main className="main">
+		<div className="container">
+			<div className="row row--grid">
 				{/* breadcrumb */}
 				<BreadCrumb data={breadCrumb}/>
 				{/* end breadcrumb */}
 
 				{/* title */}
-				<div class="col-12">
-					<div class="main__title main__title--page">
+				<div className="col-12">
+					<div className="main__title main__title--page">
 						<h1>Creators</h1>
 					</div>
 				</div>
@@ -37,25 +37,25 @@ function Authors() {
 			</div>
 
 			{/* authors */}
-			<div class="row row--grid">
+			<div className="row row--grid">
 				{authors.map((author,index)=>(
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" key={`author-${index}`}>
+        <div className="col-12 col-sm-6 col-lg-4 col-xl-3" key={`author-${index}`}>
 					<Author data={author}/>
 				</div>))}
 			</div>
 			{/* end authors */}
 
 			{/* paginator */}
-			<div class="row row--grid">
-				<div class="col-12">
-					<div class="paginator">
-						<span class="paginator__pages">8 from 169</span>
+			<div className="row row--grid">
+				<div className="col-12">
+					<div className="paginator">
+						<span className="paginator__pages">8 from 169</span>
 
-						<ul class="paginator__list">
+						<ul className="paginator__list">
 							<li>
 								<a href="/#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z"/></svg></a>
 							</li>
-							<li class="active"><a href="/#">1</a></li>
+							<li className="active"><a href="/#">1</a></li>
 							<li><a href="/#">2</a></li>
 							<li><a href="/#">3</a></li>
 							<li><a href="/#">4</a></li>

@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import "./style.css";
 function Routes(props) {
    const {bgimage,avatar,name,number,verified}=props.data;
@@ -9,7 +8,7 @@ function Routes(props) {
             href="/collection"
             className="collection__cover"
             data-bg={bgimage}
-            ></a>
+            >&nbsp;</a>
             <div className="collection__meta">
             <a
                 href="/creator"

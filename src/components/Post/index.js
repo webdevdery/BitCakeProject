@@ -9,7 +9,7 @@ function Post(props) {
       </a>
 
       <div className="post__content">
-        <a href="#" className="post__category">
+        <a href="/" className="post__category">
           {category}
         </a>
         <h3 className="post__title">

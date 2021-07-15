@@ -7,7 +7,8 @@ import Card from "../../components/Card";
 import "./style.css";
 const breadcrumb = [
 	{title:"Home",page:'/'},
-	{title:"Explorer",page:"/explorer"},
+	{title:"Creator",page:"/creator"},
+  {title:"Item",page:"/item"}
 ];
 const author = {creatorAvatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', collectionAvatar:"assets/img/avatars/avatar9.jpg", collectionTitle:'The Meta Key'}
 const historyData = [
@@ -27,69 +28,84 @@ const bidsData = [
 const detail =[{avatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', createdYear:2021}];
 const assetCards = [
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover1.jpg",
+    time: 900,
     title: "Walking on Air",
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
     currentPrice: 4.89,
-    verified:true,
+    verified: true,
     likes: 189,
   },
   {
-    type:'image',
+    type: "image",
     image: "assets/img/cover/cover2.jpg",
+    time: 3600,
     title: "Les Immortels, the Treachery of Artificial Shadows",
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
     currentPrice: 2.61,
-    verified:false,
+    verified: false,
     likes: 702,
   },
   {
-    type:'video',
+    type: "audio",
     image: "assets/img/cover/cover3.jpg",
+    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+    time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'media',
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
+    time: 900,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'image',
+    type: "audio",
     image: "assets/img/cover/cover3.jpg",
+    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+    time: 3600,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:true,
+    verified: true,
     likes: 37,
   },
   {
-    type:'media',
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
+    time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
     currentPrice: 3.19,
-    verified:false,
+    verified: false,
     likes: 37,
   },
 ];
-function Item() {
+const itemData1 = {type:'image', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
+const itemData2 = {type:'audio', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
+const itemData3 = {type:'video', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
+function Item(props) {
+  const {type} = props.match.params;
   return (
     <main className="main">
+      {console.log(type)}
       <div className="container">
         <div className="row row--grid">
           {/* <!-- breadcrumb --> */}
@@ -106,7 +122,10 @@ function Item() {
         <div className="row">
           {/* <!-- content --> */}
           <div className="col-12 col-xl-8">
-            <AssetItem image="assets/img/cover/cover-big.jpg"/>
+            {type===":image" ?  <AssetItem data={itemData1}/> : 
+            type===":audio" ? <AssetItem data={itemData2}/> : 
+            <AssetItem data={itemData3}/>}
+            
           </div>
           {/* <!-- end content --> */}
 

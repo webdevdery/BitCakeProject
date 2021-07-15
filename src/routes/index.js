@@ -28,7 +28,7 @@ function Routes() {
           <Route exact path="/" component={Main} />
           <Route path="/explore" component={Explore} />
           <Route path="/activity" component={Activity} />     
-          <Route path="/item" component={Asset}/>
+          <Route path="/item:type" component={Asset}/>
           <Route path="/token" component={Token}/>
           <Route path="/blog" component={Blog}/>
           <Route path="/faq" component={Faq}/>

@@ -1,15 +1,6 @@
 import React from "react";
 import AuthorMeta from "../../components/AuthorMeta";
 const author = {avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur', code:"XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh", text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829};
-const collections = [
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:false},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-  {bgimage:'assets/img/bg/bg-small.png',avatar:'assets/img/avatars/avatar3.jpg',name:'Hashmasks',number:'ERC-721',verified:true},
-];
 function Create() {
   return (
   <main className="main">

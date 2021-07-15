@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Card from "../../components/Card";
 import SellerList from "../../components/SellerList";
 import Collection from "../../components/Collection";
@@ -29,8 +28,9 @@ const cards = [
     likes: 702,
   },
   {
-    type: "image",
+    type: "audio",
     image: "assets/img/cover/cover3.jpg",
+    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -42,6 +42,7 @@ const cards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 900,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -51,8 +52,9 @@ const cards = [
     likes: 37,
   },
   {
-    type: "image",
+    type: "audio",
     image: "assets/img/cover/cover3.jpg",
+    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
     time: 3600,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -64,6 +66,7 @@ const cards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -189,6 +192,7 @@ const exploreCards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -197,8 +201,9 @@ const exploreCards = [
     likes: 37,
   },
   {
-    type: "media",
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -217,8 +222,9 @@ const exploreCards = [
     likes: 37,
   },
   {
-    type: "media",
+    type: "video",
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",

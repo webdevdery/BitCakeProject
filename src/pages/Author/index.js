@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import AuthorMeta from "../../components/AuthorMeta";
 import Card from "../../components/Card";
 import Paginator from "../../components/Paginator";
@@ -254,28 +253,28 @@ function AuthorPage() {
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="username">Login</label>
+                              <label className="sign__label" htmlFor="username">Login</label>
                               <input id="username" type="text" name="username" className="sign__input" placeholder="User123"/>
                             </div>
                           </div>
 
-                          <div className="col-12 col-md-6 col-lg-12 col-xl-6">
+                          <div className="col-12 ol-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="email">Email</label>
+                              <label className="sign__label" htmlFor="email">Email</label>
                               <input id="email" type="text" name="email" className="sign__input" placeholder="email@email.com"/>
                             </div>
                           </div>
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="firstname">First name</label>
+                              <label className="sign__label" htmlFor="firstname">First name</label>
                               <input id="firstname" type="text" name="firstname" className="sign__input" placeholder="John"/>
                             </div>
                           </div>
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="lastname">Last name</label>
+                              <label className="sign__label" htmlFor="lastname">Last name</label>
                               <input id="lastname" type="text" name="lastname" className="sign__input" placeholder="Doe"/>
                             </div>
                           </div>
@@ -298,28 +297,28 @@ function AuthorPage() {
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="oldpass">Old password</label>
+                              <label className="sign__label" htmlFor="oldpass">Old password</label>
                               <input id="oldpass" type="password" name="oldpass" className="sign__input"/>
                             </div>
                           </div>
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="newpass">New password</label>
+                              <label className="sign__label" htmlFor="newpass">New password</label>
                               <input id="newpass" type="password" name="newpass" className="sign__input"/>
                             </div>
                           </div>
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="confirmpass">Confirm new password</label>
+                              <label className="sign__label" htmlFor="confirmpass">Confirm new password</label>
                               <input id="confirmpass" type="password" name="confirmpass" className="sign__input"/>
                             </div>
                           </div>
 
                           <div className="col-12 col-md-6 col-lg-12 col-xl-6">
                             <div className="sign__group">
-                              <label className="sign__label" for="select">Select</label>
+                              <label className="sign__label" htmlFor="select">Select</label>
                               <select name="select" id="select" className="sign__select">
                                 <option value="0">Option</option>
                                 <option value="1">Option 2</option>

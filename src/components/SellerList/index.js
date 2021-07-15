@@ -1,5 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import './style.css';
 function SellerList(props) {
   const rank = props.index;

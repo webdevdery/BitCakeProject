@@ -1,6 +1,5 @@
 import React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
-import Filter from "../../components/ExploreFilter";
 import Card from "../../components/Card";
 import Paginator from "../../components/Paginator";
 const breadCrumb = [
@@ -22,6 +21,7 @@ const cards = [
   {
     type:'video',
     image: ["assets/img/cover/cover3.jpg","assets/img/cover/cover3.jpg","assets/img/cover/cover3.jpg"],
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -55,6 +55,7 @@ const cards = [
   {
     type:'video',
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 900,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -77,6 +78,7 @@ const cards = [
   {
     type:'video',
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -88,6 +90,7 @@ const cards = [
   {
     type:'video',
     image: "assets/img/cover/cover3.jpg",
+    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",

@@ -64,7 +64,7 @@ function Header() {
             <li className="header__nav-item">
               <a
                 className="header__nav-link"
-                href="#"
+                href="#/"
                 role="button"
                 id="dropdownMenu1"
                 data-toggle="dropdown"
@@ -81,16 +81,16 @@ function Header() {
                 aria-labelledby="dropdownMenu1"
               >
                 <li>
-                  <a href="assets/terms/BitCakeWhitePaper.pdf" target="_blank">BitCake<br/>(BCK) White Paper</a>
+                  <a href="assets/terms/BitCakeWhitePaper.pdf" target="_blank"  rel="noreferrer">BitCake<br/>(BCK) White Paper</a>
                 </li>
                 <li>
-                  <a href="https://cakeshoplabs.com/" target="_blank">Design an NFT</a>
+                  <a href="https://cakeshoplabs.com/" target="_blank"  rel="noreferrer">Design an NFT</a>
                 </li>
                 <li>
-                  <a href=" https://t.me/bitcakeclub" target="_blank">Telegram Community</a>
+                  <a href=" https://t.me/bitcakeclub" target="_blank"  rel="noreferrer">Telegram Community</a>
                 </li>
                 <li>
-                  <a href="assets/terms/BitCakeStrategicPartners.pdf" target="_blank">Become a Partner</a>
+                  <a href="assets/terms/BitCakeStrategicPartners.pdf" target="_blank"  rel="noreferrer">Become a Partner</a>
                 </li>
                 <li>
                   <a href="/contacts" target="_blank">Contact Us</a>
@@ -100,7 +100,7 @@ function Header() {
             <li className="header__nav-item">
               <a
                 className="header__nav-link header__nav-link--menu"
-                href="#"
+                href="#/"
                 role="button"
                 id="dropdownMenu2"
                 data-toggle="dropdown"
@@ -149,7 +149,7 @@ function Header() {
               </svg>
             </button>
           </div>
-          {window.location.href == "http://localhost:3000/" ? (
+          {window.location.href === "http://localhost:3000/" ? (
             <div className="header__action header__action--profile">
               <a
                 className="header__profile-btn header__profile-btn--verified"
@@ -217,9 +217,9 @@ function Header() {
               </ul>
             </div>
           ) : (
-            <div class="header__action header__action--signin">
+            <div className="header__action header__action--signin">
               <a
-                class="header__action-btn header__action-btn--signin"
+                className="header__action-btn header__action-btn--signin"
                 href="/signin"
               >
                 <span>Sign in</span>
@@ -228,9 +228,9 @@ function Header() {
                 </svg>
               </a>  
             </div>
-          )}<div class="header__action header__action--signin">
+          )}<div className="header__action header__action--signin">
               <a
-                class="header__action-btn"
+                className="header__action-btn"
                 href="/"
               >           
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
