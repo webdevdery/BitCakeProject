@@ -29,7 +29,7 @@ function Create() {
   const [collectionfile, setcollectionfile] = useState();
   const [isattach, setisattach] = useState(false);
   const [attachfile, setattachfile] = useState();
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState("1");
   const handleSelect = (e) => {
     console.log(e.target.value);
     setCategory(e.target.value);
@@ -77,6 +77,11 @@ function Create() {
                       <option value="2">Video</option>
                       <option value="3">Image</option>
                     </select>
+                    {category === "1" && (
+                      <label className="sign__label">
+                        Add an audio file and a preview image
+                      </label>
+                    )}
                   </div>
                 </div>
 
