@@ -24,9 +24,6 @@
   display: flex;
   align-items: center;
 }
-wave {
-  overflow: hidden!important;
-}
 .relative{
   position: relative;
 }

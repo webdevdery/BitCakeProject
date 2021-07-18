@@ -111,6 +111,32 @@
   cursor: pointer;
   font-family: "Inter", sans-serif;
 }
+.css-yk16xz-control {
+    background-color: hsl(240deg 7% 14%)!important;
+    border:none!important;
+    margin-top: 3px;
+}
+.css-1pahdxg-control {
+    background-color: hsl(240deg 7% 14%)!important;
+    border:none!important;
+    outline: none;
+    box-shadow: none!important;
+    margin-top: 3px;
+}
+
+.css-1pahdxg-control input {
+  color: white!important;
+}
+.css-1pahdxg-control input::placeholder {
+  color: white!important;
+}
+.react-select__single-value{
+  color: white!important;
+}
+.css-2613qy-menu {
+  background-color: #5e5e5f!important;
+}
+
 .sign__select:focus {
   border-color:  #c51458;
 }

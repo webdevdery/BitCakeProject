@@ -1,7 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
+import CreatableSelect from 'react-select/creatable';
 import AuthorMeta from "../../components/AuthorMeta";
+import NFTDropzone from "../../components/Dropzone";
+import Switch from "react-switch";
+import "./style.css";
 const author = {avatar:"assets/img/avatars/avatar.jpg",authorName:'Adam Zapel',nickName:'@aaarthur', code:"XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh", text:'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary', followers:3829};
+const categories = [
+  { id: 1, name: "Audio" },
+  { id: 2, name: "Video" },
+  { id: 3, name: "Digital Art" },
+];
 function Create() {
+	const collectionList = ["Music", "Art", "Video", "Audio"];
+	const [currencyType, setCurrencyType] = useState(true);
+	const [price, setPrice] = useState(0);
+	const [mainCategory, setmainCategory] = useState(categories[0]);
+  const [newCollection, setnewCollection] = useState(false);
+  const [imagefile, setimageFile] = useState();
+  const [videofile, setvideoFile] = useState();
+  const [audiofile, setaudioFile] = useState();
+  const [collectionfile, setcollectionfile] = useState();
+  const [isattach, setisattach] = useState(true);
+  const [attachfile, setattachfile] = useState();
+
+	const bnbRate = 2476.96;
+	const handleChange = () => {
+		console.log("true");
+	}
+	const handlePrice = (e) =>{
+		setPrice(e.target.value);
+	}
+
   return (
   <main className="main">
 		<div className="main__author" data-bg="assets/img/bg/bg.png"></div>
@@ -15,7 +44,7 @@ function Create() {
         <div className="col-12 col-xl-9">
 					{/* title */}
 					<div className="main__title main__title--create">
-						<h2>Create collectible item</h2>
+						<h2>Create and List an item for sale</h2>
 					</div>
 					{/* end title */}
 
@@ -26,28 +55,115 @@ function Create() {
 								<h4 className="sign__title">Upload file</h4>
 							</div>
 
-							<div className="col-12">
+							{/* <div className="col-12">
 								<div className="sign__file">
 									<label id="file1" htmlFor="sign__file-upload">e. g. Image, Audio, Video</label>
 									<input data-name="#file1" id="sign__file-upload" name="file" className="sign__file-upload" type="file" accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg"/>
 								</div>
+								<div className="filter__checkboxes">
+									<input id="private" type="checkbox" name="private" defaultChecked/>
+									<label htmlFor="private">Attach a private file/unlockable content?</label>
+								</div>
+							</div> */}
+					 <div className="nftdropzone">
+							<NFTDropzone
+								nftType="Image"
+								onChange={(newfile) => {
+									newfile.type.startsWith('video')
+										? setvideoFile(newfile)
+										: setimageFile(newfile);
+								}}
+							/>
+							{mainCategory.name === 'Audio' && (
+								<NFTDropzone
+									nftType={mainCategory}
+									onChange={(newfile) => {
+										setaudioFile(newfile);
+									}}
+								/>
+							)}
+							{newCollection && (
+								<NFTDropzone
+									nftType="Collection"
+									onChange={(newfile) => {
+										setcollectionfile(newfile);
+									}}
+								/>
+							)}
+						</div>
+						
+						<div className="col-12 pt-3">
+							<div className="sign__group filter__checkboxes">
+								<input id="private" type="checkbox" name="private" 
+								checked={isattach}
+								onChange={() => {
+									setisattach(!isattach);
+								}}/>
+								<label className="sign__label" htmlFor="private">Attach a private file/unlockable content?</label>
 							</div>
+						</div>
+						
+						{isattach && (
+							<div className="nftdropzone">
+							<NFTDropzone
+								nftType={'all'}
+								onChange={(newfile) => {
+									setattachfile(newfile);
+								}}
+							/>
+							</div>
+						)}
 
-							<div className="col-12">
-								<h4 className="sign__title">Item details</h4>
+						<div className="col-12">
+							<div className="sign__group">
+								<label className="sign__label" htmlFor="royalties">Select Category</label>
+								<select id="category" name="category" className="sign__select">
+									<option value="1">Audio</option>
+									<option value="2">Video</option>
+									<option value="3">Art</option>
+								</select>
 							</div>
+						</div>
 
 							<div className="col-12">
 								<div className="sign__group">
-									<label className="sign__label" htmlFor="itemname">Item name</label>
-									<input id="itemname" type="text" name="itemname" className="sign__input" placeholder="e. g. 'Crypto Heart'"/>
+									<label className="sign__label" htmlFor="royalties">Select Category</label>
+									<select id="subcategory" name="subcategory" className="sign__select">
+										<option value="1">Art</option>
+										<option value="2">Music</option>
+										<option value="3">Film</option>
+										<option value="4">Sports</option>
+										<option value="5">Education</option>
+										<option value="6">Photography</option>
+										<option value="7">Games</option>
+										<option value="8">Other</option>
+									</select>
 								</div>
 							</div>
 
 							<div className="col-12">
 								<div className="sign__group">
-									<label className="sign__label" htmlFor="description">Description</label>
-									<textarea id="description" name="description" className="sign__textarea" placeholder="e. g. 'After purchasing you will able to recived...'"></textarea>
+									<CreatableSelect
+										isClearable
+										placeholder="Create or select collection"
+										onChange={handleChange}
+										options={collectionList}
+										className="sign__select cursor-pointer"
+										classNamePrefix="react-select"
+									/>
+								</div>
+							</div>
+							<div className="col-12">
+								<div className="sign__group">
+									<label className="sign__label" htmlFor="listingtitle">Listing title</label>
+									<input id="listingtitle" type="text" name="listingtitle" className="sign__input" />
+								</div>
+							</div>
+
+							<div className="col-12">
+								<div className="sign__group">
+									<label className="sign__label" htmlFor="tags">Tags(#)</label>
+									<input id="tags" type="text" name="tags" className="sign__input" placeholder="Input tags"/>
 								</div>
 							</div>
 
@@ -62,19 +178,76 @@ function Create() {
 								</div>
 							</div>
 
-							<div className="col-12 col-md-4">
+							<div className="col-12">
 								<div className="sign__group">
-									<label className="sign__label" htmlFor="size">Size</label>
-									<input id="size" type="text" name="size" className="sign__input" placeholder="e. g. Size"/>
+									<label className="sign__label" htmlFor="description">Description</label>
+									<textarea id="description" name="description" className="sign__textarea" placeholder="e. g. 'After purchasing you will able to recived...'"></textarea>
+									<div className="filter__checkboxes">
+										<input id="descriptioncheck" type="checkbox" name="descriptioncheck" defaultChecked/>
+										<label htmlFor="descriptioncheck">Transfer Copyright when purchased?</label>
+									</div>
 								</div>
 							</div>
 
+							<div className="col-12">
+								<h4 className="sign__title">Price and type</h4>
+							</div>
+
+							<div className="col-12">
+								<div className="sign__group">
+									<select id="royalties" name="royalties" className="sign__select">
+										<option value="1">Fixed</option>
+										<option value="2">Auction</option>
+										<option value="3">Auction with Buy Now</option>
+									</select>
+								</div>
+							</div>			
+
 							<div className="col-12 col-md-4">
 								<div className="sign__group">
-									<label className="sign__label" htmlFor="propertie">Propertie</label>
-									<input id="propertie" type="text" name="propertie" className="sign__input" placeholder="Subject"/>
+									<label className="sign__label" htmlFor="tags">Starting Bid Price - in {currencyType ? 'BNB':'USD'}</label>
+									<div className="col-9">
+										<input 
+											id="tags" 
+											type="number" 
+											onChange={(e) => handlePrice(e)}
+											name="price" 
+											className="sign__input" 
+											placeholder=""/>
+									</div>
+									<div className="col-3">
+										<Switch
+											onChange={() => {
+												setCurrencyType(!currencyType);
+											}}
+											checked={currencyType}
+											height={26}
+										/>
+									</div>
+									{currencyType ?<>
+									<label className="sign__label" htmlFor="tags">Price in BNB: {(price / bnbRate).toFixed(6)}</label>									
+									</>:
+									<>
+									<label className="sign__label" htmlFor="tags">Price in USD: {(price * bnbRate).toFixed(6)}</label>									
+									</>
+									}
+									<label className="sign__label" htmlFor="tags">current BNB price: 1 ETH = $2476.96</label>
 								</div>
 							</div>
+
+							<div className="col-12">
+								<div className="sign__group">
+									<label className="sign__label" htmlFor="length">Auction Length</label>
+									<select id="length" name="length" className="sign__select">
+										<option value="1">12 hours</option>
+										<option value="2">24 hours</option>
+										<option value="3">2 days</option>
+										<option value="4">3 days</option>
+										<option value="5">7 days</option>
+									</select>
+								</div>
+							</div>	
+
 
 							<div className="col-12">
 								<div className="sign__group sign__group--row">

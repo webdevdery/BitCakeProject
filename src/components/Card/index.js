@@ -41,7 +41,6 @@ function Card(props) {
       : type==='audio' ? 
       
       <div className="w-full overflow-hidden relative">
-        <div className="card__cover">
           <a href={`/item:${type}`}>
           <AudioImage
             src={image}
@@ -62,7 +61,6 @@ function Card(props) {
           </span>}
                       
           {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
-        </div>
       </div>:
       <a href={`/item:${type}`} className="card__cover card__cover--video video">
         <VideoImage src={video} />
