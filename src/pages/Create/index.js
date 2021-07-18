@@ -20,7 +20,7 @@ function Create() {
   const [videofile, setvideoFile] = useState();
   const [audiofile, setaudioFile] = useState();
   const [collectionfile, setcollectionfile] = useState();
-  const [isattach, setisattach] = useState(true);
+  const [isattach, setisattach] = useState(false);
   const [attachfile, setattachfile] = useState();
 
 	const bnbRate = 2476.96;
@@ -55,16 +55,7 @@ function Create() {
 								<h4 className="sign__title">Upload file</h4>
 							</div>
 
-							{/* <div className="col-12">
-								<div className="sign__file">
-									<label id="file1" htmlFor="sign__file-upload">e. g. Image, Audio, Video</label>
-									<input data-name="#file1" id="sign__file-upload" name="file" className="sign__file-upload" type="file" accept="video/mp4,video/x-m4v,video/*,.png,.jpg,.jpeg"/>
-								</div>
-								<div className="filter__checkboxes">
-									<input id="private" type="checkbox" name="private" defaultChecked/>
-									<label htmlFor="private">Attach a private file/unlockable content?</label>
-								</div>
-							</div> */}
+							
 					 <div className="nftdropzone">
 							<NFTDropzone
 								nftType="Image"

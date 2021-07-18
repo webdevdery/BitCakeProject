@@ -1,4 +1,4 @@
-import { CloudUploadIcon } from "@heroicons/react/outline";
+import { CloudUploadIcon, FolderAddIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./style.css"
@@ -49,13 +49,16 @@ export default function NFTDropzone(props) {
       const file = acceptedFiles[0];
       props.onChange(file);
       if (file.type.startsWith("audio")) {
-        file.preview = "/assets/icons/nav/audio.png";
+        file.preview = "assets/icon/audio.png";
         setpreviewFile(file);
       } else if (file.type.startsWith("video")) {
-        file.preview = "/assets/icons/nav/video.png";
+        file.preview = "assets/icon/video.png";
+        setpreviewFile(file);
+      } else if (file.type.startsWith('image')){
+        file.preview = URL.createObjectURL(file);
         setpreviewFile(file);
       } else {
-        file.preview = URL.createObjectURL(file);
+        file.preview = "assets/icon/file.png"        
         setpreviewFile(file);
       }
     },
