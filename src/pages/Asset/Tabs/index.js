@@ -89,8 +89,8 @@ function Tabs(props) {
         <div className="tab-pane fade" id="tab-3" role="tabpanel">
           <ul className="asset__authors asset__authors--tab">
             {detail.map((data, index) => (
-              <li>
-                <li key={`detail-${index}`}>
+              <ul key={`detail-${index}`}>
+                <li>
                   <span>Owner</span>
                   <div className="asset__author asset__author--verified">
                     <img src={data.avatar} alt="" />
@@ -101,7 +101,7 @@ function Tabs(props) {
                   <span>Year created</span>
                   <p>{data.createdYear}</p>
                 </li>
-              </li>
+              </ul>
             ))}
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import { CloudUploadIcon, FolderAddIcon } from "@heroicons/react/outline";
+import { CloudUploadIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./style.css"
@@ -73,14 +73,16 @@ export default function NFTDropzone(props) {
         >
           <input {...getInputProps()} />
           <CloudUploadIcon className="icon-set" />
-          <div className="text-set">
-            Add Files
-          </div>
+          <div className="text-set">Add Files</div>
           <div>
-            {props.nftType.name === "Audio"
+            {props.nftType === "Audio"
               ? "(audio)"
               : props.nftType === "Collection"
               ? "( collection image )"
+              : props.nftType === "image-audio"
+              ? "( image,gif )"
+              : props.nftType === "Video"
+              ? "(Video)"
               : props.nftType === "all"
               ? "( all files )"
               : "( image, video, gif )"}
@@ -90,7 +92,7 @@ export default function NFTDropzone(props) {
           {previewFile && (
             <div style={thumb}>
               <div style={thumbInner}>
-                <img src={previewFile.preview} style={img} />
+                <img src={previewFile.preview} alt="preview" style={img} />
               </div>
             </div>
           )}
