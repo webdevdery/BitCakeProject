@@ -338,30 +338,6 @@ function Create() {
                   </div>
                 </div>
 
-                <div className="col-12">
-                  <div className="sign__group sign__group--row">
-                    <ul className="sign__radio sign__radio--single">
-                      <li>
-                        <input
-                          id="type1"
-                          type="radio"
-                          name="type"
-                          defaultChecked
-                        />
-                        <label htmlFor="type1">Put on sale</label>
-                      </li>
-                      <li>
-                        <input id="type2" type="radio" name="type" />
-                        <label htmlFor="type2">Instant sale price</label>
-                      </li>
-                      <li>
-                        <input id="type3" type="radio" name="type" />
-                        <label htmlFor="type3">Unlock one purchased</label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
                 <div className="col-12 col-xl-3">
                   <button type="button" className="sign__btn">
                     Create item
