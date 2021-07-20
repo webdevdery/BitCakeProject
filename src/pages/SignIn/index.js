@@ -1,12 +1,12 @@
 import React from "react";
-import BreadCrumb from "../../../components/BreadCrumb";
-import "../style.css";
+import BreadCrumb from "components/BreadCrumb";
+import "styles/auth.css";
 const breadCrumb = [
   { title: "Home", page: "/" },
-  { title: "SignUp", page: "/" },
+  { title: "Signin", page: "/" },
 ];
 
-function SignUp(props) {
+function SignIn(props) {
   return (
     <main className="main">
       <div className="container">
@@ -19,18 +19,11 @@ function SignUp(props) {
           <div className="col-12">
             <div className="sign">
               <div className="sign__content">
+                {/* authorization form */}
                 <form action="#" className="sign__form">
                   <a href="/" className="sign__logo">
                     <img src="assets/img/logo.svg" alt="" />
                   </a>
-
-                  <div className="sign__group">
-                    <input
-                      type="text"
-                      className="sign__input"
-                      placeholder="Name"
-                    />
-                  </div>
 
                   <div className="sign__group">
                     <input
@@ -55,25 +48,22 @@ function SignUp(props) {
                       type="checkbox"
                       defaultChecked
                     />
-                    <label htmlFor="remember">
-                      I agree to the{" "}
-                      <a
-                        href="assets/terms/BitCakeTermsOfService.pdf"
-                        target="_blank"
-                      >
-                        Terms of Service
-                      </a>
-                    </label>
+                    <label htmlFor="remember">Remember Me</label>
                   </div>
 
                   <button className="sign__btn" type="button">
-                    Sign up
+                    Sign in
                   </button>
 
                   <span className="sign__text">
-                    Already have an account? <a href="/signin">Sign in!</a>
+                    Don't have an account? <a href="signup">Sign up!</a>
+                  </span>
+
+                  <span className="sign__text">
+                    <a href="/forgot">Forgot password?</a>
                   </span>
                 </form>
+                {/* end authorization form */}
               </div>
             </div>
           </div>
@@ -83,4 +73,4 @@ function SignUp(props) {
     </main>
   );
 }
-export default SignUp;
+export default SignIn;

@@ -98,7 +98,7 @@
   border-color:  #c51458;
 }
 .sign__select {
-  background: url("../../assets/img/checkmark.svg") no-repeat center right 20px #222227;
+  background: url("assets/img/checkmark.svg") no-repeat center right 20px #222227;
   background-size: 18px auto;
   border: 1px solid transparent;
   border-radius: 12px;
@@ -220,7 +220,7 @@
   height: 22px;
   text-align: center;
   transition: 0.5s ease;
-  background: url("../../assets/img/checkmark.svg") no-repeat center/20px auto;
+  background: url("assets/img/checkmark.svg") no-repeat center/20px auto;
   border-radius: 6px;
 }
 .sign__group--checkbox input:not(:checked) + label:after {

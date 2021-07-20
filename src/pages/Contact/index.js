@@ -1,9 +1,9 @@
 import React from "react";
 import BreadCrumb from "../../components/BreadCrumb";
-import "./style.css";
+import "styles/contact.css";
 const breadCrumb = [
-	{title:"Home",page:'/'},
-	{title:"Contact Us",page:"/contacts"},
+  { title: "Home", page: "/" },
+  { title: "Contact Us", page: "/contacts" },
 ];
 function Contact() {
   return (
@@ -186,5 +186,5 @@ function Contact() {
       </div>
     </main>
   );
-  }
-  export default Contact;
+}
+export default Contact;

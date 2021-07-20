@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "styles/footer.css";
 function Routes() {
   return (
     <footer className="footer">
@@ -61,10 +61,18 @@ function Routes() {
               <a href="/explore">Explore</a>
               <a href="/activity">Activity</a>
               <a href="/creators">Creators</a>
-              <a href="assets/terms/BitCakeTermsOfService.pdf" target="_blank" rel="noreferrer">
+              <a
+                href="assets/terms/BitCakeTermsOfService.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Terms of Service
               </a>
-              <a href="assets/terms/BitCakePrivacyPolicy.pdf" target="_blank" rel="noreferrer">
+              <a
+                href="assets/terms/BitCakePrivacyPolicy.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Privacy Policy
               </a>
             </div>
@@ -99,11 +107,37 @@ function Routes() {
           <div className="col-6 col-md-4 col-lg-3 col-xl-2 order-2 order-lg-3 order-md-4 order-xl-4">
             <h6 className="footer__title">Resources</h6>
             <div className="footer__nav">
-              <a href="assets/terms/BitCakeWhitePaper.pdf" target="_blank" rel="noreferrer" >BitCake White Paper</a>
-              <a href="https://cakeshoplabs.com/" target="_blank" rel="noreferrer" >Design an NFT</a>
-              <a href=" https://t.me/bitcakeclub" target="_blank" rel="noreferrer">Telegram Community</a>
-              <a href="assets/terms/BitCakeStrategicPartners.pdf" target="_blank" rel="noreferrer">Become a Partner</a>
-              <a href="/contacts" target="_blank" rel="noreferrer">Contact Us</a>
+              <a
+                href="assets/terms/BitCakeWhitePaper.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                BitCake White Paper
+              </a>
+              <a
+                href="https://cakeshoplabs.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Design an NFT
+              </a>
+              <a
+                href=" https://t.me/bitcakeclub"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Telegram Community
+              </a>
+              <a
+                href="assets/terms/BitCakeStrategicPartners.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Become a Partner
+              </a>
+              <a href="/contacts" target="_blank" rel="noreferrer">
+                Contact Us
+              </a>
             </div>
           </div>
         </div>

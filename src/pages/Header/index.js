@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "styles/header.css";
 function Header() {
   return (
     <header className="header">
@@ -57,9 +57,11 @@ function Header() {
               <a href="/activity" className="header__nav-link">
                 Activity
               </a>
-            </li>            
+            </li>
             <li className="header__nav-item">
-              <a href="/create"  className="header__nav-link">Create</a>
+              <a href="/create" className="header__nav-link">
+                Create
+              </a>
             </li>
             <li className="header__nav-item">
               <a
@@ -81,19 +83,47 @@ function Header() {
                 aria-labelledby="dropdownMenu1"
               >
                 <li>
-                  <a href="assets/terms/BitCakeWhitePaper.pdf" target="_blank"  rel="noreferrer">BitCake<br/>(BCK) White Paper</a>
+                  <a
+                    href="assets/terms/BitCakeWhitePaper.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    BitCake
+                    <br />
+                    (BCK) White Paper
+                  </a>
                 </li>
                 <li>
-                  <a href="https://cakeshoplabs.com/" target="_blank"  rel="noreferrer">Design an NFT</a>
+                  <a
+                    href="https://cakeshoplabs.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Design an NFT
+                  </a>
                 </li>
                 <li>
-                  <a href=" https://t.me/bitcakeclub" target="_blank"  rel="noreferrer">Telegram Community</a>
+                  <a
+                    href=" https://t.me/bitcakeclub"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Telegram Community
+                  </a>
                 </li>
                 <li>
-                  <a href="assets/terms/BitCakeStrategicPartners.pdf" target="_blank"  rel="noreferrer">Become a Partner</a>
+                  <a
+                    href="assets/terms/BitCakeStrategicPartners.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Become a Partner
+                  </a>
                 </li>
                 <li>
-                  <a href="/contacts" target="_blank">Contact Us</a>
+                  <a href="/contacts" target="_blank">
+                    Contact Us
+                  </a>
                 </li>
               </ul>
             </li>
@@ -226,18 +256,16 @@ function Header() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z" />
                 </svg>
-              </a>  
+              </a>
             </div>
-          )}<div className="header__action header__action--signin">
-              <a
-                className="header__action-btn"
-                href="/"
-              >           
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M19,7H18V6a3,3,0,0,0-3-3H5A3,3,0,0,0,2,6H2V18a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V10A3,3,0,0,0,19,7ZM5,5H15a1,1,0,0,1,1,1V7H5A1,1,0,0,1,5,5ZM20,15H19a1,1,0,0,1,0-2h1Zm0-4H19a3,3,0,0,0,0,6h1v1a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.83A3,3,0,0,0,5,9H19a1,1,0,0,1,1,1Z" />
-                </svg>
-              </a>  
-            </div>
+          )}
+          <div className="header__action header__action--signin">
+            <a className="header__action-btn" href="/">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M19,7H18V6a3,3,0,0,0-3-3H5A3,3,0,0,0,2,6H2V18a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V10A3,3,0,0,0,19,7ZM5,5H15a1,1,0,0,1,1,1V7H5A1,1,0,0,1,5,5ZM20,15H19a1,1,0,0,1,0-2h1Zm0-4H19a3,3,0,0,0,0,6h1v1a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.83A3,3,0,0,0,5,9H19a1,1,0,0,1,1,1Z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         <button className="header__btn" type="button">

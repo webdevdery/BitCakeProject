@@ -1,31 +1,103 @@
-import React, {useState} from "react";
-import BreadCrumb from "../../components/BreadCrumb";
-import AssetItem from "../../components/AssetItem";
-import AssetAuthor from "../../components/AssetAuthor";
+import React, { useState } from "react";
+import BreadCrumb from "components/BreadCrumb";
+import AssetItem from "components/AssetItem";
+import AssetAuthor from "components/AssetAuthor";
 import Tabs from "./Tabs";
-import Card from "../../components/Card";
-import "./style.css";
+import Card from "components/Card";
+import "styles/activity.css";
+
 const breadcrumb = [
-	{title:"Home",page:'/'},
-	{title:"Creator",page:"/creator"},
-  {title:"Item",page:"/item"}
+  { title: "Home", page: "/" },
+  { title: "Creator", page: "/creator" },
+  { title: "Item", page: "/item" },
 ];
-const author = {creatorAvatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', collectionAvatar:"assets/img/avatars/avatar9.jpg", collectionTitle:'The Meta Key'}
+const author = {
+  creatorAvatar: "assets/img/avatars/avatar5.jpg",
+  authorName: "@midinh",
+  collectionAvatar: "assets/img/avatars/avatar9.jpg",
+  collectionTitle: "The Meta Key",
+};
 const historyData = [
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
 ];
 const bidsData = [
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
-  {avatar:"assets/img/avatars/avatar10.jpg", bnbPrice:11.0, timeAgo:4, nickName:'@erikkk', verified:true},
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
+  {
+    avatar: "assets/img/avatars/avatar10.jpg",
+    bnbPrice: 11.0,
+    timeAgo: 4,
+    nickName: "@erikkk",
+    verified: true,
+  },
 ];
-const detail =[{avatar:"assets/img/avatars/avatar5.jpg", authorName:'@midinh', createdYear:2021}];
+const detail = [
+  {
+    avatar: "assets/img/avatars/avatar5.jpg",
+    authorName: "@midinh",
+    createdYear: 2021,
+  },
+];
 const assetCards = [
   {
     type: "image",
@@ -64,7 +136,8 @@ const assetCards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
-    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
+    video:
+      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
     time: 900,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -88,7 +161,8 @@ const assetCards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
-    video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4',
+    video:
+      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -98,14 +172,32 @@ const assetCards = [
     likes: 37,
   },
 ];
-const itemData1 = {type:'image', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
-const itemData2 = {type:'audio', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
-const itemData3 = {type:'video', image:"assets/img/cover/cover-big.jpg",audio:"https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",video:'https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4'};
+const itemData1 = {
+  type: "image",
+  image: "assets/img/cover/cover-big.jpg",
+  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+  video:
+    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
+};
+const itemData2 = {
+  type: "audio",
+  image: "assets/img/cover/cover-big.jpg",
+  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+  video:
+    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
+};
+const itemData3 = {
+  type: "video",
+  image: "assets/img/cover/cover-big.jpg",
+  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+  video:
+    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
+};
 function Item(props) {
-  const {type} = props.match.params;
+  const { type } = props.match.params;
   const [price, setPrice] = useState(0);
   const startingBid = 2;
-  const bnbRate = 300 ;
+  const bnbRate = 300;
   return (
     <main className="main">
       {console.log(type)}

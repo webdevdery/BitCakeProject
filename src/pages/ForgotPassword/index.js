@@ -1,9 +1,9 @@
 import React from "react";
-import BreadCrumb from "../../../components/BreadCrumb";
-import "../style.css";
+import BreadCrumb from "components/BreadCrumb";
+import "styles/auth.css";
 const breadCrumb = [
-	{title:"Home",page:'/'},
-	{title:"Restore Password",page:"/"},
+  { title: "Home", page: "/" },
+  { title: "Restore Password", page: "/" },
 ];
 
 function Forgot(props) {
@@ -67,5 +67,5 @@ function Forgot(props) {
       </div>
     </main>
   );
-  }
-  export default Forgot;
+}
+export default Forgot;

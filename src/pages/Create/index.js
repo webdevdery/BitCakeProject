@@ -3,7 +3,7 @@ import CreatableSelect from "react-select/creatable";
 import AuthorMeta from "../../components/AuthorMeta";
 import NFTDropzone from "../../components/Dropzone";
 import Switch from "react-switch";
-import "./style.css";
+import "styles/create.css";
 const author = {
   avatar: "assets/img/avatars/avatar.jpg",
   authorName: "Adam Zapel",
