@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth } from "firebase.js";
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       user ? setAuthenticated(true) : setAuthenticated(false);

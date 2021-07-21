@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CreatableSelect from "react-select/creatable";
-import AuthorMeta from "../../components/AuthorMeta";
-import NFTDropzone from "../../components/Dropzone";
+import AuthorMeta from "components/AuthorMeta";
+import NFTDropzone from "components/Dropzone";
 import Switch from "react-switch";
 import "styles/create.css";
 const author = {
@@ -273,11 +273,7 @@ function Create() {
 
                 <div className="col-12">
                   <div className="sign__group">
-                    <select
-                      id="royalties"
-                      name="royalties"
-                      className="sign__select"
-                    >
+                    <select name="royalties" className="sign__select">
                       <option value="1">Fixed</option>
                       <option value="2">Auction</option>
                       <option value="3">Auction with Buy Now</option>
@@ -292,7 +288,6 @@ function Create() {
                     </label>
                     <div className="col-9">
                       <input
-                        id="tags"
                         type="number"
                         onChange={(e) => handlePrice(e)}
                         name="price"

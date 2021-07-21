@@ -1,6 +1,6 @@
 import React from "react";
 function AuthorMeta(props) {
-  const {avatar, authorName,nickName, code, text, followers} = props.data;
+  const { avatar, authorName, nickName, code, text, followers } = props.data;
   return (
     <div className="author__meta">
       <a href="/creator" className="author__avatar author__avatar--verified">
@@ -14,7 +14,7 @@ function AuthorMeta(props) {
       </h2>
       <p className="author__text">{text}</p>
       <div className="author__code">
-        <input type="text" value={code} id="author-code" />
+        <input type="text" value={code} id="author-code" readOnly />
         <button type="button">
           <span>Copied</span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
