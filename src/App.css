@@ -197,3 +197,9 @@ body::-webkit-scrollbar-thumb {
     max-width: 1330px;
   }
 }
+.text-white {
+  color: white;
+}
+.text-warning {
+  color: #c51458;
+}

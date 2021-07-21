@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import PrivateRoute from "components/PrivateRoute";
+
 import Header from "pages/Header";
 import Main from "pages/Main";
 import Footer from "pages/Footer";
@@ -20,7 +22,8 @@ import Forgot from "pages/ForgotPassword";
 import Error from "pages/404";
 import Privacy from "pages/Privacy";
 
-function Routes() {
+function Routes(props) {
+  console.log(props);
   return (
     <div>
       <BrowserRouter>
@@ -28,7 +31,7 @@ function Routes() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/explore" component={Explore} />
-          <Route path="/activity" component={Activity} />
+          <PrivateRoute path="/activity" component={Activity} />
           <Route path="/item:type" component={Asset} />
           <Route path="/token" component={Token} />
           <Route path="/blog" component={Blog} />
@@ -37,8 +40,16 @@ function Routes() {
           <Route path="/creators" component={Authors} />
           <Route path="/creator" component={Author} />
           <Route path="/collection" component={Collection} />
-          <Route path="/create" component={Create} />
-          <Route path="/signin" component={SignIn} />
+          <PrivateRoute
+            authenticated={props.authenticated}
+            path="/create"
+            component={Create}
+          />
+          <Route
+            authenticated={props.authenticated}
+            path="/signin"
+            component={SignIn}
+          />
           <Route path="/signup" component={SignUp} />
           <Route path="/forgot" component={Forgot} />
           <Route path="/404" component={Error} />
