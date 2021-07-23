@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "components/PrivateRoute";
+import Footer from "components/Footer";
+import Header from "components/Header";
 
-import Header from "pages/Header";
 import Main from "pages/Main";
-import Footer from "pages/Footer";
 import Explore from "pages/Explore";
 import Activity from "pages/Activity";
 import Asset from "pages/Asset";
@@ -27,7 +27,7 @@ function Routes(props) {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header authenticated={props.authenticated} />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/explore" component={Explore} />

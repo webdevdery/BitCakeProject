@@ -3,7 +3,9 @@ import CreatableSelect from "react-select/creatable";
 import AuthorMeta from "components/AuthorMeta";
 import NFTDropzone from "components/Dropzone";
 import Switch from "react-switch";
+
 import "styles/create.css";
+
 const author = {
   avatar: "assets/img/avatars/avatar.jpg",
   authorName: "Adam Zapel",
@@ -44,7 +46,7 @@ function Create() {
 
   return (
     <main className="main">
-      <div className="main__author" data-bg="assets/img/bg/bg.png"></div>
+      <div className="main__author"></div>
       <div className="container">
         <div className="row row--grid">
           <div className="col-12 col-xl-3">
