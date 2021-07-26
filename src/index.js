@@ -14,13 +14,11 @@ function getLibrary(provider) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <Web3ReactManager>
-        <App />
-      </Web3ReactManager>
-    </Web3ReactProvider>
-  </React.StrictMode>,
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <Web3ReactManager>
+      <App />
+    </Web3ReactManager>
+  </Web3ReactProvider>,
   document.getElementById("root")
 );
 
