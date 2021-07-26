@@ -21,7 +21,7 @@ function Routes() {
                 href="/"
                 role="button"
                 id="dropdownLang"
-                data-toggle="dropdown"
+                // data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
@@ -29,7 +29,7 @@ function Routes() {
                 <span>English</span>
               </a>
 
-              <ul
+              {/* <ul
                 className="dropdown-menu footer__lang-dropdown"
                 aria-labelledby="dropdownLang"
               >
@@ -51,7 +51,7 @@ function Routes() {
                     <span>Chinese</span>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 
