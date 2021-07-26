@@ -5,17 +5,17 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import { grey } from "@material-ui/core/colors";
 
 import { useWeb3React } from "@web3-react/core";
-import { UnsupportedChainIdError } from "@web3-react/core";
 import { InjectedConnector } from "@web3-react/injected-connector";
-import { useEagerConnect } from "../../hooks/useEagerConnect";
-import { useInactiveListener } from "../../hooks/useInactiveListener";
+import { useEagerConnect } from "hooks/useEagerConnect";
+import { useInactiveListener } from "hooks/useInactiveListener";
 
-import metamask from "assets/img/wallets/metamask.svg";
-import walletconnect from "assets/img/wallets/walletconnect.svg";
+import { assets } from "utils/assets";
+import { shortenHex } from "utils/helpers";
 
 const useStyles = makeStyles({
   dialog: {
@@ -47,38 +47,31 @@ const useStyles = makeStyles({
     width: 70,
     height: 70,
   },
+  disconnect: {
+    display: "flex",
+    justifyContent: "center",
+  },
 });
 
 const providers = [
   {
     name: "MetaMask",
-    avatar: metamask,
+    avatar: assets.MetaMask,
   },
   {
     name: "Wallet Connect",
-    avatar: walletconnect,
+    avatar: assets.WalletConnect,
   },
 ];
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [97],
 });
+
 function Connect(props) {
   const classes = useStyles();
-  const { onClose, selectedValue, open } = props;
-  const [wrongNetwork, setWrongNetwork] = useState(false);
-  const { error, chainId, account, library, activate, active, connector } =
-    useWeb3React();
-  const isUnsupportedChainIdError = error instanceof UnsupportedChainIdError;
-  useEffect(() => {
-    setWrongNetwork(isUnsupportedChainIdError);
-  }, [isUnsupportedChainIdError]);
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
+  const { open } = props;
+  const { account, activate, active, connector } = useWeb3React();
 
-  const handleListItemClick = (value) => {
-    onClose(value);
-  };
   const connectWallet = () => {
     activate(injectedConnector);
   };
@@ -95,7 +88,7 @@ function Connect(props) {
   useInactiveListener(!triedEager || !!activatingConnector);
 
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog open={open}>
       <DialogTitle className={classes.title}>
         Select Wallet Provider
       </DialogTitle>
@@ -117,6 +110,13 @@ function Connect(props) {
             <ListItemText
               className={classes.listText}
               primary={provider.name}
+              secondary={
+                <Typography type="subtitle2" style={{ color: "#FFFFFF" }}>
+                  {provider.name === "MetaMask" &&
+                    active &&
+                    shortenHex(account, 5)}
+                </Typography>
+              }
             />
           </ListItem>
         ))}
