@@ -25,7 +25,7 @@ function Routes() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <img src="assets/img/flags/uk.svg" alt="" />
+                <img src="assets/img/flags/united.svg" alt="" />
                 <span>English</span>
               </a>
 
