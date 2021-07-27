@@ -3,8 +3,18 @@ import CreatableSelect from "react-select/creatable";
 import AuthorMeta from "components/AuthorMeta";
 import NFTDropzone from "components/Dropzone";
 import Switch from "react-switch";
+import { useWeb3React } from "@web3-react/core";
+import { useHistory } from "react-router-dom";
+
+import { firestore } from "firebase.js";
+import { toast } from "react-toastify";
+import { NFTStorage } from "nft.storage";
+import ipfs from "utils/ipfsApi.js";
+import { NFTStorageKey } from "constants/index";
 
 import "styles/create.css";
+
+const client = new NFTStorage({ token: NFTStorageKey });
 
 const author = {
   avatar: "assets/img/avatars/avatar.jpg",
@@ -20,18 +30,27 @@ const categories = [
   { id: 3, name: "Digital Art" },
 ];
 function Create() {
+  const history = useHistory();
   const collectionList = ["Music", "Art", "Video", "Audio"];
   const [currencyType, setCurrencyType] = useState(true);
   const [price, setPrice] = useState(0);
-  const [mainCategory, setmainCategory] = useState(categories[0]);
-  const [newCollection, setnewCollection] = useState(false);
-  const [imagefile, setimageFile] = useState();
-  const [videofile, setvideoFile] = useState();
-  const [audiofile, setaudioFile] = useState();
+  const [royalties, setRoyalties] = useState("1");
+  const [description, setDescription] = useState("");
+  const [saleType, setSaleType] = useState("fix");
+  const [auctionLength, setAuctionLength] = useState("12");
+  const [type, setType] = useState("image");
+  const [file, setFile] = useState(null);
   const [collectionfile, setcollectionfile] = useState();
+  const [name, setName] = useState("");
+
   const [isattach, setisattach] = useState(false);
   const [attachfile, setattachfile] = useState();
-  const [category, setCategory] = useState("1");
+  const [category, setCategory] = useState("audio");
+  const [buffer, setBuffer] = useState(null);
+  const [attachBuffer, setAttachBuffer] = useState(null);
+
+  const { active, account } = useWeb3React();
+
   const handleSelect = (e) => {
     console.log(e.target.value);
     setCategory(e.target.value);
@@ -40,10 +59,83 @@ function Create() {
   const handleChange = () => {
     console.log("true");
   };
+
   const handlePrice = (e) => {
     setPrice(e.target.value);
   };
 
+  const getFile = (file, isAttach = false) => {
+    const reader = new FileReader();
+    reader.onabort = () => console.log("file reading was aborted");
+    reader.onerror = () => console.log("file reading has failed");
+    reader.onload = () => {
+      // Do whatever you want with the file contents
+      const binaryStr = reader.result;
+      if (!isAttach) setBuffer(binaryStr);
+      else setAttachBuffer(binaryStr);
+    };
+    reader.readAsArrayBuffer(file);
+  };
+  const [isCreateProcess, setCreateProcess] = useState(false);
+
+  const createNFT = async () => {
+    if (active) {
+      setCreateProcess(true);
+      const result = await ipfs.files.add(Buffer.from(buffer));
+      const imgAttach = attachfile
+        ? await ipfs.files.add(Buffer.from(attachBuffer))
+        : null;
+      const cid = await client.storeDirectory([
+        new File(
+          [
+            JSON.stringify({
+              title: name,
+              description: description,
+              creator: account,
+              type,
+              category,
+              royalties: parseInt(royalties) * 5,
+              image: `https://ipfs.io/ipfs/${result[0].hash}`,
+              imageAttach: imgAttach
+                ? `https://ipfs.io/ipfs/${imgAttach[0].hash}`
+                : null,
+            }),
+          ],
+          "metadata.json"
+        ),
+      ]);
+      console.log("/upload task", cid);
+      if (cid) {
+        const tokenURI = `https://ipfs.io/ipfs/${cid}/metadata.json`;
+        firestore
+          .collection("nfts")
+          .doc()
+          .set({
+            tokenId: 0,
+            tokenURI,
+            owner: account,
+            creator: account,
+            price,
+            saleType,
+            auctionLength: saleType === "auction" ? auctionLength : 0,
+            likes: 0,
+          })
+          .then(() => {
+            toast.success("Create NFT");
+            history.push(`/creator/${account}`);
+            setCreateProcess(false);
+          })
+          .catch((err) => {
+            toast.error("Create failed.");
+            console.log(err);
+            setCreateProcess(false);
+          });
+      } else {
+        toast.error("Uploading failed");
+        setCreateProcess(false);
+      }
+    }
+  };
   return (
     <main className="main">
       <div className="main__author"></div>
@@ -75,11 +167,11 @@ function Create() {
                       className="sign__select"
                       onChange={(e) => handleSelect(e)}
                     >
-                      <option value="1">Audio</option>
-                      <option value="2">Video</option>
-                      <option value="3">Image</option>
+                      <option value="audio">Audio</option>
+                      <option value="video">Video</option>
+                      <option value="image">Image</option>
                     </select>
-                    {category === "1" && (
+                    {category === "audio" && (
                       <label className="sign__label">
                         Add an audio file and a preview image
                       </label>
@@ -93,42 +185,46 @@ function Create() {
                   </label>
                 </div>
 
-                {category === "1" ? (
-                  <div className="nftdropzone">
-                    <NFTDropzone
-                      nftType="image-audio"
-                      onChange={(newfile) => {
-                        newfile.type.startsWith("image")
-                          ? setvideoFile(newfile)
-                          : setimageFile(newfile);
-                      }}
-                    />
-                    <NFTDropzone
-                      nftType="Audio"
-                      onChange={(newfile) => {
-                        setaudioFile(newfile);
-                      }}
-                    />
-                  </div>
-                ) : category === "2" ? (
+                {category === "audio" ? (
+                  <>
+                    <div className="nftdropzone">
+                      <NFTDropzone
+                        nftType="Audio"
+                        onChange={(newfile) => {
+                          console.log("wewer");
+                          setFile(newfile);
+                          getFile(newfile);
+                        }}
+                      />
+                      <NFTDropzone
+                        nftType="image"
+                        onChange={(newfile) => {
+                          console.log("wewer");
+                          setFile(newfile);
+                          getFile(newfile);
+                        }}
+                      />
+                    </div>
+                  </>
+                ) : category === "video" ? (
                   <div className="nftdropzone">
                     <NFTDropzone
                       nftType="Video"
                       onChange={(newfile) => {
-                        newfile.type.startsWith("video")
-                          ? setvideoFile(newfile)
-                          : setimageFile(newfile);
+                        console.log("wewer");
+                        setFile(newfile);
+                        getFile(newfile);
                       }}
                     />
                   </div>
-                ) : category === "3" ? (
+                ) : category === "image" ? (
                   <div className="nftdropzone">
                     <NFTDropzone
                       nftType="image"
                       onChange={(newfile) => {
-                        newfile.type.startsWith("image")
-                          ? setvideoFile(newfile)
-                          : setimageFile(newfile);
+                        console.log("wewer");
+                        setFile(newfile);
+                        getFile(newfile);
                       }}
                     />
                   </div>
@@ -173,6 +269,8 @@ function Create() {
                       id="subcategory"
                       name="subcategory"
                       className="sign__select"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
                     >
                       <option value="1">Art</option>
                       <option value="2">Music</option>
@@ -208,21 +306,8 @@ function Create() {
                       type="text"
                       name="listingtitle"
                       className="sign__input"
-                    />
-                  </div>
-                </div>
-
-                <div className="col-12">
-                  <div className="sign__group">
-                    <label className="sign__label" htmlFor="tags">
-                      Tags(#)
-                    </label>
-                    <input
-                      id="tags"
-                      type="text"
-                      name="tags"
-                      className="sign__input"
-                      placeholder="Input tags"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -236,6 +321,8 @@ function Create() {
                       id="royalties"
                       name="royalties"
                       className="sign__select"
+                      value={royalties}
+                      onChange={(e) => setRoyalties(e.target.value)}
                     >
                       <option value="1">5%</option>
                       <option value="2">10%</option>
@@ -254,6 +341,8 @@ function Create() {
                       name="description"
                       className="sign__textarea"
                       placeholder="e. g. 'After purchasing you will able to recived...'"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                     <div className="filter__checkboxes">
                       <input
@@ -275,7 +364,12 @@ function Create() {
 
                 <div className="col-12">
                   <div className="sign__group">
-                    <select name="royalties" className="sign__select">
+                    <select
+                      name="royalties"
+                      className="sign__select"
+                      value={saleType}
+                      onChange={(e) => setSaleType(e.target.value)}
+                    >
                       <option value="1">Fixed</option>
                       <option value="2">Auction</option>
                       <option value="3">Auction with Buy Now</option>
@@ -341,7 +435,12 @@ function Create() {
                 </div>
 
                 <div className="col-12 col-xl-3">
-                  <button type="button" className="sign__btn">
+                  <button
+                    type="button"
+                    className="sign__btn"
+                    onClick={createNFT}
+                    disabled={setCreateProcess}
+                  >
                     Create item
                   </button>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,11 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@material-ui/core/Typography";
 import Dialog from "@material-ui/core/Dialog";
 import { grey } from "@material-ui/core/colors";
-
 import { useWeb3React } from "@web3-react/core";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { useEagerConnect } from "hooks/useEagerConnect";
-import { useInactiveListener } from "hooks/useInactiveListener";
 
 import { assets } from "utils/assets";
 import { shortenHex } from "utils/helpers";
@@ -63,34 +59,29 @@ const providers = [
     avatar: assets.WalletConnect,
   },
 ];
-export const injectedConnector = new InjectedConnector({
-  supportedChainIds: [97],
-});
+let closeImg = {
+  cursor: "pointer",
+  float: "right",
+  marginTop: "5px",
+  width: "20px",
+};
 
 function Connect(props) {
   const classes = useStyles();
-  const { open } = props;
-  const { account, activate, active, connector } = useWeb3React();
-
-  const connectWallet = () => {
-    activate(injectedConnector);
-  };
-  // handle logic to recognize the connector currently being activated
-  const [activatingConnector, setActivatingConnector] = useState();
-
-  useEffect(() => {
-    if (activatingConnector && activatingConnector === connector) {
-      setActivatingConnector(undefined);
-    }
-  }, [activatingConnector, connector]);
-  // mount only once or face issues :P
-  const triedEager = useEagerConnect();
-  useInactiveListener(!triedEager || !!activatingConnector);
-
+  const { open, onClose, connectWallet } = props;
+  const { active, account } = useWeb3React();
   return (
-    <Dialog open={open}>
+    <Dialog onClose={onClose} open={open}>
       <DialogTitle className={classes.title}>
-        Select Wallet Provider
+        <div>
+          Select Wallet Provider
+          <img
+            src="https://d30y9cdsu7xlg0.cloudfront.net/png/53504-200.png"
+            style={closeImg}
+            alt="close"
+            onClick={onClose}
+          />
+        </div>
       </DialogTitle>
       <List className={classes.dialog}>
         {providers.map((provider) => (
