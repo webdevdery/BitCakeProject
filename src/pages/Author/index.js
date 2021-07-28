@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import AuthorMeta from "components/AuthorMeta";
 import Card from "components/Card";
 import Paginator from "components/Paginator";
 import Filter from "components/Filter";
 import Activity from "components/Activity";
+import { toast } from "react-toastify";
+import { auth } from "../../firebase";
+import { firestore, storage } from "../../firebase";
 const cards = [
   {
     type: "image",
@@ -225,12 +228,108 @@ const activityData = [
 function AuthorPage() {
   const author = {
     avatar: "assets/img/avatars/avatar.jpg",
-    authorName: "Adam Zapel",
-    nickName: "@aaarthur",
+    authorName: "",
+    nickName: "",
+    email: "",
     code: "XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
     followers: 3829,
   };
+  const [user, setUser] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [avatar, setAvatar] = useState("assets/img/avatars/avatar.jpg");
+  const [file, setFile] = useState(null);
+  const [nickName, setNickName] = useState("");
+  const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
+  const [cards, setCards] = useState([]);
+  const [uid, setUid] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        setEmail(user.email);
+        setUid(user.uid);
+        getProfile(user);
+      }
+    });
+  }, []);
+
+  const getProfile = async (user) => {
+    let userProfile = (
+      await firestore.collection("users").doc(user.uid).get()
+    ).data();
+    console.log(userProfile, "########", user.uid);
+    if (!userProfile)
+      userProfile = {
+        avatar: "assets/img/avatars/avatar.jpg",
+        firstName: "",
+        lastName: "",
+        nickName: "",
+        email: user.email,
+        bio: "",
+        followers: 3829,
+      };
+    resetProfile(userProfile);
+  };
+  const saveProfile = async () => {
+    if (!firstName || !lastName || !nickName || !bio) {
+      toast.error("Please input required fields");
+    }
+    if (avatar !== user.avatar && file) {
+      // console.log(firestore)
+      const uploadTask = await storage.ref(`/avatars/${uid}`).put(file);
+      console.log(uploadTask);
+      if (uploadTask.state === "success") {
+        const imgUrl = await uploadTask.ref.getDownloadURL();
+        const author = {
+          avatar: imgUrl || "assets/img/avatars/avatar.jpg",
+          firstName,
+          lastName,
+          nickName,
+          email,
+          bio,
+        };
+        firestore
+          .collection("users")
+          .doc(uid)
+          .set(author)
+          .then(() => {
+            toast.success("Update profile");
+          })
+          .catch((err) => {
+            toast.error("Update failed.");
+          });
+      } else {
+        toast.error("Uploading avatar failed.");
+      }
+    }
+  };
+
+  const updateAvatar = useCallback((e) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.onchange = (event) => {
+      const target = event.target;
+      const files = target.files;
+      const file = files[0];
+      setFile(file);
+      setAvatar(URL.createObjectURL(file));
+    };
+    input.click();
+  }, []);
+  const resetProfile = (data) => {
+    console.log("reset profile", data);
+    setFirstName(data.firstName);
+    setLastName(data.lastName);
+    setAvatar(data.avatar);
+    setNickName(data.nickName);
+    setBio(data.bio);
+    setEmail(data.email);
+  };
+
   return (
     <main className="main">
       <div className="main__author" data-bg="assets/img/bg/bg.png"></div>
@@ -460,21 +559,66 @@ function AuthorPage() {
                   <div className="col-12 col-lg-6">
                     <form action="#" className="sign__form sign__form--profile">
                       <div className="row">
+                        <div className="col-12 sign__avatar">
+                          <img src={avatar} alt="" onClick={updateAvatar} />
+                        </div>
                         <div className="col-12">
                           <h4 className="sign__title">Profile details</h4>
                         </div>
 
-                        <div className="col-12 col-md-6 col-lg-12 col-xl-6">
+                        <div className="col-12 col-md-6">
                           <div className="sign__group">
-                            <label className="sign__label" htmlFor="username">
-                              Login
+                            <label className="sign__label" htmlFor="firstname">
+                              First name
                             </label>
                             <input
-                              id="username"
+                              id="firstname"
                               type="text"
-                              name="username"
+                              name="firstname"
                               className="sign__input"
-                              placeholder="User123"
+                              placeholder="John"
+                              value={firstName || ""}
+                              onChange={(e) => {
+                                setFirstName(e.target.value);
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-12 col-md-6">
+                          <div className="sign__group">
+                            <label className="sign__label" htmlFor="lastname">
+                              Last name
+                            </label>
+                            <input
+                              id="lastname"
+                              type="text"
+                              name="lastname"
+                              className="sign__input"
+                              placeholder="Doe"
+                              value={lastName || ""}
+                              onChange={(e) => {
+                                setLastName(e.target.value);
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="col-12 col-md-6">
+                          <div className="sign__group">
+                            <label className="sign__label" htmlFor="nickName">
+                              NickName
+                            </label>
+                            <input
+                              id="nickName"
+                              type="text"
+                              name="nickName"
+                              className="sign__input"
+                              placeholder="@mario"
+                              value={nickName || ""}
+                              onChange={(e) => {
+                                setNickName(e.target.value);
+                              }}
                             />
                           </div>
                         </div>
@@ -488,44 +632,39 @@ function AuthorPage() {
                               id="email"
                               type="text"
                               name="email"
+                              value={email}
                               className="sign__input"
                               placeholder="email@email.com"
+                              readOnly
                             />
                           </div>
                         </div>
 
-                        <div className="col-12 col-md-6 col-lg-12 col-xl-6">
+                        <div className="col-12 ol-md-6 col-lg-12 col-xl-12">
                           <div className="sign__group">
-                            <label className="sign__label" htmlFor="firstname">
-                              First name
+                            <label className="sign__label" htmlFor="bio">
+                              Bio
                             </label>
-                            <input
-                              id="firstname"
+                            <textarea
+                              id="bio"
                               type="text"
-                              name="firstname"
-                              className="sign__input"
-                              placeholder="John"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="col-12 col-md-6 col-lg-12 col-xl-6">
-                          <div className="sign__group">
-                            <label className="sign__label" htmlFor="lastname">
-                              Last name
-                            </label>
-                            <input
-                              id="lastname"
-                              type="text"
-                              name="lastname"
-                              className="sign__input"
-                              placeholder="Doe"
+                              name="bio"
+                              className="sign__textarea"
+                              placeholder="Type your bio"
+                              value={bio || ""}
+                              onChange={(e) => {
+                                setBio(e.target.value);
+                              }}
                             />
                           </div>
                         </div>
 
                         <div className="col-12">
-                          <button className="sign__btn" type="button">
+                          <button
+                            className="sign__btn"
+                            type="button"
+                            onClick={saveProfile}
+                          >
                             Save
                           </button>
                         </div>

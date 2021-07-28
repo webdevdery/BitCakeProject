@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import CreatableSelect from "react-select/creatable";
-import AuthorMeta from "components/AuthorMeta";
-import NFTDropzone from "components/Dropzone";
-import Switch from "react-switch";
-import { useWeb3React } from "@web3-react/core";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
-import { firestore } from "firebase.js";
+import { useWeb3React } from "@web3-react/core";
+import AuthorMeta from "../../components/AuthorMeta";
+import NFTDropzone from "../../components/Dropzone";
+import Switch from "react-switch";
+import { firestore } from "../../firebase";
 import { toast } from "react-toastify";
 import { NFTStorage } from "nft.storage";
+import { NFTStorageKey, FactoryAddress } from "../../constants/index";
+import { auth } from "../../firebase";
 import ipfs from "utils/ipfsApi.js";
-import { NFTStorageKey } from "constants/index";
-
 import "styles/create.css";
 
 const client = new NFTStorage({ token: NFTStorageKey });
@@ -24,44 +22,45 @@ const author = {
   text: "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
   followers: 3829,
 };
-const categories = [
-  { id: 1, name: "Audio" },
-  { id: 2, name: "Video" },
-  { id: 3, name: "Digital Art" },
-];
 function Create() {
-  const history = useHistory();
-  const collectionList = ["Music", "Art", "Video", "Audio"];
-  const [currencyType, setCurrencyType] = useState(true);
-  const [price, setPrice] = useState(0);
-  const [royalties, setRoyalties] = useState("1");
-  const [description, setDescription] = useState("");
-  const [saleType, setSaleType] = useState("fix");
-  const [auctionLength, setAuctionLength] = useState("12");
+  const [user, setUser] = useState(null);
   const [type, setType] = useState("image");
   const [file, setFile] = useState(null);
-  const [collectionfile, setcollectionfile] = useState();
-  const [name, setName] = useState("");
-
+  const [bgFile, setBgFile] = useState(null);
+  const [category, setCategory] = useState("art");
   const [isattach, setisattach] = useState(false);
-  const [attachfile, setattachfile] = useState();
-  const [category, setCategory] = useState("audio");
+  const [attachfile, setattachfile] = useState(null);
+  const [name, setName] = useState("");
+  const [royalties, setRoyalties] = useState("1");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+  const [saleType, setSaleType] = useState("fix");
+  const [auctionLength, setAuctionLength] = useState("12");
   const [buffer, setBuffer] = useState(null);
+  const [bgBuffer, setBgBuffer] = useState(null);
   const [attachBuffer, setAttachBuffer] = useState(null);
+  const [isCreateProcess, setCreateProcess] = useState(false);
+  const [isSale, setIsSale] = useState(false);
 
-  const { active, account } = useWeb3React();
+  const { library, active, account } = useWeb3React();
+  const history = useHistory();
 
-  const handleSelect = (e) => {
-    console.log(e.target.value);
-    setCategory(e.target.value);
-  };
-  const bnbRate = 300;
-  const handleChange = () => {
-    console.log("true");
-  };
+  useEffect(() => {
+    console.log("EEEEEEEEEEEEEEEE");
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        getProfile(user);
+      }
+    });
+  }, []);
 
-  const handlePrice = (e) => {
-    setPrice(e.target.value);
+  const getProfile = async (user) => {
+    let userProfile = (
+      await firestore.collection("users").doc(user.uid).get()
+    ).data();
+    const temp = { id: user.uid, email: user.email, ...userProfile };
+    console.log("@@@@@@@@@@@@@", temp);
+    setUser(temp);
   };
 
   const getFile = (file, isAttach = false) => {
@@ -76,74 +75,95 @@ function Create() {
     };
     reader.readAsArrayBuffer(file);
   };
-  const [isCreateProcess, setCreateProcess] = useState(false);
+  const getBgFile = (file) => {
+    const reader = new FileReader();
+    reader.onabort = () => console.log("file reading was aborted");
+    reader.onerror = () => console.log("file reading has failed");
+    reader.onload = () => {
+      // Do whatever you want with the file contents
+      const binaryStr = reader.result;
+      setBgBuffer(binaryStr);
+    };
+    reader.readAsArrayBuffer(file);
+  };
 
   const createNFT = async () => {
-    if (active) {
-      setCreateProcess(true);
-      const result = await ipfs.files.add(Buffer.from(buffer));
-      const imgAttach = attachfile
-        ? await ipfs.files.add(Buffer.from(attachBuffer))
-        : null;
-      const cid = await client.storeDirectory([
-        new File(
-          [
-            JSON.stringify({
-              title: name,
-              description: description,
+    try {
+      await library
+        .getSigner(account)
+        .signMessage("Please check this account is yours");
+      if (user.account) {
+        setCreateProcess(true);
+        const result = await ipfs.files.add(Buffer.from(buffer));
+        const imgBg = bgFile ? await ipfs.files.add(Buffer.from(bgFile)) : null;
+        const imgAttach = attachfile
+          ? await ipfs.files.add(Buffer.from(attachBuffer))
+          : null;
+        const cid = await client.storeDirectory([
+          new File(
+            [
+              JSON.stringify({
+                name: name,
+                description: description,
+                creator: account,
+                type,
+                category,
+                royalties: parseInt(royalties) * 5,
+                image: `https://ipfs.io/ipfs/${result[0].hash}`,
+                imageAttach: imgAttach
+                  ? `https://ipfs.io/ipfs/${imgAttach[0].hash}`
+                  : null,
+                imageBg: imgBg ? `https://ipfs.io/ipfs/${imgBg[0].hash}` : null,
+              }),
+            ],
+            "metadata.json"
+          ),
+        ]);
+        console.log("/upload task", cid);
+        if (cid) {
+          const tokenURI = `https://ipfs.io/ipfs/${cid}/metadata.json`;
+          firestore
+            .collection("nfts")
+            .doc()
+            .set({
+              tokenId: 0,
+              tokenURI,
+              ownerAvata: user.avatar,
+              owner: account,
               creator: account,
-              type,
-              category,
-              royalties: parseInt(royalties) * 5,
-              image: `https://ipfs.io/ipfs/${result[0].hash}`,
-              imageAttach: imgAttach
-                ? `https://ipfs.io/ipfs/${imgAttach[0].hash}`
-                : null,
-            }),
-          ],
-          "metadata.json"
-        ),
-      ]);
-      console.log("/upload task", cid);
-      if (cid) {
-        const tokenURI = `https://ipfs.io/ipfs/${cid}/metadata.json`;
-        firestore
-          .collection("nfts")
-          .doc()
-          .set({
-            tokenId: 0,
-            tokenURI,
-            owner: account,
-            creator: account,
-            price,
-            saleType,
-            auctionLength: saleType === "auction" ? auctionLength : 0,
-            likes: 0,
-          })
-          .then(() => {
-            toast.success("Create NFT");
-            history.push(`/creator/${account}`);
-            setCreateProcess(false);
-          })
-          .catch((err) => {
-            toast.error("Create failed.");
-            console.log(err);
-            setCreateProcess(false);
-          });
-      } else {
-        toast.error("Uploading failed");
-        setCreateProcess(false);
+              price,
+              isSale,
+              saleType,
+              auctionLength: saleType !== "fix" ? auctionLength : 0,
+              likes: 0,
+            })
+            .then(() => {
+              toast.success("Create NFT");
+              history.push(`/creator/${account}`);
+              setCreateProcess(false);
+            })
+            .catch((err) => {
+              toast.error("Create failed.");
+              console.log(err);
+              setCreateProcess(false);
+            });
+        } else {
+          toast.error("Uploading failed");
+          setCreateProcess(false);
+        }
       }
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
     <main className="main">
-      <div className="main__author"></div>
+      <div className="main__author" data-bg="assets/img/bg/bg.png"></div>
       <div className="container">
         <div className="row row--grid">
           <div className="col-12 col-xl-3">
             <div className="author author--page">
-              <AuthorMeta data={author} />
+              {/* <AuthorMeta data={user} /> */}
             </div>
           </div>
           <div className="col-12 col-xl-9">
@@ -158,55 +178,48 @@ function Create() {
               <div className="row">
                 <div className="col-12">
                   <div className="sign__group">
-                    <label className="sign__label" htmlFor="royalties">
-                      Master Category
+                    <label className="sign__label" htmlFor="type">
+                      NFT Type
                     </label>
                     <select
-                      id="category"
-                      name="category"
+                      id="type"
+                      name="type"
                       className="sign__select"
-                      onChange={(e) => handleSelect(e)}
+                      onChange={(e) => setType(e.target.value)}
                     >
                       <option value="audio">Audio</option>
                       <option value="video">Video</option>
                       <option value="image">Image</option>
                     </select>
-                    {category === "audio" && (
-                      <label className="sign__label">
-                        Add an audio file and a preview image
-                      </label>
-                    )}
                   </div>
                 </div>
 
                 <div className="col-12">
-                  <label className="sign__label" htmlFor="royalties">
+                  <label className="sign__label" htmlFor="files">
                     Upload file
                   </label>
                 </div>
 
-                {category === "audio" ? (
-                  <>
-                    <div className="nftdropzone">
-                      <NFTDropzone
-                        nftType="Audio"
-                        onChange={(newfile) => {
-                          console.log("wewer");
-                          setFile(newfile);
-                          getFile(newfile);
-                        }}
-                      />
-                      <NFTDropzone
-                        nftType="image"
-                        onChange={(newfile) => {
-                          console.log("wewer");
-                          setFile(newfile);
-                          getFile(newfile);
-                        }}
-                      />
-                    </div>
-                  </>
-                ) : category === "video" ? (
+                {type === "audio" ? (
+                  <div className="nftdropzone">
+                    <NFTDropzone
+                      nftType="Audio"
+                      onChange={(newfile) => {
+                        console.log("wewer");
+                        setFile(newfile);
+                        getFile(newfile);
+                      }}
+                    />
+                    <NFTDropzone
+                      nftType="image"
+                      onChange={(newfile) => {
+                        console.log("wewer");
+                        setBgFile(newfile);
+                        getBgFile(newfile);
+                      }}
+                    />
+                  </div>
+                ) : type === "video" ? (
                   <div className="nftdropzone">
                     <NFTDropzone
                       nftType="Video"
@@ -217,7 +230,7 @@ function Create() {
                       }}
                     />
                   </div>
-                ) : category === "image" ? (
+                ) : type === "image" ? (
                   <div className="nftdropzone">
                     <NFTDropzone
                       nftType="image"
@@ -254,6 +267,8 @@ function Create() {
                     <NFTDropzone
                       nftType={"all"}
                       onChange={(newfile) => {
+                        console.log("wewer");
+                        getFile(newfile, true);
                         setattachfile(newfile);
                       }}
                     />
@@ -262,49 +277,37 @@ function Create() {
 
                 <div className="col-12">
                   <div className="sign__group">
-                    <label className="sign__label" htmlFor="royalties">
+                    <label className="sign__label" htmlFor="category">
                       Select Category
                     </label>
                     <select
-                      id="subcategory"
-                      name="subcategory"
+                      id="category"
+                      name="category"
                       className="sign__select"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
                     >
-                      <option value="1">Art</option>
-                      <option value="2">Music</option>
-                      <option value="3">Film</option>
-                      <option value="4">Sports</option>
-                      <option value="5">Education</option>
-                      <option value="6">Photography</option>
-                      <option value="7">Games</option>
-                      <option value="8">Other</option>
+                      <option value="art">Art</option>
+                      <option value="music">Music</option>
+                      <option value="film">Film</option>
+                      <option value="sports">Sports</option>
+                      <option value="education">Education</option>
+                      <option value="photography">Photography</option>
+                      <option value="games">Games</option>
+                      <option value="other">Other</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="col-12">
                   <div className="sign__group">
-                    <CreatableSelect
-                      isClearable
-                      placeholder="Create or select collection"
-                      onChange={handleChange}
-                      options={collectionList}
-                      className="sign__select cursor-pointer"
-                      classNamePrefix="react-select"
-                    />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="sign__group">
-                    <label className="sign__label" htmlFor="listingtitle">
-                      Listing title
+                    <label className="sign__label" htmlFor="name">
+                      Name
                     </label>
                     <input
-                      id="listingtitle"
+                      id="name"
                       type="text"
-                      name="listingtitle"
+                      name="name"
                       className="sign__input"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -326,7 +329,7 @@ function Create() {
                     >
                       <option value="1">5%</option>
                       <option value="2">10%</option>
-                      <option value="3">20%</option>
+                      <option value="4">20%</option>
                     </select>
                   </div>
                 </div>
@@ -340,21 +343,10 @@ function Create() {
                       id="description"
                       name="description"
                       className="sign__textarea"
-                      placeholder="e. g. 'After purchasing you will able to recived...'"
+                      placeholder="e. g. 'After purchasing you will able to received...'"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
-                    <div className="filter__checkboxes">
-                      <input
-                        id="descriptioncheck"
-                        type="checkbox"
-                        name="descriptioncheck"
-                        defaultChecked
-                      />
-                      <label htmlFor="descriptioncheck">
-                        Transfer Copyright when purchased?
-                      </label>
-                    </div>
                   </div>
                 </div>
 
@@ -365,27 +357,37 @@ function Create() {
                 <div className="col-12">
                   <div className="sign__group">
                     <select
-                      name="royalties"
+                      id="saleType"
+                      name="saleType"
                       className="sign__select"
                       value={saleType}
                       onChange={(e) => setSaleType(e.target.value)}
                     >
-                      <option value="1">Fixed</option>
-                      <option value="2">Auction</option>
-                      <option value="3">Auction with Buy Now</option>
+                      <option value="fix">Fixed</option>
+                      <option value="auction">Auction</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="col-12 col-md-4">
                   <div className="sign__group">
-                    <label className="sign__label" htmlFor="tags">
-                      Starting Bid Price - in {currencyType ? "BNB" : "USD"}
-                    </label>
+                    <div className="col-9">
+                      <label className="sign__title" htmlFor="price">
+                        {saleType !== "fix" ? "Starting Bid " : ""}Price - in
+                        "KCS"
+                      </label>
+                    </div>
+                    <div className="col-3">
+                      <label className="sign__title" htmlFor="sale">
+                        Sale
+                      </label>
+                    </div>
                     <div className="col-9">
                       <input
+                        id="price"
                         type="number"
-                        onChange={(e) => handlePrice(e)}
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
                         name="price"
                         className="sign__input"
                         placeholder=""
@@ -394,52 +396,51 @@ function Create() {
                     <div className="col-3">
                       <Switch
                         onChange={() => {
-                          setCurrencyType(!currencyType);
+                          setIsSale(!isSale);
                         }}
-                        checked={currencyType}
+                        checked={isSale}
                         height={26}
                       />
                     </div>
-                    {currencyType ? (
-                      <>
-                        <label className="sign__label" htmlFor="tags">
-                          Price in BNB: {(price / bnbRate).toFixed(6)}
-                        </label>
-                      </>
-                    ) : (
-                      <>
-                        <label className="sign__label" htmlFor="tags">
-                          Price in USD: {(price * bnbRate).toFixed(6)}
-                        </label>
-                      </>
-                    )}
-                    <label className="sign__label" htmlFor="tags">
-                      current BNB price: 1 ETH = $2476.96
+
+                    <label className="sign__label" htmlFor="price">
+                      Price in USD: ${price * 300}
+                    </label>
+
+                    <label className="sign__label" htmlFor="price">
+                      current KCS price: 1 KCS = $300
                     </label>
                   </div>
                 </div>
+                {saleType !== "fix" && (
+                  <div className="col-12">
+                    <div className="sign__group">
+                      <label className="sign__label" htmlFor="length">
+                        Auction Length
+                      </label>
+                      <select
+                        id="length"
+                        name="length"
+                        className="sign__select"
+                        value={auctionLength}
+                        onChange={(e) => setAuctionLength(e.target.value)}
+                      >
+                        <option value="12">12 hours</option>
+                        <option value="24">24 hours</option>
+                        <option value="48">2 days</option>
+                        <option value="72">3 days</option>
+                        <option value="168">7 days</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
 
                 <div className="col-12">
-                  <div className="sign__group">
-                    <label className="sign__label" htmlFor="length">
-                      Auction Length
-                    </label>
-                    <select id="length" name="length" className="sign__select">
-                      <option value="1">12 hours</option>
-                      <option value="2">24 hours</option>
-                      <option value="3">2 days</option>
-                      <option value="4">3 days</option>
-                      <option value="5">7 days</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="col-12 col-xl-3">
                   <button
                     type="button"
-                    className="sign__btn"
+                    className="col-12 col-xl-3 sign__btn"
                     onClick={createNFT}
-                    disabled={setCreateProcess}
+                    disabled={isCreateProcess}
                   >
                     Create item
                   </button>
