@@ -26,7 +26,7 @@ function Item(props) {
         <span>Creator</span>
         <div className="asset__author asset__author--verified">
           <img src={creatorData.avatar} alt=""/>
-          <a href={`/creator/${uid}`}>{creatorData.firstName} {creatorData.lastName}</a>
+          <a href={`/creator/${id}`}>{creatorData.firstName} {creatorData.lastName}</a>
         </div>
       </li>
       <li>
