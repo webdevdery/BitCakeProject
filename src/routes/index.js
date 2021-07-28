@@ -13,7 +13,7 @@ import Blog from "pages/Blog";
 import Faq from "pages/Faq";
 import Contact from "pages/Contact";
 import Authors from "pages/Authors";
-import Author from "pages/Author";
+import Creator from "pages/Creator";
 import Collection from "pages/Collection";
 import Create from "pages/Create";
 import SignIn from "pages/SignIn";
@@ -32,13 +32,13 @@ function Routes(props) {
           <Route exact path="/" component={Main} />
           <Route path="/explore" component={Explore} />
           <PrivateRoute path="/activity" component={Activity} />
-          <Route path="/item:type" component={Asset} />
+          <Route path="/item/:id" component={Asset} />
           <Route path="/token" component={Token} />
           <Route path="/blog" component={Blog} />
           <Route path="/faq" component={Faq} />
           <Route path="/contacts" component={Contact} />
           <Route path="/creators" component={Authors} />
-          <Route path="/creator" component={Author} />
+          <Route path="/creator/:id" component={Creator} />
           <Route path="/collection" component={Collection} />
           <PrivateRoute
             authenticated={props.authenticated}

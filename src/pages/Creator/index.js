@@ -7,100 +7,11 @@ import Activity from "components/Activity";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase";
 import { firestore, storage } from "../../firebase";
-const cards = [
-  {
-    type: "image",
-    image: "assets/img/cover/cover1.jpg",
-    time: 900,
-    title: "Walking on Air",
-    avatar: "assets/img/avatars/avatar5.jpg",
-    nickName: "@nickname",
-    currentPrice: 4.89,
-    verified: true,
-    likes: 189,
-  },
-  {
-    type: "video",
-    image: [
-      "assets/img/cover/cover3.jpg",
-      "assets/img/cover/cover3.jpg",
-      "assets/img/cover/cover3.jpg",
-    ],
-    time: 300,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: false,
-    likes: 37,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover2.jpg",
-    time: 3600,
-    title: "Les Immortels, the Treachery of Artificial Shadows",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    nickName: "@neo",
-    currentPrice: 2.61,
-    verified: false,
-    likes: 702,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover3.jpg",
-    time: 300,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    time: 900,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover3.jpg",
-    time: 3600,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    time: 300,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: false,
-    likes: 37,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    time: 300,
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: false,
-    likes: 37,
-  },
-];
+import { updateProfile } from "reducers/actions/userAction";
+import { useWeb3React } from "@web3-react/core";
+import Axios from "axios";
+import { useParams } from "react-router-dom";
+
 const activityData = [
   {
     cover: "assets/img/cover/cover1.jpg",
@@ -226,6 +137,7 @@ const activityData = [
   },
 ];
 function AuthorPage() {
+  const { id } = useParams();
   const author = {
     avatar: "assets/img/avatars/avatar.jpg",
     authorName: "",
@@ -235,6 +147,7 @@ function AuthorPage() {
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
     followers: 3829,
   };
+  const { library, active, account } = useWeb3React();
   const [user, setUser] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -245,35 +158,60 @@ function AuthorPage() {
   const [bio, setBio] = useState("");
   const [cards, setCards] = useState([]);
   const [uid, setUid] = useState("");
+  const [createdCards, setCreatedCards] = useState([]);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-        setEmail(user.email);
-        setUid(user.uid);
-        getProfile(user);
+    auth.onAuthStateChanged((auth) => {
+      if (auth) {
+        setUser(auth);
+        setEmail(auth.email);
+        setUid(auth.uid);
+        getProfile(auth);
       }
     });
   }, []);
 
-  const getProfile = async (user) => {
+  const getProfile = async (auth) => {
     let userProfile = (
-      await firestore.collection("users").doc(user.uid).get()
+      await firestore.collection("users").doc(auth.uid).get()
     ).data();
-    console.log(userProfile, "########", user.uid);
     if (!userProfile)
       userProfile = {
         avatar: "assets/img/avatars/avatar.jpg",
         firstName: "",
         lastName: "",
         nickName: "",
-        email: user.email,
         bio: "",
-        followers: 3829,
-      };
-    resetProfile(userProfile);
+        email: auth.email,
+      }
+    updateProfile(userProfile)
+    resetProfile(userProfile)
   };
+  const getNFTList = async () => {
+    const res = await firestore.collection("nfts").get()
+    let lists = []
+    let createdLists = []
+    for (let i = 0; i < res.docs.length; i++)
+    {
+      let doc = res.docs[i].data()
+      console.log('docs', doc)
+      if (doc.owner === account || doc.creator === account) {
+        const nftInfo = await Axios.get(doc.tokenURI);
+        console.log({ ...doc, ...nftInfo.data })
+        if(doc.owner === account)
+          lists.push({ id: res.docs[i].id, ...user, ...doc, ...nftInfo.data })
+        if(doc.creator === account)
+          createdLists.push({ id: res.docs[i].id, ...user, ...doc, ...nftInfo.data })
+      }
+    }
+    setCards(lists)
+    setCreatedCards(createdLists)
+  }
+
+  useEffect(() => {
+    getNFTList()
+  }, [account])
+  
   const saveProfile = async () => {
     if (!firstName || !lastName || !nickName || !bio) {
       toast.error("Please input required fields");
@@ -375,31 +313,20 @@ function AuthorPage() {
                   </a>
                 </li>
 
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    data-toggle="tab"
-                    href="#tab-3"
-                    role="tab"
-                    aria-controls="tab-3"
-                    aria-selected="false"
-                  >
-                    My Activity
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    data-toggle="tab"
-                    href="#tab-4"
-                    role="tab"
-                    aria-controls="tab-4"
-                    aria-selected="false"
-                  >
-                    Settings
-                  </a>
-                </li>
+                {id === uid &&
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      data-toggle="tab"
+                      href="#tab-4"
+                      role="tab"
+                      aria-controls="tab-4"
+                      aria-selected="false"
+                    >
+                      Settings
+                    </a>
+                  </li>
+                }
               </ul>
               {/* end tabs nav */}
             </div>
@@ -457,7 +384,7 @@ function AuthorPage() {
 
               <div className="tab-pane fade" id="tab-2" role="tabpanel">
                 <div className="row row--grid">
-                  {cards.map((card, index) => (
+                  {createdCards.map((card, index) => (
                     <div
                       className="col-12 col-sm-6 col-lg-4"
                       key={`card-${index}`}
@@ -470,87 +397,6 @@ function AuthorPage() {
                 {/* paginator */}
                 <Paginator />
                 {/* end paginator */}
-              </div>
-
-              <div className="tab-pane fade" id="tab-3" role="tabpanel">
-                <div className="row">
-                  {/* sidebar */}
-                  <div className="col-12 col-xl-4 order-xl-2">
-                    <div className="filter-wrap">
-                      <button
-                        className="filter-wrap__btn"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#collapseFilter"
-                        aria-expanded="false"
-                        aria-controls="collapseFilter"
-                      >
-                        Open filter
-                      </button>
-
-                      <div
-                        className="collapse filter-wrap__content"
-                        id="collapseFilter"
-                      >
-                        {/* filter */}
-                        <Filter />
-                        {/* end filter */}
-                      </div>
-                    </div>
-                  </div>
-                  {/* end sidebar */}
-
-                  {/* content */}
-                  <div className="col-12 col-xl-8 order-xl-1">
-                    <div className="row row--grid">
-                      {activityData.map(
-                        (activity, index) =>
-                          index < 8 && (
-                            <div
-                              className="col-12 col-lg-6 col-xl-12"
-                              key={`activity-${index}`}
-                            >
-                              <Activity data={activity} />
-                            </div>
-                          )
-                      )}
-                    </div>
-
-                    {/* collapse */}
-                    <div className="row row--grid collapse" id="collapsemore1">
-                      <div className="col-12 col-lg-6 col-xl-12">
-                        {activityData.map(
-                          (activity, index) =>
-                            index >= 8 && (
-                              <div
-                                className="col-12 col-lg-6 col-xl-12"
-                                key={`activity-${index}`}
-                              >
-                                <Activity data={activity} />
-                              </div>
-                            )
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="row row--grid">
-                      <div className="col-12">
-                        <button
-                          className="main__load"
-                          type="button"
-                          data-toggle="collapse"
-                          data-target="#collapsemore1"
-                          aria-expanded="false"
-                          aria-controls="collapsemore1"
-                        >
-                          Load more
-                        </button>
-                      </div>
-                    </div>
-                    {/* end collapse */}
-                  </div>
-                  {/* end content */}
-                </div>
               </div>
 
               <div className="tab-pane fade" id="tab-4" role="tabpanel">

@@ -24,7 +24,7 @@ const author = {
 };
 function Create() {
   const [user, setUser] = useState(null);
-  const [type, setType] = useState("image");
+  const [type, setType] = useState("audio");
   const [file, setFile] = useState(null);
   const [bgFile, setBgFile] = useState(null);
   const [category, setCategory] = useState("art");
@@ -92,7 +92,7 @@ function Create() {
       await library
         .getSigner(account)
         .signMessage("Please check this account is yours");
-      if (user.account) {
+      if (account) {
         setCreateProcess(true);
         const result = await ipfs.files.add(Buffer.from(buffer));
         const imgBg = bgFile ? await ipfs.files.add(Buffer.from(bgFile)) : null;
@@ -128,7 +128,7 @@ function Create() {
             .set({
               tokenId: 0,
               tokenURI,
-              ownerAvata: user.avatar,
+              ownerId: user.id,
               owner: account,
               creator: account,
               price,

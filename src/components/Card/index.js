@@ -1,25 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AudioImage from "./AudioImage";
 import VideoImage from "./VideoImage";
 import "./style.css";
+import { Link } from "react-router-dom";
+import { firestore } from '../../firebase';
 function Card(props) {
-  const{
-      type,
-      image,
-      audio,
-      video,
-      time,
-      title,
-      avatar,
-      nickName,
-      currentPrice,
-      verified,
-      likes,
-    } = props.data;
+  const {
+    ownerId,
+    type,
+    image,
+    audio,
+    video,
+    time,
+    title,
+    price,
+    currentPrice,
+    verified,
+    likes,
+  } = props.data;
+  
+  const [ownerAvatar, setOwnerAvatar] = useState("assets/img/avatars/avatar.jpg")
+  const [nickName, setNickName] = useState("@unkown")
+  
+  const getAvatar = async () => {
+    console.log(ownerId)
+    const url = (await firestore.collection("users").doc(ownerId).get()).data()
+    console.log(url)
+    setOwnerAvatar(url?.avatar)
+    setNickName(url?.nickName)
+  }
+  
+  useEffect(() => {
+    getAvatar()
+  }, [ownerId])
   return (
     <div className="card">
-      { type==='image'? (typeof(image)==='string'? <a href={`/item:${type}`} className="card__cover">
-        <img src={image} alt="" />
+      { type==='image'? (typeof(image)==='string'? <a href={`/item:${type}`} className="card__cover card__cover--video video">
+        <img src={image} alt="" className="video-content"/>
         {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
         <span className="card__time card__time--clock">
           <svg
@@ -82,21 +99,21 @@ function Card(props) {
         <a href="/item">{title}</a>
       </h3>
     <div className={`card__author ${verified?'card__author--verified':''}`}>
-        <img src={avatar} alt="" />
+        <img src={ownerAvatar} alt="" />
         <a href="/creator">{nickName}</a>
       </div>
       <div className="card__info">
         <div className="card__price">
           <span>Current price</span>
-          <span>{currentPrice} BNB</span>
+          <span>{price} BNB</span>
         </div>
 
-        <button className="card__likes" type="button">
+        {/* <button className="card__likes" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
           </svg>
           <span>{likes}</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );
