@@ -59,7 +59,6 @@ function Create() {
       await firestore.collection("users").doc(user.uid).get()
     ).data();
     const temp = { id: user.uid, email: user.email, ...userProfile };
-    console.log("@@@@@@@@@@@@@", temp);
     setUser(temp);
   };
 
@@ -76,6 +75,7 @@ function Create() {
     reader.readAsArrayBuffer(file);
   };
   const getBgFile = (file) => {
+    console.log('sdsdasdasd', file)
     const reader = new FileReader();
     reader.onabort = () => console.log("file reading was aborted");
     reader.onerror = () => console.log("file reading has failed");
@@ -95,7 +95,9 @@ function Create() {
       if (account) {
         setCreateProcess(true);
         const result = await ipfs.files.add(Buffer.from(buffer));
-        const imgBg = bgFile ? await ipfs.files.add(Buffer.from(bgFile)) : null;
+        console.log('main', result)
+        const imgBg = bgFile ? await ipfs.files.add(Buffer.from(bgBuffer)) : null;
+        console.log('audio bg', imgBg)
         const imgAttach = attachfile
           ? await ipfs.files.add(Buffer.from(attachBuffer))
           : null;
@@ -205,7 +207,7 @@ function Create() {
                     <NFTDropzone
                       nftType="Audio"
                       onChange={(newfile) => {
-                        console.log("wewer");
+                        console.log("wewer", newfile);
                         setFile(newfile);
                         getFile(newfile);
                       }}

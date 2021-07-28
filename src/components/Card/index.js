@@ -9,16 +9,15 @@ function Card(props) {
     ownerId,
     type,
     image,
-    audio,
+    imageBg,
     video,
     time,
     title,
     price,
-    currentPrice,
+    id,
     verified,
     likes,
   } = props.data;
-  
   const [ownerAvatar, setOwnerAvatar] = useState("assets/img/avatars/avatar.jpg")
   const [nickName, setNickName] = useState("@unkown")
   
@@ -35,7 +34,7 @@ function Card(props) {
   }, [ownerId])
   return (
     <div className="card">
-      { type==='image'? (typeof(image)==='string'? <a href={`/item:${type}`} className="card__cover card__cover--video video">
+      { type==='image'? (typeof(image)==='string'? <Link to={`/item/${id}`} className="card__cover card__cover--video video">
         <img src={image} alt="" className="video-content"/>
         {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
         <span className="card__time card__time--clock">
@@ -49,7 +48,7 @@ function Card(props) {
         </span>}
                     
         {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
-      </a>:
+      </Link>:
       <div className="card__cover card__cover--carousel owl-carousel">
         {image.map((path,index)=>(
           <img src={path} alt="" key={`image-${index}`}/>
@@ -58,14 +57,14 @@ function Card(props) {
       : type==='audio' ? 
       
       <div className="w-full overflow-hidden relative">
-          <a href={`/item:${type}`}>
+          <Link to={`/item/${id}`}>
           <AudioImage
-            src={image}
-            audioPath={audio}
+            src={imageBg}
+            audioPath={image}
             onClick={(e) => {
               e.preventDefault();
             }}/>
-            </a>
+            </Link>
           {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
           <span className="card__time card__time--clock">
             <svg
@@ -79,7 +78,7 @@ function Card(props) {
                       
           {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </div>:
-      <a href={`/item:${type}`} className="card__cover card__cover--video video">
+      <Link to={`/item/${id}`} className="card__cover card__cover--video video">
         <VideoImage src={video} />
         {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
         <span className="card__time card__time--clock">
@@ -93,7 +92,7 @@ function Card(props) {
         </span>}
                     
         {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
-      </a>
+      </Link>
     }
       <h3 className="card__title">
         <a href="/item">{title}</a>

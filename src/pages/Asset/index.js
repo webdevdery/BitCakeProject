@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumb from "components/BreadCrumb";
 import AssetItem from "components/AssetItem";
 import AssetAuthor from "components/AssetAuthor";
+import { useWeb3React } from "@web3-react/core";
 import Tabs from "./Tabs";
 import Card from "components/Card";
 import "styles/activity.css";
+import { firestore } from "../../firebase";
+import Axios from 'axios';
 
 const breadcrumb = [
   { title: "Home", page: "/" },
@@ -172,35 +175,31 @@ const assetCards = [
     likes: 37,
   },
 ];
-const itemData1 = {
-  type: "image",
-  image: "assets/img/cover/cover-big.jpg",
-  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-  video:
-    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-};
-const itemData2 = {
-  type: "audio",
-  image: "assets/img/cover/cover-big.jpg",
-  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-  video:
-    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-};
-const itemData3 = {
-  type: "video",
-  image: "assets/img/cover/cover-big.jpg",
-  audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-  video:
-    "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-};
 function Item(props) {
-  const { type } = props.match.params;
+  const { id } = props.match.params;
   const [price, setPrice] = useState(0);
+  const [item, setItem] = useState({});
   const startingBid = 2;
   const bnbRate = 300;
+  const [isProcessing, setIsProcessing] = useState(false)
+  const { library, active, account } = useWeb3React();
+
+  const getData = async () => {
+    let nft_item = (
+      await firestore.collection("nfts").doc(id).get()
+    ).data();
+    console.log(nft_item)
+    const nft_info = (await Axios.get(nft_item.tokenURI)).data;
+    console.log(nft_info)
+    const owner_info = (await firestore.collection("users").doc(nft_item.ownerId).get()).data()
+    console.log(owner_info)
+    setItem({...nft_item, ...nft_info, ...owner_info})
+  }
+  useEffect(() => {
+    getData()
+  }, [id])
   return (
     <main className="main">
-      {console.log(type)}
       <div className="container">
         <div className="row row--grid">
           {/* <!-- breadcrumb --> */}
@@ -209,7 +208,7 @@ function Item(props) {
 
           <div className="col-12">
             <div className="main__title main__title--page">
-              <h1>Exclusive digital asset</h1>
+              <h1>{item.name}</h1>
             </div>
           </div>
         </div>
@@ -217,13 +216,7 @@ function Item(props) {
         <div className="row">
           {/* <!-- content --> */}
           <div className="col-12 col-xl-8">
-            {type === ":image" ? (
-              <AssetItem data={itemData1} />
-            ) : type === ":audio" ? (
-              <AssetItem data={itemData2} />
-            ) : (
-              <AssetItem data={itemData3} />
-            )}
+            <AssetItem data={item} isCss={true} />
           </div>
           {/* <!-- end content --> */}
 
@@ -233,13 +226,11 @@ function Item(props) {
               <div className="asset__desc">
                 <h2>Description</h2>
                 <p>
-                  This is a description of an NFT collectible. it can be sports
-                  card, music single, full length documentary, a blockbuster
-                  movie or a cool modern art piece.
+                  {item.description}
                 </p>
               </div>
 
-              <AssetAuthor data={author} />
+              <AssetAuthor data={item.id} />
 
               {/* <!-- tabs --> */}
               <Tabs
@@ -251,13 +242,17 @@ function Item(props) {
 
               <div className="asset__wrap">
                 <div className="asset__timer">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M18.3,8.59l.91-.9a1,1,0,0,0-1.42-1.42l-.9.91a8,8,0,0,0-9.79,0l-.91-.92A1,1,0,0,0,4.77,7.69l.92.91A7.92,7.92,0,0,0,4,13.5,8,8,0,1,0,18.3,8.59ZM12,19.5a6,6,0,1,1,6-6A6,6,0,0,1,12,19.5Zm-2-15h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Zm3,6a1,1,0,0,0-2,0v1.89a1.5,1.5,0,1,0,2,0Z" />
-                    </svg>{" "}
-                    Auction ends in
-                  </span>
-                  <div className="asset__clock"></div>
+                  {item.saleType !== 'fix' &&
+                    <>
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M18.3,8.59l.91-.9a1,1,0,0,0-1.42-1.42l-.9.91a8,8,0,0,0-9.79,0l-.91-.92A1,1,0,0,0,4.77,7.69l.92.91A7.92,7.92,0,0,0,4,13.5,8,8,0,1,0,18.3,8.59ZM12,19.5a6,6,0,1,1,6-6A6,6,0,0,1,12,19.5Zm-2-15h4a1,1,0,0,0,0-2H10a1,1,0,0,0,0,2Zm3,6a1,1,0,0,0-2,0v1.89a1.5,1.5,0,1,0,2,0Z" />
+                        </svg>{" "}
+                        Auction ends in
+                      </span>
+                      <div className="asset__clock"></div>
+                    </>
+                  }
                 </div>
 
                 <div className="asset__price">
@@ -270,14 +265,26 @@ function Item(props) {
               </div>
 
               {/* <!-- actions --> */}
-              <div className="asset__btns">
-                <a
-                  href="#modal-bid"
-                  className="asset__btn asset__btn--full asset__btn--clr open-modal"
-                >
-                  Place a bid
-                </a>
-              </div>
+              {item.isSale &&
+                <div className="asset__btns">
+                  {item.saleType === "fix" ?
+                    <button
+                      disabled={isProcessing || item.owner === account}
+                      className="asset__btn asset__btn--full asset__btn--clr"
+                      onClick={()=>{}}
+                    >
+                      {isProcessing ? 'Waiting...' : 'Buy'}
+                    </button> :
+                    <button
+                      disabled={isProcessing}
+                      className="asset__btn asset__btn--full asset__btn--clr"
+                      onClick={()=>{}}
+                    >
+                      {isProcessing ? 'Waiting...' : 'Place a bid'}
+                    </button>
+                  }
+                </div>
+              }
               {/* <!-- end actions --> */}
             </div>
           </div>
