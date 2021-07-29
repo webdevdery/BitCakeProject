@@ -148,7 +148,7 @@ function AuthorPage() {
     followers: 3829,
   };
   const { library, active, account } = useWeb3React();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [avatar, setAvatar] = useState("assets/img/avatars/avatar.jpg");
@@ -163,17 +163,16 @@ function AuthorPage() {
   useEffect(() => {
     auth.onAuthStateChanged((auth) => {
       if (auth) {
-        setUser(auth);
-        setEmail(auth.email);
+        // setEmail(auth.email);
         setUid(auth.uid);
-        getProfile(auth);
       }
     });
-  }, []);
+    getProfile(id);
+  }, [id]);
 
-  const getProfile = async (auth) => {
+  const getProfile = async (id) => {
     let userProfile = (
-      await firestore.collection("users").doc(auth.uid).get()
+      await firestore.collection("users").doc(id).get()
     ).data();
     if (!userProfile)
       userProfile = {
@@ -182,8 +181,10 @@ function AuthorPage() {
         lastName: "",
         nickName: "",
         bio: "",
-        email: auth.email,
+        email: "",
       }
+    setEmail(userProfile.email)
+    setUser(userProfile);
     updateProfile(userProfile)
     resetProfile(userProfile)
   };
@@ -275,7 +276,7 @@ function AuthorPage() {
         <div className="row row--grid">
           <div className="col-12 col-xl-3">
             <div className="author author--page">
-              <AuthorMeta data={author} />
+              <AuthorMeta data={user} code={account} />
             </div>
           </div>
 
@@ -290,6 +291,19 @@ function AuthorPage() {
                 <li className="nav-item">
                   <a
                     className="nav-link active"
+                    data-toggle="tab"
+                    href="#tab-0"
+                    role="tab"
+                    aria-controls="tab-0"
+                    aria-selected="true"
+                  >
+                    My NFTs
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
                     data-toggle="tab"
                     href="#tab-1"
                     role="tab"
@@ -334,12 +348,12 @@ function AuthorPage() {
             {/* content tabs */}
             <div className="tab-content">
               <div
-                className="tab-pane fade show active"
+                className="tab-pane fade"
                 id="tab-1"
                 role="tabpanel"
               >
                 <div className="row row--grid">
-                  {cards.map(
+                  {cards.filter(x=>x.isSale).map(
                     (card, index) =>
                       index < 6 && (
                         <div
@@ -354,7 +368,7 @@ function AuthorPage() {
 
                 {/* collapse */}
                 <div className="row row--grid collapse" id="collapsemore">
-                  {cards.map(
+                  {cards.filter(x=>x.isSale).map(
                     (card, index) =>
                       index >= 6 && (
                         <div
@@ -375,6 +389,55 @@ function AuthorPage() {
                       data-target="#collapsemore"
                       aria-expanded="false"
                       aria-controls="collapsemore"
+                    >
+                      Load more
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="tab-pane fade show active"
+                id="tab-0"
+                role="tabpanel"
+              >
+                <div className="row row--grid">
+                  {cards.map(
+                    (card, index) =>
+                      index < 6 && (
+                        <div
+                          className="col-12 col-sm-6 col-lg-4"
+                          key={`card-${index}`}
+                        >
+                          <Card data={card} />
+                        </div>
+                      )
+                  )}
+                </div>
+
+                {/* collapse */}
+                <div className="row row--grid collapse" id="collapsemore1">
+                  {cards.map(
+                    (card, index) =>
+                      index >= 6 && (
+                        <div
+                          className="col-12 col-sm-6 col-lg-4"
+                          key={`card-${index}`}
+                        >
+                          <Card data={card} />
+                        </div>
+                      )
+                  )}
+                </div>
+                <div className="row row--grid">
+                  <div className="col-12">
+                    <button
+                      className="main__load"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#collapsemore1"
+                      aria-expanded="false"
+                      aria-controls="collapsemore1"
                     >
                       Load more
                     </button>

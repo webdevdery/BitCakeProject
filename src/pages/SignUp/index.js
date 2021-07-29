@@ -4,6 +4,7 @@ import BreadCrumb from "components/BreadCrumb";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { firestore, storage } from "../../firebase";
 
 import { auth } from "firebase.js";
 import "styles/auth.css";
@@ -14,6 +15,7 @@ const breadCrumb = [
 
 function SignUp() {
   const history = useHistory();
+  
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -35,9 +37,26 @@ function SignUp() {
         .required("Required"),
     }),
     onSubmit: (values) => {
+      const creatProfile = async (user) => {
+        const author = {
+          avatar: "assets/img/avatars/avatar.jpg",
+          firstName: "User",
+          lastName: "",
+          nickName: "@user",
+          email: user.user.email,
+          bio: "",
+        };
+        const res = await firestore
+          .collection("users")
+          .doc(user.user.uid)
+          .set(author)
+        console.log(res)
+      };
       auth
         .createUserWithEmailAndPassword(values.email, values.password)
-        .then((user) => {
+        .then(async (user) => {
+          console.log('userinfo', user.user.uid)
+          await creatProfile(user)
           user.user.sendEmailVerification();
           auth.signOut();
           toast.success("Sent Emain Verification Link to your email");

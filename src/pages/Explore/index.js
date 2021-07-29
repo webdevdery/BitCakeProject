@@ -141,12 +141,12 @@ function Explore() {
               </div>
               <div className="slidecontainer mt-3">
                 <label className="sign__label" htmlFor="subcategory">
-                  PRICE RANGE  <span style={{fontSize:'20px', color:'white'}}>{price} </span> KCS
+                  PRICE RANGE  <span style={{fontSize:'20px', color:'white'}}>{price} </span> BNB
                 </label>
                 <input type="range" min="1" max="10000" className="slider" id="myRange" onChange={(e)=>sliderChange(e)}/>
                 <div className="d-flex justify-content-between">
-                  <p className="nft-color-white">1 KCS</p>
-                  <p className="nft-color-white">10000KCS</p>
+                  <p className="nft-color-white">1 BNB</p>
+                  <p className="nft-color-white">10000BNB</p>
                 </div>
               </div>
               <div className="sign__group">

@@ -3,16 +3,22 @@ import { Link, useHistory } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 
 import { auth } from "firebase.js";
+import { firestore } from "../../firebase";
 import { shortenHex } from "utils/helpers";
 
 function Dropdown() {
   const history = useHistory();
   const { deactivate, active, account } = useWeb3React();
   const [uid, setUid] = useState("")
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((auth) => {
+    auth.onAuthStateChanged(async (auth) => {
       if (auth) {
+        let userProfile = (
+          await firestore.collection("users").doc(auth.uid).get()
+        ).data();
+        setUser(userProfile)
         setUid(auth.uid);
       }
     });
@@ -34,9 +40,9 @@ function Dropdown() {
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <img src="assets/img/avatars/avatar5.jpg" alt="" />
+        <img src={user ? user.avatar : "assets/img/avatars/avatar5.jpg"} alt="" />
         <div>
-          <p>John Doe</p>
+          <p>{user ? user.firstName + ' ' + user.lastName : 'User'}</p>
           {active && shortenHex(account, 4)}
         </div>
         {active && (

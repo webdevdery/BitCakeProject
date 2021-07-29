@@ -10,7 +10,6 @@ function Card(props) {
     type,
     image,
     imageBg,
-    video,
     time,
     title,
     price,
@@ -79,7 +78,7 @@ function Card(props) {
           {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </div>:
       <Link to={`/item/${id}`} className="card__cover card__cover--video video">
-        <VideoImage src={video} />
+        <VideoImage src={image} />
         {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
         <span className="card__time card__time--clock">
           <svg
@@ -99,7 +98,7 @@ function Card(props) {
       </h3>
     <div className={`card__author ${verified?'card__author--verified':''}`}>
         <img src={ownerAvatar} alt="" />
-        <a href="/creator">{nickName}</a>
+        <Link to={`/creator/${ownerId}`}>{nickName}</Link>
       </div>
       <div className="card__info">
         <div className="card__price">

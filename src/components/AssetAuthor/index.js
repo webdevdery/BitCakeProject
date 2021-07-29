@@ -14,7 +14,7 @@ function Item(props) {
       await firestore.collection("nfts").doc(id).get()
     ).data();
     setOwnerData((await firestore.collection("users").doc(nft_item.ownerId).get()).data())
-    setCreatorData((await firestore.collection("users").doc(nft_item.ownerId).get()).data())
+    setCreatorData((await firestore.collection("users").doc(nft_item.creatorId).get()).data())
     console.log(nft_item.ownerId, '%%%%%%%%%%%%%%%%%%%%%%%%%%%', ownerData)
   }
   useEffect(() => {

@@ -8,8 +8,6 @@ import Dropdown from "../Dropdown";
 import Connect from "../Connect";
 
 import "styles/header.css";
-import { useSelector } from "react-redux";
-
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [97],
 });
@@ -17,6 +15,7 @@ export const injectedConnector = new InjectedConnector({
 function Header(props) {
   const [open, setOpen] = useState(false);
   // const user = useSelector((state) => state.user);
+
 
   const handleClickOpen = (e) => {
     e.preventDefault();

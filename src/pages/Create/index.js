@@ -23,7 +23,7 @@ const author = {
   followers: 3829,
 };
 function Create() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [type, setType] = useState("audio");
   const [file, setFile] = useState(null);
   const [bgFile, setBgFile] = useState(null);
@@ -46,7 +46,6 @@ function Create() {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("EEEEEEEEEEEEEEEE");
     auth.onAuthStateChanged((user) => {
       if (user) {
         getProfile(user);
@@ -131,6 +130,7 @@ function Create() {
               tokenId: 0,
               tokenURI,
               ownerId: user.id,
+              creatorId: user.id,
               owner: account,
               creator: account,
               price,
@@ -141,7 +141,7 @@ function Create() {
             })
             .then(() => {
               toast.success("Create NFT");
-              history.push(`/creator/${account}`);
+              history.push(`/creator/${user.id}`);
               setCreateProcess(false);
             })
             .catch((err) => {
@@ -165,7 +165,7 @@ function Create() {
         <div className="row row--grid">
           <div className="col-12 col-xl-3">
             <div className="author author--page">
-              {/* <AuthorMeta data={user} /> */}
+              <AuthorMeta data={user} code={account} />
             </div>
           </div>
           <div className="col-12 col-xl-9">
@@ -376,7 +376,7 @@ function Create() {
                     <div className="col-9">
                       <label className="sign__title" htmlFor="price">
                         {saleType !== "fix" ? "Starting Bid " : ""}Price - in
-                        "KCS"
+                        "BNB"
                       </label>
                     </div>
                     <div className="col-3">
@@ -410,7 +410,7 @@ function Create() {
                     </label>
 
                     <label className="sign__label" htmlFor="price">
-                      current KCS price: 1 KCS = $300
+                      current BNB price: 1 BNB = $300
                     </label>
                   </div>
                 </div>
