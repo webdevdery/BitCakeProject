@@ -40,13 +40,14 @@ export default function NFTDropzone(props) {
   const [previewFile, setpreviewFile] = useState();
   const { getRootProps, getInputProps } = useDropzone({
     accept:
-      props.nftType.name == "Audio"
-        ? "audio/mp3, audio/wav"
+      props.nftType === "Audio"
+        ? acceptedList["Audio"]
         : props.nftType === "all"
         ? ""
         : acceptedList["All"],
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0];
+      console.log(acceptedFiles)
       props.onChange(file);
       if (file.type.startsWith("audio")) {
         file.preview = "assets/icon/audio.png";

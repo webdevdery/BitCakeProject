@@ -1,21 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useWeb3React } from "@web3-react/core";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { useEagerConnect } from "hooks/useEagerConnect";
+import { useInactiveListener } from "hooks/useInactiveListener";
+
 import Dropdown from "../Dropdown";
 import Connect from "../Connect";
+
 import "styles/header.css";
+export const injectedConnector = new InjectedConnector({
+  supportedChainIds: [97],
+});
 
 function Header(props) {
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
+  // const user = useSelector((state) => state.user);
+
 
   const handleClickOpen = (e) => {
     e.preventDefault();
     setOpen(true);
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
+    console.log("closing modal...");
     setOpen(false);
-    setSelectedValue(value);
   };
+
+  const { activate, connector } = useWeb3React();
+
+  const connectWallet = () => {
+    activate(injectedConnector);
+  };
+  // handle logic to recognize the connector currently being activated
+  const [activatingConnector, setActivatingConnector] = useState();
+
+  useEffect(() => {
+    if (activatingConnector && activatingConnector === connector) {
+      setActivatingConnector(undefined);
+    }
+  }, [activatingConnector, connector]);
+  // mount only once or face issues :P
+  const triedEager = useEagerConnect();
+  useInactiveListener(!triedEager || !!activatingConnector);
+
   return (
     <header className="header">
       <div className="header__content">
@@ -182,9 +210,9 @@ function Header(props) {
         </button>
       </div>
       <Connect
-        selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
+        connectWallet={connectWallet}
       />
     </header>
   );
