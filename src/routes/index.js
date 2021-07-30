@@ -39,8 +39,8 @@ function Routes(props) {
           <Route path="/creators" component={Authors} />
           <Route path="/creator/:id" component={Creator} />
           <Route path="/collection" component={Collection} />
-          <PrivateRoute
-            authenticated={props.authenticated}
+          <Route
+            // authenticated={props.authenticated}
             path="/create"
             component={Create}
           />

@@ -9,7 +9,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover1.jpg",
-    time: 900,
+    time: "2021-08-07T01:02:03",
     title: "Walking on Air",
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
@@ -20,7 +20,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover2.jpg",
-    time: 3600,
+    time: "2021-08-07T01:02:03",
     title: "Les Immortels, the Treachery of Artificial Shadows",
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
@@ -32,7 +32,7 @@ const cards = [
     type: "audio",
     imageBg: "assets/img/cover/cover3.jpg",
     image: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-    time: 300,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -45,7 +45,7 @@ const cards = [
     imageBg: "assets/img/cover/cover3.jpg",
     image:
       "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    time: 900,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -57,7 +57,7 @@ const cards = [
     type: "audio",
     imageBg: "assets/img/cover/cover3.jpg",
     audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-    time: 3600,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -70,7 +70,7 @@ const cards = [
     imageBg: "assets/img/cover/cover3.jpg",
     image:
       "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    time: 300,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",

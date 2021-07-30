@@ -32,7 +32,7 @@ const img = {
 };
 
 const acceptedList = {
-  Audio: "audio/*",
+  Audio: "audio/mp3, audio/wav",
   All: "image/*, video/*",
 };
 

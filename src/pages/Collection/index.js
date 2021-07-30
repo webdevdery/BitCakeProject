@@ -16,7 +16,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover1.jpg",
-    time: 900,
+    time: "2021-08-07T01:02:03",
     title: "Walking on Air",
     avatar: "assets/img/avatars/avatar5.jpg",
     nickName: "@nickname",
@@ -31,7 +31,7 @@ const cards = [
       "assets/img/cover/cover3.jpg",
       "assets/img/cover/cover3.jpg",
     ],
-    time: 300,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -42,7 +42,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover2.jpg",
-    time: 3600,
+    time: "2021-08-07T01:02:03",
     title: "Les Immortels, the Treachery of Artificial Shadows",
     avatar: "assets/img/avatars/avatar3.jpg",
     nickName: "@neo",
@@ -53,7 +53,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover3.jpg",
-    time: 300,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -64,7 +64,7 @@ const cards = [
   {
     type: "video",
     image: "assets/img/cover/cover3.jpg",
-    time: 900,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
@@ -75,7 +75,7 @@ const cards = [
   {
     type: "image",
     image: "assets/img/cover/cover3.jpg",
-    time: 3600,
+    time: "2021-08-07T01:02:03",
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
     nickName: "@min1max",
