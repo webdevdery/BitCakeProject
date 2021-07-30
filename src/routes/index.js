@@ -23,7 +23,6 @@ import Error from "pages/404";
 import Privacy from "pages/Privacy";
 
 function Routes(props) {
-  console.log(props);
   return (
     <div>
       <BrowserRouter>

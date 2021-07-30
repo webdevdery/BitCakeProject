@@ -50,12 +50,10 @@ function SignUp() {
           .collection("users")
           .doc(user.user.uid)
           .set(author)
-        console.log(res)
       };
       auth
         .createUserWithEmailAndPassword(values.email, values.password)
         .then(async (user) => {
-          console.log('userinfo', user.user.uid)
           await creatProfile(user)
           user.user.sendEmailVerification();
           auth.signOut();

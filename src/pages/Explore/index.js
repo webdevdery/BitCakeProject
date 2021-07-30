@@ -37,7 +37,6 @@ function Explore() {
         const nftInfo = await Axios.get(doc.tokenURI);
         lists.push({ id: res.docs[i].id, ...doc, ...nftInfo.data })
     }
-    console.log('@@@@@@@@@@@@@@@@',lists)
     setCards(lists)
     setFilter(lists);
   }
@@ -100,7 +99,6 @@ function Explore() {
         break;
       default: break;      
     }
-    console.log(e.target.value);
   }
   const handleReset = () => {
     console.log("reseted");
@@ -202,7 +200,7 @@ function Explore() {
             <div className="col-12 col-xl-9">
               <div className="row row--grid">
                 {filterData.map((card,index)=>(
-                  <div className="col-12 col-sm-6 col-lg-4 col-xl-3"  key={`card-${index}`}>
+                  <div className="col-12 col-sm-6 col-lg-4"  key={`card-${index}`}>
                     <Card data={card} />
                   </div>
                 ))}

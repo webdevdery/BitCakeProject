@@ -188,11 +188,8 @@ function Item(props) {
     let nft_item = (
       await firestore.collection("nfts").doc(id).get()
     ).data();
-    console.log(nft_item)
     const nft_info = (await Axios.get(nft_item.tokenURI)).data;
-    console.log(nft_info)
     const owner_info = (await firestore.collection("users").doc(nft_item.ownerId).get()).data()
-    console.log(owner_info)
     setItem({...nft_item, ...nft_info, ...owner_info})
   }
   useEffect(() => {

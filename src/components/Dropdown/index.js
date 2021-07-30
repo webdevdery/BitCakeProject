@@ -4,11 +4,10 @@ import { useWeb3React } from "@web3-react/core";
 
 import { auth } from "firebase.js";
 import { firestore } from "../../firebase";
-import { shortenHex } from "utils/helpers";
 
 function Dropdown() {
   const history = useHistory();
-  const { deactivate, active, account } = useWeb3React();
+  const { deactivate, active } = useWeb3React();
   const [uid, setUid] = useState("")
   const [user, setUser] = useState(null);
 
@@ -43,7 +42,6 @@ function Dropdown() {
         <img src={user ? user.avatar : "assets/img/avatars/avatar5.jpg"} alt="" />
         <div>
           <p>{user ? user.firstName + ' ' + user.lastName : 'User'}</p>
-          {active && shortenHex(account, 4)}
         </div>
         {active && (
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

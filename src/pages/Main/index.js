@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import SellerList from "../../components/SellerList";
-import Collection from "../../components/Collection";
+import { firestore } from "../../firebase";
+
 import "styles/main.css";
 
 const cards = [
@@ -29,8 +30,8 @@ const cards = [
   },
   {
     type: "audio",
-    image: "assets/img/cover/cover3.jpg",
-    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+    imageBg: "assets/img/cover/cover3.jpg",
+    image: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
     time: 300,
     title: "Flowers in Concrete (Modal)",
     avatar: "assets/img/avatars/avatar15.jpg",
@@ -41,8 +42,8 @@ const cards = [
   },
   {
     type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    video:
+    imageBg: "assets/img/cover/cover3.jpg",
+    image:
       "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
     time: 900,
     title: "Flowers in Concrete (Modal)",
@@ -54,7 +55,7 @@ const cards = [
   },
   {
     type: "audio",
-    image: "assets/img/cover/cover3.jpg",
+    imageBg: "assets/img/cover/cover3.jpg",
     audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
     time: 3600,
     title: "Flowers in Concrete (Modal)",
@@ -66,8 +67,8 @@ const cards = [
   },
   {
     type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    video:
+    imageBg: "assets/img/cover/cover3.jpg",
+    image:
       "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
     time: 300,
     title: "Flowers in Concrete (Modal)",
@@ -78,218 +79,34 @@ const cards = [
     likes: 37,
   },
 ];
-const sellerLists = [
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: false,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-  {
-    image: "assets/img/avatars/avatar.jpg",
-    nickName: "@miriuuu",
-    currentPrice: 214.22,
-    verified: true,
-  },
-];
-const exploreCards = [
-  {
-    type: "image",
-    image: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    avatar: "assets/img/avatars/avatar5.jpg",
-    nickName: "@nickname",
-    currentPrice: 4.89,
-    verified: true,
-    likes: 189,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover2.jpg",
-    title: "Les Immortels, the Treachery of Artificial Shadows",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    nickName: "@neo",
-    currentPrice: 2.61,
-    verified: false,
-    likes: 702,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    video:
-      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    video:
-      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover3.jpg",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    image: "assets/img/cover/cover3.jpg",
-    video:
-      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: false,
-    likes: 37,
-  },
-];
-const collections = [
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: true,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: true,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: false,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: true,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: false,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: true,
-  },
-  {
-    bgimage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    name: "Hashmasks",
-    number: "ERC-721",
-    verified: true,
-  },
-];
 function Main() {
+  const [userLists, setUserLists] = useState([])
+  const [sellerLists, setSellerLists] = useState([])
+
+  const getNFTLists = async () => {
+    const nfts = (await firestore.collection("nfts").get())
+    let user_nfts = []
+    nfts.docs.forEach(x => {
+      const temp = x.data()
+      if(!user_nfts[temp.creatorId]) user_nfts[temp.creatorId] = []
+      user_nfts[temp.creatorId].push(temp)
+    })
+    let temp = Object.keys(user_nfts).map(x=>({id:x, nfts: user_nfts[x]}))
+    const users = temp.sort((a, b) => {
+      return b.nfts.length - a.nfts.length
+    })
+    setUserLists(users)
+    let users_info = []
+    const users_ids = users.map(x=>x.id)
+    for (let i = 0; i < users_ids.length;i++) {
+      const user_info = (await firestore.collection("users").doc(users_ids[i]).get()).data()
+      users_info.push({...user_info, verified:true, currentPrice: users[i].nfts.length})
+    }
+    setSellerLists(users_info)
+  }
+  useEffect(() => {
+    getNFTLists()
+  },[])
   return (
     <main className="main">
       {/* <!-- home --> */}
@@ -398,100 +215,6 @@ function Main() {
           {/* <!-- end sellers list --> */}
         </section>
         {/* <!-- end top sellers --> */}
-
-        {/* <!-- explore --> */}
-        <section className="row row--grid">
-          {/* <!-- title --> */}
-          <div className="col-12">
-            <div className="main__title">
-              <h2>
-                <a href="/explore">Explore</a>
-              </h2>
-            </div>
-          </div>
-          {/* <!-- end title --> */}
-
-          {/* <!-- carousel --> */}
-          <div className="col-12">
-            <div className="main__carousel-wrap">
-              <div
-                className="main__carousel main__carousel--explore owl-carousel"
-                id="explore"
-              >
-                {exploreCards.map((card, index) => (
-                  <Card data={card} key={`explore-${index}`} />
-                ))}
-              </div>
-
-              <button
-                className="main__nav main__nav--prev"
-                data-nav="#explore"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z" />
-                </svg>
-              </button>
-              <button
-                className="main__nav main__nav--next"
-                data-nav="#explore"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          {/* <!-- end carousel --> */}
-        </section>
-        {/* <!-- end explore --> */}
-
-        {/* <!-- collections --> */}
-        <section className="row row--grid">
-          {/* <!-- title --> */}
-          <div className="col-12">
-            <div className="main__title">
-              <h2>Hot collections</h2>
-            </div>
-          </div>
-          {/* <!-- end title --> */}
-
-          {/* <!-- carousel --> */}
-          <div className="col-12">
-            <div className="main__carousel-wrap">
-              <div
-                className="main__carousel main__carousel--collections owl-carousel"
-                id="collections"
-              >
-                {collections.map((collection, index) => (
-                  <Collection data={collection} key={`collection-${index}`} />
-                ))}
-              </div>
-
-              <button
-                className="main__nav main__nav--prev"
-                data-nav="#collections"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z" />
-                </svg>
-              </button>
-              <button
-                className="main__nav main__nav--next"
-                data-nav="#collections"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          {/* <!-- end carousel --> */}
-        </section>
-        {/* <!-- end collections --> */}
 
         {/* <!-- get started --> */}
         <div className="row row--grid">

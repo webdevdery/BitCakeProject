@@ -4,12 +4,12 @@ import Waveform from './Waveform'
 import "./style.css";
 export default function AudioImage(props) {
   return (
-    <div className={`card__cover ${!props.isCss?"card__cover--video video":""}`}>
+    <>
       <img alt="" src={props.src} className={`w-full h-80 relative ${!props.isCss?"video-content":""}`} />
         <div className="absolute bottom-8 w-full">
           <Waveform audioURL={props.audioPath} onClick={props.onClick}/>
         </div>
-      </div>
+      </>
   )
 }
 

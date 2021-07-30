@@ -10,22 +10,24 @@ function Card(props) {
     type,
     image,
     imageBg,
-    time,
+    // time,
+    auctionLength,
     title,
     price,
     id,
+    saleType,
     verified,
     likes,
   } = props.data;
+  const time = auctionLength === 0 ? null : auctionLength * 3600
   const [ownerAvatar, setOwnerAvatar] = useState("assets/img/avatars/avatar.jpg")
   const [nickName, setNickName] = useState("@unkown")
-  
   const getAvatar = async () => {
-    console.log(ownerId)
     const url = (await firestore.collection("users").doc(ownerId).get()).data()
-    console.log(url)
-    setOwnerAvatar(url?.avatar)
-    setNickName(url?.nickName)
+    if (url) {
+      setOwnerAvatar(url?.avatar)
+      setNickName(url?.nickName)
+    }
   }
   
   useEffect(() => {
@@ -34,8 +36,9 @@ function Card(props) {
   return (
     <div className="card">
       { type==='image'? (typeof(image)==='string'? <Link to={`/item/${id}`} className="card__cover card__cover--video video">
-        <img src={image} alt="" className="video-content"/>
-        {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
+        <img src={image? image: 'assets/img/cover/cover2.jpg'} alt="" className="video-content"/>
+        {!(time === undefined || time === null) && (time >= 480 && time <= 750) && <span className="card__time">15 minutes left</span>}
+        {!(time === undefined || time === null) && (time >3600 )&& 
         <span className="card__time card__time--clock">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +49,7 @@ function Card(props) {
           <span className="card__clock card__clock--1"></span>
         </span>}
                     
-        {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
+        {!(time === undefined || time === null) && (time > 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </Link>:
       <div className="card__cover card__cover--carousel owl-carousel">
         {image.map((path,index)=>(
@@ -56,15 +59,15 @@ function Card(props) {
       : type==='audio' ? 
       
       <div className="w-full overflow-hidden relative">
-          <Link to={`/item/${id}`}>
+          <Link to={`/item/${id}`} className="card__cover card__cover--video video">
           <AudioImage
-            src={imageBg}
+            src={imageBg? imageBg: 'assets/img/cover/cover2.jpg'}
             audioPath={image}
             onClick={(e) => {
               e.preventDefault();
-            }}/>
-            </Link>
-          {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
+                }} />
+          {!(time === undefined || time === null) && (time >= 480 && time <= 750) && <span className="card__time">15 minutes left</span>}
+          {!(time === undefined || time === null) && (time >3600 )&&  
           <span className="card__time card__time--clock">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,12 +77,14 @@ function Card(props) {
             </svg>
             <span className="card__clock card__clock--1"></span>
           </span>}
+            </Link>
                       
-          {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
+            {!(time === undefined || time === null) && (time > 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </div>:
       <Link to={`/item/${id}`} className="card__cover card__cover--video video">
         <VideoImage src={image} />
-        {!(time===undefined)&&(time>=480 && time<=750)? <span className="card__time">15 minutes left</span> : 
+        {!(time === undefined || time === null) && (time >= 480 && time <= 750) && <span className="card__time">15 minutes left</span>}
+        {!(time === undefined || time === null) && (time >3600 )&& 
         <span className="card__time card__time--clock">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +95,7 @@ function Card(props) {
           <span className="card__clock card__clock--1"></span>
         </span>}
                     
-        {time === undefined && (time < 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
+        {!(time === undefined || time === null) && (time > 750 && time<=3600 )&&  <span className="card__time">an hour left</span>}
       </Link>
     }
       <h3 className="card__title">
@@ -106,12 +111,12 @@ function Card(props) {
           <span>{price} BNB</span>
         </div>
 
-        {/* <button className="card__likes" type="button">
+        <button className="card__likes" type="button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
           </svg>
           <span>{likes}</span>
-        </button> */}
+        </button>
       </div>
     </div>
   );

@@ -74,7 +74,6 @@ function Create() {
     reader.readAsArrayBuffer(file);
   };
   const getBgFile = (file) => {
-    console.log('sdsdasdasd', file)
     const reader = new FileReader();
     reader.onabort = () => console.log("file reading was aborted");
     reader.onerror = () => console.log("file reading has failed");
@@ -94,9 +93,7 @@ function Create() {
       if (account) {
         setCreateProcess(true);
         const result = await ipfs.files.add(Buffer.from(buffer));
-        console.log('main', result)
         const imgBg = bgFile ? await ipfs.files.add(Buffer.from(bgBuffer)) : null;
-        console.log('audio bg', imgBg)
         const imgAttach = attachfile
           ? await ipfs.files.add(Buffer.from(attachBuffer))
           : null;
@@ -120,7 +117,6 @@ function Create() {
             "metadata.json"
           ),
         ]);
-        console.log("/upload task", cid);
         if (cid) {
           const tokenURI = `https://ipfs.io/ipfs/${cid}/metadata.json`;
           firestore
@@ -136,7 +132,7 @@ function Create() {
               price,
               isSale,
               saleType,
-              auctionLength: saleType !== "fix" ? auctionLength : 0,
+              auctionLength: saleType !== "fix" ? parseInt(auctionLength) : 0,
               likes: 0,
             })
             .then(() => {
@@ -207,7 +203,6 @@ function Create() {
                     <NFTDropzone
                       nftType="Audio"
                       onChange={(newfile) => {
-                        console.log("wewer", newfile);
                         setFile(newfile);
                         getFile(newfile);
                       }}
@@ -215,7 +210,6 @@ function Create() {
                     <NFTDropzone
                       nftType="image"
                       onChange={(newfile) => {
-                        console.log("wewer");
                         setBgFile(newfile);
                         getBgFile(newfile);
                       }}
@@ -226,7 +220,6 @@ function Create() {
                     <NFTDropzone
                       nftType="Video"
                       onChange={(newfile) => {
-                        console.log("wewer");
                         setFile(newfile);
                         getFile(newfile);
                       }}
@@ -237,7 +230,6 @@ function Create() {
                     <NFTDropzone
                       nftType="image"
                       onChange={(newfile) => {
-                        console.log("wewer");
                         setFile(newfile);
                         getFile(newfile);
                       }}
@@ -269,7 +261,6 @@ function Create() {
                     <NFTDropzone
                       nftType={"all"}
                       onChange={(newfile) => {
-                        console.log("wewer");
                         getFile(newfile, true);
                         setattachfile(newfile);
                       }}
@@ -345,7 +336,7 @@ function Create() {
                       id="description"
                       name="description"
                       className="sign__textarea"
-                      placeholder="e. g. 'After purchasing you will able to received...'"
+                      placeholder="e.g. ‘After purchasing, you will receive…’"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     ></textarea>

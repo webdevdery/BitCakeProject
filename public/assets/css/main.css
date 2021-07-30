@@ -57,7 +57,8 @@
 ==============================*/
 .home {
   position: relative;
-  background: url("../img/home/bg.png") no-repeat top center/cover;
+  background: url("../img/home/bg.gif") no-repeat top center/cover;
+  background-size: 100% 100%;
   /* border-bottom: 1px solid #222227; */
 }
 /* .home::after {

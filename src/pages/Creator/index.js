@@ -189,19 +189,18 @@ function AuthorPage() {
     resetProfile(userProfile)
   };
   const getNFTList = async () => {
+    console.log('get nft list')
     const res = await firestore.collection("nfts").get()
     let lists = []
     let createdLists = []
     for (let i = 0; i < res.docs.length; i++)
     {
       let doc = res.docs[i].data()
-      console.log('docs', doc)
-      if (doc.owner === account || doc.creator === account) {
+      if (doc.ownerId === id || doc.creatorId === id) {
         const nftInfo = await Axios.get(doc.tokenURI);
-        console.log({ ...doc, ...nftInfo.data })
-        if(doc.owner === account)
+        if(doc.ownerId === id)
           lists.push({ id: res.docs[i].id, ...user, ...doc, ...nftInfo.data })
-        if(doc.creator === account)
+        if(doc.creatorId === id)
           createdLists.push({ id: res.docs[i].id, ...user, ...doc, ...nftInfo.data })
       }
     }
@@ -218,9 +217,7 @@ function AuthorPage() {
       toast.error("Please input required fields");
     }
     if (avatar !== user.avatar && file) {
-      // console.log(firestore)
       const uploadTask = await storage.ref(`/avatars/${uid}`).put(file);
-      console.log(uploadTask);
       if (uploadTask.state === "success") {
         const imgUrl = await uploadTask.ref.getDownloadURL();
         const author = {
@@ -260,7 +257,6 @@ function AuthorPage() {
     input.click();
   }, []);
   const resetProfile = (data) => {
-    console.log("reset profile", data);
     setFirstName(data.firstName);
     setLastName(data.lastName);
     setAvatar(data.avatar);

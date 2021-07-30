@@ -8,14 +8,12 @@ function Item(props) {
   const [ownerData, setOwnerData] = useState({ avatar: "assets/img/avatars/avatar.jpg", name: "" })
   // const { ownerId } = props.data;
   const [uid, setUid] = useState('')
-  console.log(auth)
   const getAvatars = async () => {
     let nft_item = (
       await firestore.collection("nfts").doc(id).get()
     ).data();
     setOwnerData((await firestore.collection("users").doc(nft_item.ownerId).get()).data())
     setCreatorData((await firestore.collection("users").doc(nft_item.creatorId).get()).data())
-    console.log(nft_item.ownerId, '%%%%%%%%%%%%%%%%%%%%%%%%%%%', ownerData)
   }
   useEffect(() => {
     getAvatars()

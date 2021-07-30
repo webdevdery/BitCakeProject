@@ -1,6 +1,5 @@
 import React from "react";
 function AuthorMeta(props) {
-  console.log('###########', props)
   const { avatar, authorName, nickName, bio, followers } = props.data;
   const {code} = props
   return (
