@@ -39,7 +39,7 @@ function SignUp() {
     onSubmit: (values) => {
       const creatProfile = async (user) => {
         const author = {
-          avatar: "assets/img/avatars/avatar.jpg",
+          avatar: "/assets/img/avatars/avatar.jpg",
           firstName: "User",
           lastName: "",
           nickName: "@user",

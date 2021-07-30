@@ -1,7 +1,7 @@
 import {SET_PROFILE} from "../actions/userAction"
 
 const initialUserData = {
-  avatar: "assets/img/avatars/avatar.jpg",
+  avatar: "/assets/img/avatars/avatar.jpg",
   firstName: "",
   lastName: "",
   nickName: "",

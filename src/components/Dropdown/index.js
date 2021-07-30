@@ -39,7 +39,7 @@ function Dropdown() {
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <img src={user ? user.avatar : "assets/img/avatars/avatar5.jpg"} alt="" />
+        <img src={user ? user.avatar : "/assets/img/avatars/avatar5.jpg"} alt="" />
         <div>
           <p>{user ? user.firstName + ' ' + user.lastName : 'User'}</p>
         </div>

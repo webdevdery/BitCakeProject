@@ -9,7 +9,7 @@ const breadCrumb = [
 const authors = [
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -17,7 +17,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -25,7 +25,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -33,7 +33,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -41,7 +41,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -49,7 +49,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -57,7 +57,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
@@ -65,7 +65,7 @@ const authors = [
   },
   {
     bgImage: "assets/img/bg/bg-small.png",
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "Adam Zapel",
     nickName: "@aaarthur",
     text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",

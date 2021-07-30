@@ -185,6 +185,15 @@
 .main__link:hover svg {
   fill:  #c51458;
 }
+.my__card{
+  display: flex;
+}
+.my__card .card{
+  width: 24%;
+}
+.my__card .card:not(:last-child){
+  margin-right: 1%;
+}
 .main__carousel-wrap {
   position: relative;
 }

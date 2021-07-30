@@ -139,7 +139,7 @@ const activityData = [
 function AuthorPage() {
   const { id } = useParams();
   const author = {
-    avatar: "assets/img/avatars/avatar.jpg",
+    avatar: "/assets/img/avatars/avatar.jpg",
     authorName: "",
     nickName: "",
     email: "",
@@ -151,7 +151,7 @@ function AuthorPage() {
   const [user, setUser] = useState({});
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [avatar, setAvatar] = useState("assets/img/avatars/avatar.jpg");
+  const [avatar, setAvatar] = useState("/assets/img/avatars/avatar.jpg");
   const [file, setFile] = useState(null);
   const [nickName, setNickName] = useState("");
   const [email, setEmail] = useState("");
@@ -176,7 +176,7 @@ function AuthorPage() {
     ).data();
     if (!userProfile)
       userProfile = {
-        avatar: "assets/img/avatars/avatar.jpg",
+        avatar: "/assets/img/avatars/avatar.jpg",
         firstName: "",
         lastName: "",
         nickName: "",
@@ -221,7 +221,7 @@ function AuthorPage() {
       if (uploadTask.state === "success") {
         const imgUrl = await uploadTask.ref.getDownloadURL();
         const author = {
-          avatar: imgUrl || "assets/img/avatars/avatar.jpg",
+          avatar: imgUrl || "/assets/img/avatars/avatar.jpg",
           firstName,
           lastName,
           nickName,

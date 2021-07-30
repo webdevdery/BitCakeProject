@@ -15,7 +15,7 @@ import "styles/create.css";
 const client = new NFTStorage({ token: NFTStorageKey });
 
 const author = {
-  avatar: "assets/img/avatars/avatar.jpg",
+  avatar: "/assets/img/avatars/avatar.jpg",
   authorName: "Adam Zapel",
   nickName: "@aaarthur",
   code: "XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh",
@@ -133,6 +133,7 @@ function Create() {
               isSale,
               saleType,
               auctionLength: saleType !== "fix" ? parseInt(auctionLength) : 0,
+              time: saleType !== "fix" ? Date.now() + 3600 * 1000 * parseInt(auctionLength) : 0,
               likes: 0,
             })
             .then(() => {

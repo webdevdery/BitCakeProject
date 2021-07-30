@@ -104,7 +104,7 @@ function SignIn() {
                 </form>
                 {/* end authorization form */}
               </div>
-            </div>
+            </div>w
           </div>
           {/* end sign in */}
         </div>

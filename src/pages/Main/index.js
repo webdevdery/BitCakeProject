@@ -4,93 +4,28 @@ import SellerList from "../../components/SellerList";
 import { firestore } from "../../firebase";
 
 import "styles/main.css";
+import axios from "axios";
 
-const cards = [
-  {
-    type: "image",
-    image: "assets/img/cover/cover1.jpg",
-    time: "2021-08-07T01:02:03",
-    title: "Walking on Air",
-    avatar: "assets/img/avatars/avatar5.jpg",
-    nickName: "@nickname",
-    currentPrice: 4.89,
-    verified: true,
-    likes: 189,
-  },
-  {
-    type: "image",
-    image: "assets/img/cover/cover2.jpg",
-    time: "2021-08-07T01:02:03",
-    title: "Les Immortels, the Treachery of Artificial Shadows",
-    avatar: "assets/img/avatars/avatar3.jpg",
-    nickName: "@neo",
-    currentPrice: 2.61,
-    verified: false,
-    likes: 702,
-  },
-  {
-    type: "audio",
-    imageBg: "assets/img/cover/cover3.jpg",
-    image: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-    time: "2021-08-07T01:02:03",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    imageBg: "assets/img/cover/cover3.jpg",
-    image:
-      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    time: "2021-08-07T01:02:03",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "audio",
-    imageBg: "assets/img/cover/cover3.jpg",
-    audio: "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
-    time: "2021-08-07T01:02:03",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: true,
-    likes: 37,
-  },
-  {
-    type: "video",
-    imageBg: "assets/img/cover/cover3.jpg",
-    image:
-      "https://storage.opensea.io/files/b160bf7e9e9c391b974b634808a65382.mp4",
-    time: "2021-08-07T01:02:03",
-    title: "Flowers in Concrete (Modal)",
-    avatar: "assets/img/avatars/avatar15.jpg",
-    nickName: "@min1max",
-    currentPrice: 3.19,
-    verified: false,
-    likes: 37,
-  },
-];
 function Main() {
   const [userLists, setUserLists] = useState([])
   const [sellerLists, setSellerLists] = useState([])
+  const [nfts, setNfts] = useState([])
 
   const getNFTLists = async () => {
     const nfts = (await firestore.collection("nfts").get())
     let user_nfts = []
-    nfts.docs.forEach(x => {
+    let nfts_list = []
+    for (let i = 0; i < nfts.docs.length; i++) {
+      const x = nfts.docs[i]
       const temp = x.data()
-      if(!user_nfts[temp.creatorId]) user_nfts[temp.creatorId] = []
-      user_nfts[temp.creatorId].push(temp)
-    })
+      const tt = (await axios.get(temp.tokenURI)).data;
+      if (!user_nfts[temp.creatorId]) user_nfts[temp.creatorId] = []
+      const ite = { id:x.id, ...temp, ...tt }
+      user_nfts[temp.creatorId].push(ite)
+      nfts_list.push(ite)
+    }
+    setNfts(nfts_list)
+    console.log(nfts_list.filter(x=>x.isSale && x.saleType!=='fix'))
     let temp = Object.keys(user_nfts).map(x=>({id:x, nfts: user_nfts[x]}))
     const users = temp.sort((a, b) => {
       return b.nfts.length - a.nfts.length
@@ -154,12 +89,11 @@ function Main() {
 
           {/* <!-- carousel --> */}
           <div className="col-12">
-            <div className="main__carousel-wrap">
+            <div className="main__carousel-wrap  my__caro">
               <div
-                className="main__carousel main__carousel--live owl-carousel"
-                id="live"
+                className="main__carousel my__card"
               >
-                {cards.map((card, index) => (
+                {nfts.filter(x=>x.isSale && x.saleType!=='fix').map((card, index) => index<4 && (
                   <Card data={card} key={`card-${index}`} />
                 ))}
               </div>
