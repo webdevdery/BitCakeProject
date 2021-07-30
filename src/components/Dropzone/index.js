@@ -32,7 +32,7 @@ const img = {
 };
 
 const acceptedList = {
-  Audio: "audio/*",
+  Audio: "audio/mp3, audio/wav",
   All: "image/*, video/*",
 };
 
@@ -40,8 +40,8 @@ export default function NFTDropzone(props) {
   const [previewFile, setpreviewFile] = useState();
   const { getRootProps, getInputProps } = useDropzone({
     accept:
-      props.nftType.name === "Audio"
-        ? acceptedList["Audio"]
+      props.nftType.name == "Audio"
+        ? "audio/mp3, audio/wav"
         : props.nftType === "all"
         ? ""
         : acceptedList["All"],
