@@ -40,7 +40,7 @@ function Routes(props) {
           <Route path="/creator/:id" component={Creator} />
           <Route path="/collection" component={Collection} />
           <Route
-            // authenticated={props.authenticated}
+            authenticated={props.authenticated}
             path="/create"
             component={Create}
           />

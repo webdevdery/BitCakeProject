@@ -55,8 +55,7 @@ function Main() {
                   on the Binance Smart Chain
                 </h1>
                 <p className="home__text">
-                  Buy, sell, and trade digital collectibles on the sweetest NFT
-                  marketplace in the universe. <br />
+                  It’s free to list your digital collectibles on the sweetest NFT marketplace in the universe.<br />
                 </p>
 
                 <div className="home__btns">

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import AuthorMeta from "components/AuthorMeta";
 import Card from "components/Card";
 import Paginator from "components/Paginator";
-import Filter from "components/Filter";
-import Activity from "components/Activity";
 import { toast } from "react-toastify";
 import { auth } from "../../firebase";
 import { firestore, storage } from "../../firebase";
@@ -12,147 +10,16 @@ import { useWeb3React } from "@web3-react/core";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 
-const activityData = [
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "list",
-    nickName: "@Nickname",
-    bnbPrice: 0.049,
-    timeAgo: 4,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "purchase",
-    nickName: "@johndoe",
-    bnbPrice: 0.011,
-    timeAgo: 21,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "transfer",
-    fromName: "@johndoe",
-    toName: "@Nickname",
-    timeAgo: 21,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "offer",
-    nickName: "@johndoe",
-    bnbPrice: 0.011,
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "like",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "start",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "list",
-    nickName: "@Nickname",
-    bnbPrice: 0.049,
-    timeAgo: 4,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "purchase",
-    nickName: "@johndoe",
-    bnbPrice: 0.011,
-    timeAgo: 21,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "transfer",
-    fromName: "@johndoe",
-    toName: "@Nickname",
-    timeAgo: 21,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "offer",
-    nickName: "@johndoe",
-    bnbPrice: 0.011,
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "like",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "start",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "transfer",
-    fromName: "@johndoe",
-    toName: "@Nickname",
-    timeAgo: 21,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "offer",
-    nickName: "@johndoe",
-    bnbPrice: 0.011,
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "like",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-  {
-    cover: "assets/img/cover/cover1.jpg",
-    title: "Walking on Air",
-    method: "start",
-    nickName: "@johndoe",
-    timeAgo: 23,
-  },
-];
-function AuthorPage() {
+function Creator() {
   const { id } = useParams();
-  const author = {
-    avatar: "/assets/img/avatars/avatar.jpg",
-    authorName: "",
-    nickName: "",
-    email: "",
-    code: "XAVUW3sw3ZunitokcLtemEfX3tGuX2plateWdh",
-    text: "NFT collector from Los Angeles, CA. I love sports memorabilia, particularly baseball cards and autographs.",
-    followers: 3829,
-  };
-  const { library, active, account } = useWeb3React();
+  const { account } = useWeb3React();
   const [user, setUser] = useState({});
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [avatar, setAvatar] = useState("/assets/img/avatars/avatar.jpg");
+  const [imageCover, setImageCover] = useState("/assets/img/home/bg.gif");
   const [file, setFile] = useState(null);
+  const [coverFile, setCoverFile] = useState(null);
   const [nickName, setNickName] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -177,6 +44,7 @@ function AuthorPage() {
     if (!userProfile)
       userProfile = {
         avatar: "/assets/img/avatars/avatar.jpg",
+        imageCover: "/assets/img/home/bg.gif",
         firstName: "",
         lastName: "",
         nickName: "",
@@ -216,32 +84,41 @@ function AuthorPage() {
     if (!firstName || !lastName || !nickName || !bio) {
       toast.error("Please input required fields");
     }
+    let imgUrl, imgCoverUrl
     if (avatar !== user.avatar && file) {
       const uploadTask = await storage.ref(`/avatars/${uid}`).put(file);
-      if (uploadTask.state === "success") {
-        const imgUrl = await uploadTask.ref.getDownloadURL();
-        const author = {
-          avatar: imgUrl || "/assets/img/avatars/avatar.jpg",
-          firstName,
-          lastName,
-          nickName,
-          email,
-          bio,
-        };
-        firestore
-          .collection("users")
-          .doc(uid)
-          .set(author)
-          .then(() => {
-            toast.success("Update profile");
-          })
-          .catch((err) => {
-            toast.error("Update failed.");
-          });
-      } else {
-        toast.error("Uploading avatar failed.");
-      }
+      if (uploadTask.state !== "success") return;
+      imgUrl = await uploadTask.ref.getDownloadURL();
     }
+    console.log('dd', imageCover, user.imageCover, coverFile)
+    if (imageCover !== user.imageCover && coverFile) {
+      const uploadCoverTask = await storage.ref(`/covers/${uid}`).put(coverFile);
+      console.log(uploadCoverTask)
+      if (uploadCoverTask.state !== "success") return;
+      imgCoverUrl = await uploadCoverTask.ref.getDownloadURL();
+      console.log(imgCoverUrl)
+    }
+    // console.log(imgUrl || user.avatar || "/assets/img/avatars/avatar.jpg")
+    // console.log(imgCoverUrl || user.imageCover || "/assets/img/home/bg.gif")
+    const author = {
+      avatar: imgUrl || user.avatar || "/assets/img/avatars/avatar.jpg",
+      imageCover: imgCoverUrl || user.imageCover || "/assets/img/home/bg.gif",
+      firstName,
+      lastName,
+      nickName,
+      email,
+      bio,
+    };
+    firestore
+      .collection("users")
+      .doc(uid)
+      .set(author)
+      .then(() => {
+        toast.success("Update profile");
+      })
+      .catch((err) => {
+        toast.error("Update failed.");
+      });
   };
 
   const updateAvatar = useCallback((e) => {
@@ -256,10 +133,24 @@ function AuthorPage() {
     };
     input.click();
   }, []);
+  const updateCover = useCallback((e) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.onchange = (event) => {
+      const target = event.target;
+      const files = target.files;
+      const file = files[0];
+      setCoverFile(file);
+      setImageCover(URL.createObjectURL(file));
+    };
+    input.click();
+  }, []);
   const resetProfile = (data) => {
+    console.log('reset', imageCover);
     setFirstName(data.firstName);
     setLastName(data.lastName);
     setAvatar(data.avatar);
+    setImageCover(data.imageCover);
     setNickName(data.nickName);
     setBio(data.bio);
     setEmail(data.email);
@@ -267,7 +158,9 @@ function AuthorPage() {
 
   return (
     <main className="main">
-      <div className="main__author" data-bg="assets/img/bg/bg.png"></div>
+      <div className="main__author" data-bg="assets/img/home/bg.gif">
+        <img src={user.imageCover} width="100%" height="100%" alt="" />
+      </div>
       <div className="container">
         <div className="row row--grid">
           <div className="col-12 col-xl-3">
@@ -454,7 +347,7 @@ function AuthorPage() {
                 </div>
 
                 {/* paginator */}
-                <Paginator />
+                {/* <Paginator /> */}
                 {/* end paginator */}
               </div>
 
@@ -464,7 +357,10 @@ function AuthorPage() {
                   <div className="col-12 col-lg-6">
                     <form action="#" className="sign__form sign__form--profile">
                       <div className="row">
-                        <div className="col-12 sign__avatar">
+                        <div className="col-12 sign__cover">
+                          <img src={imageCover?imageCover: "/assets/img/home/bg.gif"} alt="" onClick={updateCover} />
+                        </div>
+                        <div className="sign__avatar">
                           <img src={avatar} alt="" onClick={updateAvatar} />
                         </div>
                         <div className="col-12">
@@ -668,4 +564,4 @@ function AuthorPage() {
     </main>
   );
 }
-export default AuthorPage;
+export default Creator;
