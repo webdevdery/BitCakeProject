@@ -54,10 +54,10 @@ const providers = [
     name: "MetaMask",
     avatar: assets.MetaMask,
   },
-  {
-    name: "Wallet Connect",
-    avatar: assets.WalletConnect,
-  },
+  // {
+  //   name: "Wallet Connect",
+  //   avatar: assets.WalletConnect,
+  // },
 ];
 let closeImg = {
   cursor: "pointer",

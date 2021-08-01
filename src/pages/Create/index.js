@@ -157,7 +157,9 @@ function Create() {
   };
   return (
     <main className="main">
-      <div className="main__author" data-bg="assets/img/bg/bg.png"></div>
+      <div className="main__author" data-bg="assets/img/home/bg.gif">
+        <img src={user.imageCover} width="100%" height="100%" alt="" />
+      </div>
       <div className="container">
         <div className="row row--grid">
           <div className="col-12 col-xl-3">

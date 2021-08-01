@@ -51,7 +51,7 @@ function Header(props) {
       <div className="header__content">
         <div className="header__logo">
           <a href="/">
-            <img src="assets/img/logo.svg" alt="" />
+            <img src="/assets/img/logo.svg" alt="" />
           </a>
         </div>
 
@@ -199,8 +199,8 @@ function Header(props) {
               onClick={handleClickOpen}
             >
               {!account ?
-                <span style={{border:'1px solid blue', borderRadius:20, padding:'5px 10px'}}>
-                  Connet Wallet
+                <span style={{border:'1px solid #c8135a', borderRadius:20, padding:'9px 15px'}}>
+                  Connect Wallet
                 </span>
                 :
                 <div>

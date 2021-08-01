@@ -4,7 +4,8 @@ import VideoImage from "./VideoImage";
 import Countdown from "react-countdown";
 import "./style.css";
 import { Link } from "react-router-dom";
-import { firestore } from '../../firebase';
+import { firestore, auth } from '../../firebase';
+import { toast } from "react-toastify";
 function Card(props) {
   const {
     ownerId,
@@ -13,6 +14,7 @@ function Card(props) {
     imageBg,
     time,
     auctionLength,
+    creatorId,
     title,
     price,
     id,
@@ -23,6 +25,7 @@ function Card(props) {
   // const time = auctionLength === 0 ? null : auctionLength * 3600
   const [ownerAvatar, setOwnerAvatar] = useState("/assets/img/avatars/avatar.jpg")
   const [nickName, setNickName] = useState("@unkown")
+  const [follow, setFollow] = useState(likes)
   const getAvatar = async () => {
     const url = (await firestore.collection("users").doc(ownerId).get()).data()
     if (url) {
@@ -30,13 +33,33 @@ function Card(props) {
       setNickName(url?.nickName)
     }
   }
+
+  const increaseLikes = () => {
+    if (follow.includes(auth.currentUser.uid)) {
+      toast.error('You already liked this NFT')
+      return
+    }
+    if (creatorId === auth.currentUser.uid) {
+      toast.error('You are a creator')
+      return
+    }
+    const temp = [...follow, auth.currentUser.uid]
+    firestore.collection("nfts").doc(id).update({ likes: temp }).then(() => {
+      setFollow(temp)
+      toast.success('You follow NFT')
+    }).catch(err => {
+      toast.error(err)
+    })
+  }
   
   useEffect(() => {
     getAvatar()
   }, [ownerId])
   return (
     <div className="card">
-      { type==='image'? (typeof(image)==='string'? <Link to={`/item/${id?id:type}`} className="card__cover card__cover--video video">
+      {type === 'image' ?
+        (typeof (image) === 'string' ?
+        <Link to={`/item/${id ? id : type}`} className="card__cover card__cover--video video">
         <img src={image? image: 'assets/img/cover/cover2.jpg'} alt="" className="video-content"/>
         {!(time === undefined || time === 0 || time === null) &&
             <div className="card__time card__time--clock">
@@ -112,11 +135,11 @@ function Card(props) {
           <span>{price} BNB</span>
         </div>
 
-        <button className="card__likes" type="button">
+        <button className="card__likes" type="button" onClick={increaseLikes}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M20.16,5A6.29,6.29,0,0,0,12,4.36a6.27,6.27,0,0,0-8.16,9.48l6.21,6.22a2.78,2.78,0,0,0,3.9,0l6.21-6.22A6.27,6.27,0,0,0,20.16,5Zm-1.41,7.46-6.21,6.21a.76.76,0,0,1-1.08,0L5.25,12.43a4.29,4.29,0,0,1,0-6,4.27,4.27,0,0,1,6,0,1,1,0,0,0,1.42,0,4.27,4.27,0,0,1,6,0A4.29,4.29,0,0,1,18.75,12.43Z" />
           </svg>
-          <span>{likes}</span>
+          <span>{follow.length}</span>
         </button>
       </div>
     </div>
