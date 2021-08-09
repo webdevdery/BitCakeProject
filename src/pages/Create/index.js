@@ -134,7 +134,7 @@ function Create() {
               saleType,
               auctionLength: saleType !== "fix" ? parseInt(auctionLength) : 0,
               time: saleType !== "fix" ? Date.now() + 3600 * 1000 * parseInt(auctionLength) : 0,
-              likes: 0,
+              likes: [],
             })
             .then(() => {
               toast.success("Create NFT");
